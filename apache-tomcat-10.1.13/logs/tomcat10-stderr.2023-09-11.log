@@ -1,0 +1,14 @@
+
+2023-09-11 18:09:38 Apache Commons Daemon procrun stderr initialized.
+java.lang.NoClassDefFoundError: org/apache/catalina/startup/Bootstrap
+Caused by: java.lang.ClassNotFoundException: org.apache.catalina.startup.Bootstrap
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+
+2023-09-11 18:09:48 Apache Commons Daemon procrun stderr initialized.
+java.lang.NoClassDefFoundError: org/apache/catalina/startup/Bootstrap
+Caused by: java.lang.ClassNotFoundException: org.apache.catalina.startup.Bootstrap
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
