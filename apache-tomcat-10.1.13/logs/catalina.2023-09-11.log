@@ -678,3 +678,199 @@
 11-Sep-2023 19:35:26.270 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
 11-Sep-2023 19:35:26.298 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
 11-Sep-2023 19:35:26.310 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:00:06.377 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.13
+11-Sep-2023 21:00:06.380 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 23 2023 21:34:59 UTC
+11-Sep-2023 21:00:06.380 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.13.0
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           20.0.2+9-78
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:00:06.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:00:06.388 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\logging.properties
+11-Sep-2023 21:00:06.388 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+11-Sep-2023 21:00:06.388 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|DESKTOP-CJQ6J1V
+11-Sep-2023 21:00:06.388 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+11-Sep-2023 21:00:06.388 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:00:06.389 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\temp
+11-Sep-2023 21:00:06.392 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.5] using APR version [1.7.4].
+11-Sep-2023 21:00:06.396 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.10 1 Aug 2023]
+11-Sep-2023 21:00:06.610 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:00:06.624 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [383] milliseconds
+11-Sep-2023 21:00:06.665 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+11-Sep-2023 21:00:06.666 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.13]
+11-Sep-2023 21:00:06.674 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:00:06.692 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:00:06.718 SEVERE [main] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+	java.lang.IllegalStateException: Error starting child
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:686)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:658)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:713)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:641)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1927)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:123)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:534)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:424)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1656)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:114)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:402)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:345)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:893)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:846)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:241)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:918)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:795)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:347)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:478)
+	Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@4c5ae43b]
+		at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:419)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:186)
+		at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4535)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4668)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:683)
+		... 35 more
+	Caused by: java.lang.IllegalArgumentException: The main resource set specified [D:\Program Files (x86)\Re-Direccion de Descargas\Clases\PAP\ProjectPap-Frontend\Gimnasio_Web\target\Gimnasio_Web-1.0-SNAPSHOT] is not a directory or war file, or is not readable (it does not exist or permissions to access it are missing)
+		at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:749)
+		at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:707)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+		... 39 more
+11-Sep-2023 21:00:06.760 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [86] ms
+11-Sep-2023 21:00:06.761 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\docs]
+11-Sep-2023 21:00:06.952 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\docs] has finished in [191] ms
+11-Sep-2023 21:00:06.953 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\examples]
+11-Sep-2023 21:00:07.328 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\examples] has finished in [376] ms
+11-Sep-2023 21:00:07.329 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\host-manager]
+11-Sep-2023 21:00:07.376 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\host-manager] has finished in [46] ms
+11-Sep-2023 21:00:07.376 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\manager]
+11-Sep-2023 21:00:07.422 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\manager] has finished in [46] ms
+11-Sep-2023 21:00:07.423 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\ROOT]
+11-Sep-2023 21:00:07.449 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\ROOT] has finished in [26] ms
+11-Sep-2023 21:00:07.452 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:00:07.487 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [861] milliseconds
+11-Sep-2023 21:00:14.113 INFO [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:00:14.128 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:00:14.129 WARNING [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:00:14.611 INFO [http-nio-8080-exec-4] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:00:14.617 INFO [http-nio-8080-exec-4] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [489] ms
+11-Sep-2023 21:00:14.620 INFO [http-nio-8080-exec-6] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after start() had already been called. The second call will be ignored.
+11-Sep-2023 21:12:45.287 INFO [http-nio-8080-exec-14] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:12:45.297 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:12:45.298 WARNING [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:12:45.995 INFO [http-nio-8080-exec-18] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:12:45.997 SEVERE [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+11-Sep-2023 21:12:45.997 SEVERE [http-nio-8080-exec-18] org.apache.catalina.core.StandardContext.startInternal Context [/Gimnasio_Web] startup failed due to previous errors
+11-Sep-2023 21:12:46.000 INFO [http-nio-8080-exec-18] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [703] ms
+11-Sep-2023 21:12:49.180 INFO [http-nio-8080-exec-11] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after stop() had already been called. The second call will be ignored.
+11-Sep-2023 21:12:49.686 INFO [http-nio-8080-exec-11] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:12:49.696 INFO [http-nio-8080-exec-13] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:12:49.697 WARNING [http-nio-8080-exec-13] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:12:50.353 INFO [http-nio-8080-exec-13] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:12:50.354 SEVERE [http-nio-8080-exec-13] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+11-Sep-2023 21:12:50.354 SEVERE [http-nio-8080-exec-13] org.apache.catalina.core.StandardContext.startInternal Context [/Gimnasio_Web] startup failed due to previous errors
+11-Sep-2023 21:12:50.357 INFO [http-nio-8080-exec-13] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [661] ms
+11-Sep-2023 21:14:30.964 INFO [http-nio-8080-exec-25] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after stop() had already been called. The second call will be ignored.
+11-Sep-2023 21:14:31.466 INFO [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:15:38.245 INFO [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:15:38.246 WARNING [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:15:38.901 INFO [http-nio-8080-exec-25] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:15:38.902 SEVERE [http-nio-8080-exec-25] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+11-Sep-2023 21:15:38.902 SEVERE [http-nio-8080-exec-25] org.apache.catalina.core.StandardContext.startInternal Context [/Gimnasio_Web] startup failed due to previous errors
+11-Sep-2023 21:15:38.905 INFO [http-nio-8080-exec-25] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [660] ms
+11-Sep-2023 21:15:41.400 INFO [http-nio-8080-exec-17] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after stop() had already been called. The second call will be ignored.
+11-Sep-2023 21:15:41.903 INFO [http-nio-8080-exec-17] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:15:41.912 INFO [http-nio-8080-exec-23] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:15:41.913 WARNING [http-nio-8080-exec-23] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:15:42.556 INFO [http-nio-8080-exec-23] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:15:42.557 SEVERE [http-nio-8080-exec-23] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+11-Sep-2023 21:15:42.557 SEVERE [http-nio-8080-exec-23] org.apache.catalina.core.StandardContext.startInternal Context [/Gimnasio_Web] startup failed due to previous errors
+11-Sep-2023 21:15:42.560 INFO [http-nio-8080-exec-23] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [648] ms
+11-Sep-2023 21:40:26.310 INFO [http-nio-8080-exec-38] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after stop() had already been called. The second call will be ignored.
+11-Sep-2023 21:40:26.817 INFO [http-nio-8080-exec-38] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:40:26.829 INFO [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:40:26.830 WARNING [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:40:27.462 INFO [http-nio-8080-exec-39] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:40:27.464 SEVERE [http-nio-8080-exec-39] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+11-Sep-2023 21:40:27.464 SEVERE [http-nio-8080-exec-39] org.apache.catalina.core.StandardContext.startInternal Context [/Gimnasio_Web] startup failed due to previous errors
+11-Sep-2023 21:40:27.467 INFO [http-nio-8080-exec-39] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [638] ms
+11-Sep-2023 21:40:29.643 INFO [http-nio-8080-exec-38] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after stop() had already been called. The second call will be ignored.
+11-Sep-2023 21:40:30.157 INFO [http-nio-8080-exec-38] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:40:30.677 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Gimnasio_Web]
+11-Sep-2023 21:40:51.799 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+11-Sep-2023 21:40:51.799 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:40:51.806 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+11-Sep-2023 21:40:51.812 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:40:51.816 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:41:09.530 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.13
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 23 2023 21:34:59 UTC
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.13.0
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           20.0.2+9-78
+11-Sep-2023 21:41:09.533 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+11-Sep-2023 21:41:09.534 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:41:09.534 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:41:09.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\logging.properties
+11-Sep-2023 21:41:09.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+11-Sep-2023 21:41:09.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|DESKTOP-CJQ6J1V
+11-Sep-2023 21:41:09.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+11-Sep-2023 21:41:09.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13
+11-Sep-2023 21:41:09.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\temp
+11-Sep-2023 21:41:09.543 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.5] using APR version [1.7.4].
+11-Sep-2023 21:41:09.547 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.10 1 Aug 2023]
+11-Sep-2023 21:41:09.784 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:41:09.798 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [381] milliseconds
+11-Sep-2023 21:41:09.834 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+11-Sep-2023 21:41:09.834 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.13]
+11-Sep-2023 21:41:09.841 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\docs]
+11-Sep-2023 21:41:10.046 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\docs] has finished in [205] ms
+11-Sep-2023 21:41:10.046 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\examples]
+11-Sep-2023 21:41:10.330 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\examples] has finished in [284] ms
+11-Sep-2023 21:41:10.331 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\host-manager]
+11-Sep-2023 21:41:10.358 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\host-manager] has finished in [27] ms
+11-Sep-2023 21:41:10.358 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\manager]
+11-Sep-2023 21:41:10.388 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\manager] has finished in [29] ms
+11-Sep-2023 21:41:10.388 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\ROOT]
+11-Sep-2023 21:41:10.405 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\webapps\ROOT] has finished in [16] ms
+11-Sep-2023 21:41:10.407 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+11-Sep-2023 21:41:10.430 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [631] milliseconds
+11-Sep-2023 21:41:10.504 INFO [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml]
+11-Sep-2023 21:41:10.505 WARNING [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/Gimnasio_Web] in deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has been ignored
+11-Sep-2023 21:41:11.009 INFO [http-nio-8080-exec-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-Sep-2023 21:41:11.015 INFO [http-nio-8080-exec-2] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\Gaston\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [511] ms
+11-Sep-2023 21:41:11.018 INFO [http-nio-8080-exec-3] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after start() had already been called. The second call will be ignored.

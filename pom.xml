@@ -59,6 +59,11 @@
                 <artifactId>primefaces</artifactId>
                 <version>13.0.0</version>
         </dependency>-->
+        <dependency>
+            	<groupId>com.gympap</groupId>
+            <artifactId>gymconsola</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
     <build>
