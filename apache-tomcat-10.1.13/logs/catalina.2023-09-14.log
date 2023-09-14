@@ -335,3 +335,8 @@
 14-Sep-2023 08:52:58.245 INFO [http-nio-8080-exec-16] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
 14-Sep-2023 08:52:58.251 INFO [http-nio-8080-exec-16] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\gasto\Documents\GitHub\ProjectPap-Frontend\apache-tomcat-10.1.13\conf\Catalina\localhost\Gimnasio_Web.xml] has finished in [455] ms
 14-Sep-2023 08:52:58.254 INFO [http-nio-8080-exec-17] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/Gimnasio_Web]] after start() had already been called. The second call will be ignored.
+14-Sep-2023 09:33:31.679 INFO [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+14-Sep-2023 09:33:31.682 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Sep-2023 09:33:31.703 INFO [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+14-Sep-2023 09:33:31.739 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Sep-2023 09:33:31.761 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
