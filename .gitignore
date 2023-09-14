@@ -1,2 +1,4 @@
 /GimnasioWeb/nbproject/private/
 *.log
+*.log
+/apache-tomcat-10.1.13/logs
