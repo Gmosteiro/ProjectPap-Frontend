@@ -10,12 +10,7 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css"
 		/>
-		<!-- Font Awesome CSS -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
-		<!-- Style CSS -->
 		<link rel="stylesheet" href="css/style.css" />
-		<!-- Demo CSS -->
-		<link rel="stylesheet" href="css/demo.css" />
         <link rel="userIcon" href="imagenes/UserIcon.png"
 	</head>
 	<body>
@@ -39,7 +34,7 @@
 							</div>
 
 							<img
-								src="" class="rounded-circle mx-auto my-3"
+								src="GetImage" alt="Imagen de usuario" 
 								width="150"
 								height="150"
 							/>
@@ -81,8 +76,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-		<!-- Custom Script -->
-		<script src="js/script.js"></script>
 		<script>
 			$(document).ready(function () {
 				// Mostrar el modal al cargar la página
