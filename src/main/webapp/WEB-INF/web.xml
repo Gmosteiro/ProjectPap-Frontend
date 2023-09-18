@@ -8,6 +8,15 @@
         <servlet-name>hola</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetImage</servlet-name>
+        <servlet-class>GimController.GetImage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetImage</servlet-name>
+        <url-pattern>/GetImage</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

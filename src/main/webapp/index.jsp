@@ -39,7 +39,7 @@
 							</div>
 
 							<img
-								src="imagenes/img1.jpg"
+								src="GetImage"
 								<!-- alt="Imagen de usuario" -->
 								<!-- class="rounded-circle mx-auto my-3" -->
 								width="150"
