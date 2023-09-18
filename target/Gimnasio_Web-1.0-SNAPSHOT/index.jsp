@@ -1,86 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Bootstrap 4 Login Modal Example</title>
-		<!-- Bootstrap CSS -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css"
-		/>
-		<link rel="stylesheet" href="css/style.css" />
-        <link rel="userIcon" href="imagenes/UserIcon.png"
-	</head>
-	<body>
-		<header class="intro"></header>
-		<main>
-			<article>
-				<div
-					class="modal fade"
-					id="loginModal"
-					tabindex="-1"
-					role="dialog"
-					aria-labelledby="exampleModalLabel"
-					aria-hidden="true"
-				>
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header border-bottom-0">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
 
-							<img
-								src="GetImage" alt="Imagen de usuario" 
-								width="150"
-								height="150"
-							/>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" />
+    <link rel="userIcon" href="imagenes/UserIcon.png" />
+</head>
 
-							<div class="modal-body">
-								<div class="form-title text-center" style="margin-bottom: 30px">
-									<h4>Iniciar Sesion</h4>
-								</div>
-								<div class="d-flex flex-column text-center">
-									<form>
-										<div class="form-group">
-											<input
-												type="email"
-												class="form-control"
-												id="email1"
-												placeholder="Email..."
-											/>
-										</div>
-										<div class="form-group">
-											<input
-												type="password"
-												class="form-control"
-												id="password1"
-												placeholder="Contraseña..."
-											/>
-										</div>
-										<button type="button" class="btn btn-info btn-block btn-round">Login</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</article>
-		</main>
-		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-		<!-- Bootstrap JS -->
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-		<script>
-			$(document).ready(function () {
-				// Mostrar el modal al cargar la página
-				$('#loginModal').modal('show')
-			})
-		</script>
-	</body>
+<body>
+    <header class="intro"></header>
+    <main>
+        <article>
+            <div class="container" style="margin-top: 10%;">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <img src="https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" width="150" height="150" />
+                            <h4 style="margin-bottom: 20px;">Iniciar Sesión</h4>
+                        </div>
+                        <form action="Login" method="POST">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email1" name="email" placeholder="Email..." />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password1" name="password" placeholder="Contraseña..." />
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block btn-round">Iniciar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+
 </html>
