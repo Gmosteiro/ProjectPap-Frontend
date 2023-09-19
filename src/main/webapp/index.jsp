@@ -18,12 +18,12 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="text-center">
-                            <img src="https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" width="150" height="150" />
+                            <img src="GetImage?imageName=UserIcon.jpg" width="150" height="150" />
                             <h4 style="margin-bottom: 20px;">Iniciar Sesión</h4>
                         </div>
                         <form action="Login" method="POST">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email1" name="email" placeholder="Email..." />
+                                <input type="text" class="form-control" id="email1" name="email" placeholder="Nickname..." />
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password1" name="password" placeholder="Contraseña..." />

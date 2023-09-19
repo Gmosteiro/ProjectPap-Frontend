@@ -15,9 +15,14 @@ public class GetImage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        System.out.println("Adentro del Servlet GetImages");
+        
+        String imageName = request.getParameter("imageName");
+        System.out.println("ImageName "+imageName);
         response.setContentType("image/jpg");
         String path2 = getServletContext().getRealPath(File.separator);
-        File file = new File(path2, "imagenes/img1.jpg");
+        File file = new File(path2, "imagenes/"+imageName);
 
         BufferedImage binarioImagen = ImageIO.read(file);
         OutputStream respuesta = response.getOutputStream();
