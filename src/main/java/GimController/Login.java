@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
         // respuesta de éxito
         if (validarInicioSesion(email, password)) {
             // Redirige al usuario a una página de inicio o muestra un mensaje de éxito
-            response.sendRedirect("pagina-de-inicio.jsp");
+            response.sendRedirect("menuPrincipal.jsp");
         } else {
             // El inicio de sesión falló, puedes mostrar un mensaje de error
             response.sendRedirect("login.jsp?error=1"); // Puedes pasar un parámetro para indicar el error
