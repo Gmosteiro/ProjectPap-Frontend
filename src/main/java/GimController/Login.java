@@ -7,35 +7,30 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import logic.Fabrica;
+import logic.Usuario.Usuario;
+import logic.Usuario.controllers.ControllerInicioSesion;
+import logic.Usuario.controllers.IControllerInicioSesion;
 
 // @WebServlet("/Login")
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Obtiene los parámetros del formulario
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Realiza la validación del inicio de sesión aquí, consulta la base de datos,
-        // etc.
-        // ...
+        Fabrica factory = new Fabrica();
+        IControllerInicioSesion controller = factory.getControllerInicioSesion();
 
-        // Si la validación es exitosa, puedes redirigir al usuario o enviar una
-        // respuesta de éxito
-        if (validarInicioSesion(email, password)) {
-            // Redirige al usuario a una página de inicio o muestra un mensaje de éxito
+        System.out.println("Data" + email + " | " + password);
+
+        Usuario usuarioLogeado = controller.iniciarSesion(email, password);
+        System.out.println("Usuario: " + usuarioLogeado.getNickname());
+        if (usuarioLogeado != null) {
             response.sendRedirect("menuPrincipal.jsp");
         } else {
-            // El inicio de sesión falló, puedes mostrar un mensaje de error
-            response.sendRedirect("login.jsp?error=1"); // Puedes pasar un parámetro para indicar el error
+            response.sendRedirect("login.jsp?error=1");
         }
     }
 
-    // Método para validar el inicio de sesión en la base de datos
-    private boolean validarInicioSesion(String email, String password) {
-        // Lógica de validación de inicio de sesión aquí
-        // Retorna true si es exitoso, false si falla
-        // ...
-        return true;
-    }
 }
