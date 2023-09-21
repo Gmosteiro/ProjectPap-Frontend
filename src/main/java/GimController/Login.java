@@ -29,12 +29,13 @@ public class Login extends HttpServlet {
 
                 response.sendRedirect("menuPrincipal.jsp");
             } else {
-                response.sendRedirect("login.jsp?error=1");
+                response.sendRedirect("index.jsp?error=Usuario o contrasena incorrectos");
             }
         } catch (Exception e) {
             System.out.println("Error validando el login " + e);
             e.printStackTrace();
-            response.sendRedirect("login.jsp?error=2");
+            response.sendRedirect("index.jsp?error=Usuario o contrasena incorrectos");
+
         }
     }
 }
