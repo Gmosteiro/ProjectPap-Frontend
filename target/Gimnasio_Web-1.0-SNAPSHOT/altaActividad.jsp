@@ -12,7 +12,7 @@
     <title>Alta Actividad</title>
 </head>
 <body>
-    <form action="procesarActividad" method="post" enctype="multipart/form-data">
+    <form action="AltaActividad" method="post" enctype="multipart/form-data">
         Nombre: <input type="text" name="nombre"><br>
         Descripción: <input type="text" name="descripcion"><br>
         Duración (minutos): <input type="text" name="duracion"><br>

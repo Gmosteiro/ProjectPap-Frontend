@@ -28,6 +28,16 @@
         <servlet-name>GetImage</servlet-name>
         <url-pattern>/GetImage</url-pattern>
     </servlet-mapping>
+
+   <servlet>
+        <servlet-name>AltaActividad</servlet-name>
+        <servlet-class>GimController.AltaActividad</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AltaActividad</servlet-name>
+        <url-pattern>/AltaActividad</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

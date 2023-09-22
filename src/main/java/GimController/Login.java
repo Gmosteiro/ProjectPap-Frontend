@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
                 // Almacena el usuario en la sesión
                 request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
 
-                response.sendRedirect("menuPrincipal.jsp");
+                response.sendRedirect("altaActividad.jsp");
             } else {
                 response.sendRedirect("index.jsp?error=Usuario o contrasena incorrectos");
             }
