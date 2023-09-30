@@ -23,8 +23,8 @@
 				<a class="user-nav-link">
 					<%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %>
 				</a>
-				<div class="user-options">
-					<a class="user-options" style="width: 160px;" href="CerrarSesion">Cerrar Sesion</a>
+				<div id="user-options" class="user-options">
+					<a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>
 				</div>
 				<% } %>
 		</div>
@@ -41,8 +41,7 @@
 		text-decoration: none;
 		background: 0 0;
 		border: 0;
-		transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-
+		transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 	}
 
 	.user-options {
@@ -51,10 +50,12 @@
 		background-color: white;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 		z-index: 1;
-		margin-top: 23px;
-		min-width: 200px;
-		text-align: center;
+		margin-top: 40px;
+		width: inherit;
+	}
 
+	.user-options-a {
+		min-width: 200px;
 	}
 
 	.user-options:hover {
@@ -71,16 +72,16 @@
 		display: block;
 	}
 
-	.navbar-nav:hover+.user-options {
-		display: block;
-	}
-
 
 	.user-options a {
 		display: block;
 		padding: 10px;
 		text-decoration: none;
 		color: black;
+	}
+
+	.user-options a:hover {
+		background-color: #f2f2f2;
 	}
 
 	.user-options.show {
