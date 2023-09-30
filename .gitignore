@@ -2,3 +2,4 @@
 *.log
 *.log
 /apache-tomcat-10.1.13/logs
+target/classes/GimController/Login.class
