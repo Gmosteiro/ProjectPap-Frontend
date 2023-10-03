@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
 /**
  *
  * @author xSanPrax
@@ -30,14 +29,15 @@ public class AltaActividad extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(AltaActividad.class.getName());
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         try {
             String nombre = request.getParameter("nombre");
             String descripcion = request.getParameter("descripcion");
             int duracion = Integer.parseInt(request.getParameter("duracion"));
             float costo = Float.parseFloat(request.getParameter("costo"));
             String fechaRegistro = request.getParameter("fechaRegistro");
-            
+
             LocalDate fechaRegistroLocalDate = LocalDate.parse(fechaRegistro);
 
             // Obtener la imagen del request
@@ -49,7 +49,8 @@ public class AltaActividad extends HttpServlet {
             Files.write(Paths.get(rutaImagen), imagenBytes);
 
             // Llamar a tu función para agregar la actividad
-            boolean resultado = agregarActividad(nombre, descripcion, duracion, costo, fechaRegistroLocalDate, imagenBytes, "Gimnasio");
+            boolean resultado = agregarActividad(nombre, descripcion, duracion, costo, fechaRegistroLocalDate,
+                    imagenBytes, "Gimnasio");
 
             if (resultado) {
                 response.sendRedirect("exito.jsp");
@@ -67,9 +68,10 @@ public class AltaActividad extends HttpServlet {
         try {
             Fabrica factory = new Fabrica();
             IControllerAltaActividad controller = factory.getControladorAltaActividad();
-            
+
             if (validateActivityData(nombre)) {
-                controller.altaActividad(nombre, descripcion, duracion, costo, fechaRegistro, imagenBytes, nombreInstitucion);
+                // controller.altaActividad(nombre, descripcion, duracion, costo, fechaRegistro,
+                // imagenBytes, nombreInstitucion);
                 JOptionPane.showMessageDialog(
                         null, // Parent component (null for default)
                         "Actividad Creada!", // Message text
@@ -88,14 +90,13 @@ public class AltaActividad extends HttpServlet {
     }
 
     private boolean validateActivityData(String nombre) {
-    // Verificar si el nombre de la actividad es válido
-    if (nombre != null && !nombre.isEmpty()) {
- 
-        return true; // Si la validación es exitosa
-    } else {
-        return false; // Si la validación falla
-    }
+        // Verificar si el nombre de la actividad es válido
+        if (nombre != null && !nombre.isEmpty()) {
 
+            return true; // Si la validación es exitosa
+        } else {
+            return false; // Si la validación falla
+        }
 
     }
 }
