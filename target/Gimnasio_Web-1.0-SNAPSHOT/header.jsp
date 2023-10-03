@@ -26,7 +26,11 @@
 				<div id="user-options" class="user-options">
 					<a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>
 				</div>
-				<% } %>
+				<% } else { %>
+					<script>
+						window.location.href = "/Gimnasio_Web/index.jsp"; // Redirigir al usuario a la página de inicio de sesión
+					</script>
+					<% } %>
 		</div>
 	</div>
 </nav>
