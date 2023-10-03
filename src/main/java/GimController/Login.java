@@ -2,13 +2,11 @@ package GimController;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import logic.Fabrica;
 import logic.Usuario.Sesion;
-import logic.Usuario.controllers.ControllerInicioSesion;
 import logic.Usuario.controllers.IControllerInicioSesion;
 
 public class Login extends HttpServlet {
@@ -27,7 +25,7 @@ public class Login extends HttpServlet {
                 // Almacena el usuario en la sesión
                 request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
 
-                response.sendRedirect("altaActividad.jsp");
+                response.sendRedirect("menuPrincipal.jsp");
             } else {
                 response.sendRedirect("index.jsp?error=Usuario o contrasena incorrectos");
             }
