@@ -1,6 +1,2 @@
 /GimnasioWeb/nbproject/private/
 *.log
-/apache-tomcat-10.1.13/
-/apache-tomcat-10.1.13/logs
-/apache-tomcat-10.1.13/work/Catalina/localhost/
-/target/
