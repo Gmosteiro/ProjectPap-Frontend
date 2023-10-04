@@ -3,6 +3,4 @@ GimnasioWeb/nbproject/private/
 apache-tomcat-10.1.13/
 apache-tomcat-10.1.13/logs
 apache-tomcat-10.1.13/work/Catalina/localhost/
-target/
-target/classes/com/mycompany/gimnasio_web/JakartaRestConfiguration.class
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/**
