@@ -18,16 +18,14 @@
 				<a class="nav-link" href="#">Usuario</a>
 			</div>
 		</div>
-		<div class="navbar-nav">
+                <div class="navbar-nav">
     <%
     logic.Usuario.Sesion usuarioLogeado = (logic.Usuario.Sesion) request.getSession().getAttribute("usuarioLogeado"); 
-    	if (usuarioLogeado != null) {
-        byte[] imagenBytes = usuarioLogeado.getProfileImage();
-     
+    if (usuarioLogeado != null) {
+        String imagenBase64 = usuarioLogeado.getProfileImageBase64();
     %>
-	<img src="data:image/png;base64, <%= Base64.getEncoder().encodeToString(imagenBytes) %>" alt="Imagen" style="width: 40px; margin-right: 5px" />
+        <img src="data:image/png;base64, <%= imagenBase64 %>" alt="Imagen" />
 
-        
         <a class="user-nav-link">
             <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %>
         </a>
@@ -38,12 +36,13 @@
     } else {
     %>
         <script>
-            window.location.href = "/Gimnasio_Web/index.jsp"; // Redirigir al usuario a la pï¿½gina de inicio de sesiï¿½n
+            window.location.href = "/Gimnasio_Web/index.jsp"; // Redirigir al usuario a la página de inicio de sesión
         </script>
     <%
     }
     %>
 </div>
+
 
 
 	</div>
