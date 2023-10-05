@@ -1,62 +1,51 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<%@ page import="java.util.Base64" %>
+
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <% logic.Usuario.Sesion usuarioLogeado=(logic.Usuario.Sesion)
-				request.getSession().getAttribute("usuarioLogeado"); if (usuarioLogeado !=null) { %>
 	<div class="container-fluid">
 		<a class="navbar-brand" style="margin-right: 25%; margin-left: 10%" href="menuPrincipal.jsp">GymPap</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
 			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link <%= (request.getRequestURI().endsWith("menuPrincipal.jsp")) ? "active" : "" %>" href="menuPrincipal.jsp">Inicio</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("gestionInscripcion.jsp")) ? "active" : "" %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
-                            <ul class="dropdown-menu">
-                                <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
-                                    <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar dictado de clase</a></li>
-                                    <li><a class="dropdown-item" href="#">Consultar dictado de clase</a></li>
-                                    <li><a class="dropdown-item" href="#">Ranking de socios en clases</a></li>
-                                <% } else { %>  
-                                    <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar a clase</a></li>
-                                    <li><a class="dropdown-item" href="#">Eliminar registro a clase</a></li>
-                                <% } %>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("algo2")) ? "active" : "" %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Actividades Deportivas</a>
-                            <ul class="dropdown-menu">
-                                <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
-                                    <li><a class="dropdown-item" href="#">Ranking de clases en Actividades</a></li>
-                                <% } %>
-                                <li><a class="dropdown-item" href="#">Consultar actividad deportiva</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-		<div class="navbar-nav">
-				<img style="width: 40px; margin-right: 5px" src="<%= usuarioLogeado.getProfileImage() %>" />
-				<a class="user-nav-link">
-					<%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %>
-				</a>
-				<div id="user-options" class="user-options">
-                                        <a class="dropdown-item" href="#">Tu Cuenta</a>
-					<a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>
-				</div>
-				<% } else { %>
-					<script>
-						window.location.href = "/Gimnasio_Web/index.jsp"; // Redirigir al usuario a la página de inicio de sesión
-					</script>
-					<% } %>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link active" aria-current="page" href="#">Inicio</a>
+				<a class="nav-link active" aria-current="page" href="#">Clases</a>
+				<a class="nav-link" href="#">Actividades Deportivas</a>
+				<a class="nav-link" href="#">Usuario</a>
+			</div>
 		</div>
+		<div class="navbar-nav">
+    <%
+    logic.Usuario.Sesion usuarioLogeado = (logic.Usuario.Sesion) request.getSession().getAttribute("usuarioLogeado"); 
+    	if (usuarioLogeado != null) {
+        byte[] imagenBytes = usuarioLogeado.getProfileImage();
+     
+    %>
+	<img src="data:image/png;base64, <%= Base64.getEncoder().encodeToString(imagenBytes) %>" alt="Imagen" style="width: 40px; margin-right: 5px" />
+
+        
+        <a class="user-nav-link">
+            <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %>
+        </a>
+        <div id="user-options" class="user-options">
+            <a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>
+        </div>
+    <%
+    } else {
+    %>
+        <script>
+            window.location.href = "/Gimnasio_Web/index.jsp"; // Redirigir al usuario a la p�gina de inicio de sesi�n
+        </script>
+    <%
+    }
+    %>
+</div>
+
+
 	</div>
 </nav>
 
