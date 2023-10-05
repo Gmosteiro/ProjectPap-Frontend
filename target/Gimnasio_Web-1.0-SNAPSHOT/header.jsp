@@ -24,7 +24,7 @@
     if (usuarioLogeado != null) {
         String imagenBase64 = usuarioLogeado.getProfileImageBase64();
     %>
-        <img src="data:image/png;base64, <%= imagenBase64 %>" alt="Imagen" />
+        <img src="data:image/png;base64, <%= imagenBase64 %>" alt="Imagen" style="width: 40px; height: 40px; border-radius: 50%;"/>
 
         <a class="user-nav-link">
             <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %>
