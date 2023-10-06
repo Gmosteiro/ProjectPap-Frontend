@@ -35,9 +35,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                <%@include file = "footer.jsp" %>
 	</body>
+	<%@include file = "footer.jsp" %>
 </html>
