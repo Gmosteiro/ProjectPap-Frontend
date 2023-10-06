@@ -1,5 +1,5 @@
-GimController/Logout.class
-GimController/Login.class
-GimController/GetImage.class
-com/mycompany/gimnasio_web/resources/JakartaEE10Resource.class
-com/mycompany/gimnasio_web/JakartaRestConfiguration.class
+com\mycompany\gimnasio_web\JakartaRestConfiguration.class
+GimController\GetImage.class
+com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
+GimController\Login.class
+GimController\Logout.class
