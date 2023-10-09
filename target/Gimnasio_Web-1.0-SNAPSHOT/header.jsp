@@ -40,7 +40,7 @@
 
 			<a class="user-nav-link"> <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %> </a>
 			<div id="user-options" class="user-options">
-				<a class="user-options-a" href="ConsultaUsuario?userNickname=user">Mi Perfil</a>
+				<a class="user-options-a" href="consultaUsuario.jsp?userNickname=user">Mi Perfil</a>
 				<a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>
 			</div>
 			<% } else { %>
