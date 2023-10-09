@@ -16,6 +16,7 @@
 				padding-bottom: 60px;
 			}
 		</style>
+		<%@include file="/header.jsp" %>
 	</head>
 	<body>
 		<div class="container" style="margin-bottom: 50px">
@@ -23,10 +24,12 @@
 				<div class="col-md-8">
 					<h1 class="mt-5">Mi Perfil</h1>
 				</div>
+				<% logic.Usuario.Sesion usuario = (logic.Usuario.Sesion)
+				request.getSession().getAttribute("usuarioLogeado"); %>
 				<div class="col-md-4 text-center">
 					<img
 						class="img-fluid rounded-circle"
-						src="./descargar.png"
+						src="data:image/png;base64, <%= usuario.getProfileImageBase64() %>"
 						style="max-width: 100px; max-height: 100px"
 						alt="Imagen de Perfil"
 					/>
@@ -34,26 +37,27 @@
 			</div>
 			<div class="user-info mt-4">
 				<h2>Datos Básicos del Usuario</h2>
+
 				<table class="table table-bordered">
 					<tr>
 						<td>Nickname:</td>
-						<td>Juan123</td>
+						<td><%= usuario.getNickname() %></td>
 					</tr>
 					<tr>
 						<td>Email:</td>
-						<td>juan@example.com</td>
+						<td><%= usuario.getEmail() %></td>
 					</tr>
 					<tr>
 						<td>Nombre:</td>
-						<td>Juan</td>
+						<td><%= usuario.getNombre() %></td>
 					</tr>
 					<tr>
 						<td>Apellido:</td>
-						<td>Perez</td>
+						<td><%= usuario.getApellido() %></td>
 					</tr>
 					<tr>
 						<td>Fecha de Nacimiento:</td>
-						<td>01/01/1990</td>
+						<td>Falta implementar</td>
 					</tr>
 				</table>
 			</div>
