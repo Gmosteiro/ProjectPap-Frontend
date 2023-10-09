@@ -23,7 +23,10 @@
                             <a class="nav-link <%= (request.getRequestURI().endsWith("menuPrincipal.jsp")) ? "active" : "" %>" href="menuPrincipal.jsp">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("gestionInscripcion.jsp")) ? "active" : "" %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
+                            <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("gestionInscripcion.jsp")
+                                    || request.getRequestURI().contains("consultardicClase.jsp")
+                                    || request.getRequestURI().contains("consultardicClase.jsp")) ? "active" : "" %>" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
                             <ul class="dropdown-menu">
                                 <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
                                     <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar dictado de clase</a></li>
