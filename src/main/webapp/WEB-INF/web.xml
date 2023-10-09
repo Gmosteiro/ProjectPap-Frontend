@@ -37,7 +37,30 @@
         <servlet-name>AltaActividad</servlet-name>
         <url-pattern>/AltaActividad</url-pattern>
     </servlet-mapping>
-
+<servlet>
+        <servlet-name>GetClases</servlet-name>
+        <servlet-class>GimController.GetClases</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetClases</servlet-name>
+        <url-pattern>/GetClases</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetActividades</servlet-name>
+        <servlet-class>GimController.GetActividades</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetActividades</servlet-name>
+        <url-pattern>/GetActividades</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetInstituciones</servlet-name>
+        <servlet-class>GimController.GetInstituciones</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetInstituciones</servlet-name>
+        <url-pattern>/GetInstituciones</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
