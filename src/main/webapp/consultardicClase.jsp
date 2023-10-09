@@ -22,14 +22,12 @@
     <form action="GetActividades" method="Post">
         <label for="institucion">Institucion:</label>
             <select class="form-select form-select-lg mb-3" id="institucion" name="institucion">
-                <option value="">Selecciona una institución</option>
             </select>
         <button type="submit" class="btn btn-info btn-block btn-round">Buscar Actividades</button>
     </form>
   <form action="GetClases" method="Post">
       <label for="actividad">Actividad:</label>
        <select class="form-select form-select-lg mb-3" id="actividad" name="actividad">
-           <option value="">Selecciona una actividad</option>
            <% List<ActividadDeportiva> nombresActividades = (List<ActividadDeportiva>) request.getAttribute("nombresActividades");
               if (nombresActividades != null) {
                   for (ActividadDeportiva actividad : nombresActividades) {
@@ -67,6 +65,49 @@
                     %>
             </tbody>
         </table>
+                <div>
+                    <div class="container" style="margin-bottom: 50px">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="mt-5">Clase</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="user-info mt-4">
+                                    <h2>Datos Básicos de la Clase</h2>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>Nombre:</td>
+                                            <td id="nombrec"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha:</td>
+                                            <td id="fechac"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hora:</td>
+                                            <td id="horac"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Url:</td>
+                                            <td id="urlc"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-dark table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Socios</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <script>
             var filas = document.querySelectorAll("#miTabla tbody tr");
 
@@ -76,8 +117,10 @@
                     var fechaInicio = fila.cells[1].textContent;
                     var horaInicio = fila.cells[2].textContent;
                     var url = fila.cells[3].textContent;
-
-                    alert("Nombre: " + nombre + "\nFecha de inicio: " + fechaInicio + "\nHora de inicio: " + horaInicio + "\nURL: " + url);
+                    document.getElementById("nombrec").textContent = nombre;
+                    document.getElementById("fechac").textContent = fechaInicio;
+                    document.getElementById("horac").textContent = horaInicio;
+                    document.getElementById("urlc").textContent = url;
                 });
             });
         </script>
