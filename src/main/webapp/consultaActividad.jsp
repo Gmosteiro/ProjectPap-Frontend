@@ -4,6 +4,7 @@
     Author     : santi
 --%>
 
+
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,8 +31,16 @@
                         var responseHTML = xhr.responseText;
                         var tablaContainer = document.getElementById('tabla-container');
                         tablaContainer.innerHTML = responseHTML;
+
+                        // Fetch classes associated with the activity
+                        fetch('getClases?nombreActividad=' + nombreActividad)
+                            .then(response => response.text())
+                            .then(data => {
+                                document.getElementById('clases-container').innerHTML = data;
+                            })
+                            .catch(error => console.error('Error en la solicitud:', error));
                     } else {
-                        console.error('Error en la peticiÃ³n');
+                        console.error('Error en la petición');
                     }
                 };
 
@@ -50,7 +59,10 @@
             </form>
             <div id="tabla-container"></div>
         </div>
+
+        <!-- Tabla de Clases Asociadas -->
+        <div id="clases-container" class="mt-4"></div>
     </div>
-    <%@include file = "footer.jsp" %> 
+    <%@include file = "footer.jsp" %>
 </body>
 </html>
