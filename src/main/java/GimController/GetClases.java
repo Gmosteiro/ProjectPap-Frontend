@@ -10,6 +10,8 @@ import java.util.List; // Importa la clase List si no está importada
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import logic.Fabrica;
+import logic.ActividadDeportiva.ActividadDeportiva;
+import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
 import logic.Clase.Clase;
 import logic.Clase.controllers.IControllerConsultaClases;
 import logic.Usuario.controllers.IControllerConsultaUsuario;
@@ -22,11 +24,13 @@ public class GetClases extends HttpServlet {
             throws ServletException, IOException {
         String nickname = request.getParameter("nickname");
         String nombreClase = request.getParameter("nombreClase");
+        String nombreActividad = request.getParameter("nombreActividad");
         // Si necesitan agregar otro parametro lo meten aca
 
         Fabrica factory = new Fabrica();
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
+
         if (nickname.length() > 0) {
 
             IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
@@ -36,6 +40,14 @@ public class GetClases extends HttpServlet {
 
             IControllerConsultaClases controllerClases = factory.getControllerConsultaClases();
             clases.add(controllerClases.obtenerClasePorNombre(nombreClase));
+
+        } else if (nombreActividad.length() > 0) {
+
+            IControllerConsultaActividad controllerCA = factory.getControllerConsultaActividad();
+
+            ActividadDeportiva actividadBuscada = controllerCA.obtenerActividadPorNombre(nombreActividad);
+
+            clases = factory.getControllerConsultaClases().obtenerClasesPorActividad(actividadBuscada);
 
         }
 
