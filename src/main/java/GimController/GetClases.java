@@ -31,17 +31,17 @@ public class GetClases extends HttpServlet {
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
 
-        if (nickname.length() > 0) {
+        if (nickname != null && nickname.length() > 0) {
 
             IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
             clases = controllerConsultaUsuario.getClasesByUser(nickname);
 
-        } else if (nombreClase.length() > 0) {
+        } else if (nombreClase != null && nombreClase.length() > 0) {
 
             IControllerConsultaClases controllerClases = factory.getControllerConsultaClases();
             clases.add(controllerClases.obtenerClasePorNombre(nombreClase));
 
-        } else if (nombreActividad.length() > 0) {
+        } else if (nombreActividad != null && nombreActividad.length() > 0) {
 
             IControllerConsultaActividad controllerCA = factory.getControllerConsultaActividad();
 
