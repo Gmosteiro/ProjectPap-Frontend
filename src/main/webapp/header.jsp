@@ -24,7 +24,7 @@
 			<div class="navbar-nav">
 				<a class="nav-link active" aria-current="page" href="#">Inicio</a>
 				<a class="nav-link active" aria-current="page" href="#">Clases</a>
-				<a class="nav-link" href="#">Actividades Deportivas</a>
+				<a class="nav-link" href="consultaActividad.jsp">Actividades Deportivas</a>
 				<a class="nav-link" href="#">Usuario</a>
 			</div>
 		</div>
