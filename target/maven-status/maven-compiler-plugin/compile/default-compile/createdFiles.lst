@@ -2,6 +2,7 @@ com\mycompany\gimnasio_web\JakartaRestConfiguration.class
 GimController\GetImage.class
 GimController\ConsultaActividad.class
 GimController\GetClases.class
+GimController\EliminarRegistro.class
 com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
 GimController\Login.class
 GimController\Logout.class
