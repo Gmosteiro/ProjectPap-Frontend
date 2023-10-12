@@ -38,7 +38,7 @@
 				style="width: 40px; height: 40px; border-radius: 50%"
 			/>
 
-			<a class="user-nav-link"> <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %> </a>
+			<a id="userNickname" <%= usuarioLogeado.getNickname() %> class="user-nav-link"> <%= usuarioLogeado.getNombre() + " " + usuarioLogeado.getApellido() %> </a>
 			<div id="user-options" class="user-options">
 				<a class="user-options-a" href="consultaUsuario.jsp?userNickname=user">Mi Perfil</a>
 				<a class="user-options-a" href="CerrarSesion">Cerrar Sesion</a>

@@ -5,24 +5,38 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Eliminar Registro</title>
-    </head>
-    <body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Eliminar Registro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
         <h1>Eliminar Registro</h1>
         
         <form action="EliminarRegistro" method="post">
-            <label for="nicknameSocio">Nickname Socio:</label>
-            <input type="text" id="nicknameSocio" name="nicknameSocio" required><br><br>
+            <div class="form-group">
+                <label for="nombreInstitucion">Nombre Institución:</label>
+                <input type="text" class="form-control" id="nombreInstitucion" name="nombreInstitucion" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreActividad">Nombre Actividad:</label>
+                <input type="text" class="form-control" id="nombreActividad" name="nombreActividad" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreClase">Nombre Clase:</label>
+                <input type="text" class="form-control" id="nombreClase" name="nombreClase" required>
+            </div>
             
-            <label for="nombreClase">Nombre Clase:</label>
-            <input type="text" id="nombreClase" name="nombreClase" required><br><br>
-            
-            <input type="submit" value="Eliminar Registro">
+            <input type="hidden" name="nicknameSocio" value="<%=usuarioLogeado.getNickname()%>">
+						
+            <button type="submit" class="btn btn-primary">Eliminar Registro</button>
         </form>
-    </body>
+    </div>
+</body>
 </html>
+<%@include file="footer.jsp"%>
 

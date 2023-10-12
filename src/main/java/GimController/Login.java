@@ -24,6 +24,7 @@ public class Login extends HttpServlet {
             if (usuarioLogeado != null) {
                 // Almacena el usuario en la sesión
                 request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
+                              
 
                 response.sendRedirect("menuPrincipal.jsp");
             } else {

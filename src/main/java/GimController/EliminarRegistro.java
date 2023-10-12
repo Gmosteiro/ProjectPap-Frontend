@@ -34,41 +34,36 @@ public class EliminarRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nicknameSocio = request.getParameter("nicknameSocio");
+        String nombreInstitucion = request.getParameter("nombreInstitucion");
+        String nombreActividad = request.getParameter("nombreActividad");
         String nombreClase = request.getParameter("nombreClase");
+        String nicknameSocio = request.getParameter("nicknameSocio");
 
         try {
             Fabrica factory = new Fabrica();
             IControllerEliminarRegClase controllerEliminar = factory.getControllerEliminarRegClase();
 
-            Socio socio = ManejadorUsuarios.getSocio(nicknameSocio);
-            Clase clase = ManejadorClases.getClaseByNombre(nombreClase);
+            // Intentamos eliminar el registro o crear uno nuevo si no existe
+            controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
 
-            if (socio != null && clase != null) {
-                // Eliminar el registro del Socio en la Clase
-                controllerEliminar.eliminarRegistroDeClase(socio, clase);
-                System.out.println("Registro eliminado con éxito.");
-            } else {
-                System.out.println("No se encontró un Socio o una Clase asociados a los datos proporcionados.");
-            }
-
+            // Si llegamos aquí, el registro se eliminó o creó con éxito
             response.setContentType("text/html");
-
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
-            out.println("<h2>Registro eliminado con éxito</h2>");
+            out.println("<h2>Registro eliminado o creado con éxito</h2>");
             out.println("</body></html>");
 
         } catch (Exception e) {
-            System.out.println("Error al eliminar el registro: " + e.getMessage());
-
+            // Si hay un error, mostramos un mensaje de error
+            System.out.println("Error al eliminar o crear el registro: " + e.getMessage());
             response.setContentType("text/html");
-
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
-            out.println("<h2>Error al eliminar el registro</h2>");
+            out.println("<h2>Error al eliminar o crear el registro</h2>");
             out.println("<p>" + e.getMessage() + "</p>");
             out.println("</body></html>");
         }
     }
 }
+
+
