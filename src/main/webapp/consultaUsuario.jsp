@@ -97,7 +97,7 @@
 				</table>
 			</div>
 
-			<button id="aceptarBtn" style="display: none">Aceptar</button>
+			<button type="button" id="aceptarBtn" style="display: none">Aceptar</button>
 			<div class="user-options-cust mt-4" style="margin-bottom: 15px">
 				<h2>Informacion Asociada</h2>
 				<ul class="list-group">
