@@ -49,36 +49,54 @@
 			<div class="user-info mt-4">
 				<div style="display: inline-flex; width: 100%">
 					<h2>Datos Básicos del Usuario</h2>
-					<a class="tag-editar">Editar Perfil</a>
+					<a class="tag-editar" id="editarBtn">Editar Perfil</a>
+					<a class="tag-editar" id="cancelarBtn" style="display: none">Cancelar</a>
 				</div>
 
 				<table class="table table-bordered">
 					<tr>
 						<td>Nickname:</td>
-						<td id="userNickname"><%= usuario.getNickname() %></td>
+						<td style="width: 45%" id="userNickname">
+							<span id="nickname"><%= usuario.getNickname() %></span>
+						</td>
 					</tr>
 					<tr>
 						<td>Email:</td>
-						<td><%= usuario.getEmail() %></td>
+						<td>
+							<span id="email"><%= usuario.getEmail() %></span>
+						</td>
 					</tr>
 					<tr>
 						<td>Nombre:</td>
-						<td><%= usuario.getNombre() %></td>
+						<td>
+							<span id="nombre"><%= usuario.getNombre() %></span
+							><input type="text" id="nombreInput" style="display: none" />
+						</td>
 					</tr>
 					<tr>
 						<td>Apellido:</td>
-						<td><%= usuario.getApellido() %></td>
+						<td>
+							<span id="apellido"><%= usuario.getApellido() %></span
+							><input type="text" id="apellidoInput" style="display: none" />
+						</td>
 					</tr>
 					<tr>
 						<td>Fecha de Nacimiento:</td>
-						<td><%= usuario.getFechaNacimiento()%></td>
+						<td>
+							<span id="fechaNacimiento"><%= usuario.getFechaNacimiento()%></span
+							><input type="date" id="fechaNacimientoInput" style="display: none" />
+						</td>
 					</tr>
 					<tr>
 						<td>Tipo de Usuario:</td>
-						<td id="userType"><%= usuario.getUserType()%></td>
+						<td id="userType">
+							<span id="userTypeValue"><%= usuario.getUserType()%></span>
+						</td>
 					</tr>
 				</table>
 			</div>
+
+			<button id="aceptarBtn" style="display: none">Aceptar</button>
 			<div class="user-options-cust mt-4" style="margin-bottom: 15px">
 				<h2>Informacion Asociada</h2>
 				<ul class="list-group">
@@ -111,10 +129,10 @@
 
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-		var consultarClases = document.getElementById('consultar-clases-custom')
-		var clasesInfo = document.querySelector('.clases-info-custom')
-		var consultarActividades = document.getElementById('consultar-actividades-custom')
-		var actividadesInfo = document.querySelector('.actividades-info-custom')
+		const consultarClases = document.getElementById('consultar-clases-custom')
+		const clasesInfo = document.querySelector('.clases-info-custom')
+		const consultarActividades = document.getElementById('consultar-actividades-custom')
+		const actividadesInfo = document.querySelector('.actividades-info-custom')
 
 		consultarClases.addEventListener('click', function () {
 			if (clasesInfo.style.display === 'none') {
@@ -135,7 +153,6 @@
 
 	window.addEventListener('load', function getClasesAsociadas() {
 		const userNickname = document.getElementById('userNickname').innerText
-		debugger
 
 		fetch('getClases?nickname=' + userNickname)
 			.then((response) => {
@@ -159,8 +176,6 @@
 
 		const userNickname = document.getElementById('userNickname').innerText
 
-		debugger
-
 		fetch('consultaActividades?nicknameUsuario=' + userNickname)
 			.then((response) => {
 				if (!response.ok) {
@@ -172,8 +187,63 @@
 				document.getElementById('tablaActividades').innerHTML = data
 			})
 			.catch((error) => {
-				debugger
 				console.error('Error en la solicitud:', error)
 			})
+	})
+
+	//New
+
+	document.getElementById('editarBtn').addEventListener('click', function () {
+		document.getElementById('nombre').style.display = 'none'
+		document.getElementById('apellido').style.display = 'none'
+		document.getElementById('fechaNacimiento').style.display = 'none'
+
+		document.getElementById('nombreInput').style.display = 'inline'
+		document.getElementById('apellidoInput').style.display = 'inline'
+		document.getElementById('fechaNacimientoInput').style.display = 'inline'
+
+		document.getElementById('aceptarBtn').style.display = 'inline'
+	})
+
+	document.getElementById('aceptarBtn').addEventListener('click', function () {
+		const nuevoNombre = document.getElementById('nombreInput').value
+		const nuevoApellido = document.getElementById('apellidoInput').value
+		const nuevaFechaNacimiento = document.getElementById('fechaNacimientoInput').value
+		const nuevoUserType = document.getElementById('userTypeSelect').value
+
+		// Realizar una solicitud Fetch para enviar los datos actualizados al servidor
+		fetch('/actualizarPerfil', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				nickname: nuevoNickname,
+				email: nuevoEmail,
+				nombre: nuevoNombre,
+				apellido: nuevoApellido,
+				fechaNacimiento: nuevaFechaNacimiento,
+				userType: nuevoUserType
+			})
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				// Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+				alert('Perfil actualizado exitosamente')
+			})
+			.catch((error) => {
+				// Manejar errores en la solicitud Fetch
+				console.error('Error al actualizar el perfil:', error)
+			})
+
+		document.getElementById('nombre').style.display = 'inline'
+		document.getElementById('apellido').style.display = 'inline'
+		document.getElementById('fechaNacimiento').style.display = 'inline'
+
+		document.getElementById('nombreInput').style.display = 'none'
+		document.getElementById('apellidoInput').style.display = 'none'
+		document.getElementById('fechaNacimientoInput').style.display = 'none'
+
+		document.getElementById('aceptarBtn').style.display = 'none'
 	})
 </script>
