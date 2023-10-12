@@ -19,64 +19,50 @@
         <%@include file="/header.jsp" %>
 </head>
 <body>
-    <form action="GetActividades" method="Post">
-        <label for="institucion">Institucion:</label>
-            <select class="form-select form-select-lg mb-3" id="institucion" name="institucion">
-            </select>
-        <button type="submit" class="btn btn-info btn-block btn-round">Buscar Actividades</button>
-    </form>
-  <form action="GetClases" method="Post">
-      <label for="actividad">Actividad:</label>
-       <select class="form-select form-select-lg mb-3" id="actividad" name="actividad">
-           <% List<ActividadDeportiva> nombresActividades = (List<ActividadDeportiva>) request.getAttribute("nombresActividades");
-              if (nombresActividades != null) {
-                  for (ActividadDeportiva actividad : nombresActividades) {
-           %>
-           <option value="<%= actividad.getNombre() %>"><%= actividad.getNombre() %></option>
-           <%
-                  }
-              }
-           %>
-       </select>
-        <button type="submit" class="btn btn-info btn-block btn-round">Buscar Clases</button>
-      <table id="miTabla" border="1" class="table table-dark table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Fecha de inicio</th>
-                    <th>Hora de inicio</th>
-                    <th>URL</th>
-                </tr>
-            </thead>
-            <tbody>
-               <% List<Clase> clases = (List<Clase>) request.getAttribute("clases"); // Obtén la lista de clases desde el atributo de solicitud
-                    if (clases != null) {
-                        for (Clase clase : clases) {
-                %>
-                <tr>
-                    <td><%= clase.getNombre() %></td>
-                    <td><%= clase.getFecha() %></td>
-                    <td><%= clase.getHora() %></td>
-                    <td><%= clase.getUrl() %></td>
-                </tr>
-                    <% 
-                           }
-                       }
-                    %>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col">
+                <label for="institucion">Institucion:</label>
+                <select class="form-select form-select-lg mb-3" id="institucion" name="institucion"></select>
+            </div>
+            <div class="col">
+                <label for="actividad">Actividad:</label>
+                <select class="form-select form-select-lg mb-3" id="actividad" name="actividad">
+                   <% List<ActividadDeportiva> nombresActividades = (List<ActividadDeportiva>) request.getAttribute("nombresActividades");
+                      if (nombresActividades != null) {
+                          for (ActividadDeportiva actividad : nombresActividades) {
+                   %>
+                   <option value="<%= actividad.getNombre() %>"><%= actividad.getNombre() %></option>
+                   <%
+                          }
+                      }
+                   %>
+                </select>
+            </div>
+        </div>
+        <button id="buscarClasesButton" type="submit" class="btn btn-info btn-block btn-round">Buscar Clases</button>
+      <table id="miTabla" border="1" class="table table-dark table-striped table-hover"></table>
                 <div>
                     <div class="container" style="margin-bottom: 50px">
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <h1 class="mt-5">Clase</h1>
                             </div>
+                            <div class="col-md-4 text-center">
+                                <img
+                                    id="imagen"
+                                    class="img-fluid rounded-circle"
+                                    
+                                    style="max-width: 100px; max-height: 100px"
+                                    alt="Imagen de Clase"
+                                />
+                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="user-info mt-4">
+                                <div class="user-info mt-4" style="margin-top: 0;">
                                     <h2>Datos Básicos de la Clase</h2>
-                                    <table class="table table-bordered">
+                                    <table id="ClaseInfo" class="table table-bordered">
                                         <tr>
                                             <td>Nombre:</td>
                                             <td id="nombrec"></td>
@@ -84,6 +70,10 @@
                                         <tr>
                                             <td>Fecha:</td>
                                             <td id="fechac"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha Registro:</td>
+                                            <td id="fecharc"></td>
                                         </tr>
                                         <tr>
                                             <td>Hora:</td>
@@ -97,34 +87,20 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <table class="table table-dark table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Socios</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="user-info mt-4" style="margin-top: 0;">
+                                    <h2 class="mt-5">Socios Registrados</h2>
+                                        <table id="Registrados" class="table table-dark table-striped table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <td id="nickname"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        <script>
-            var filas = document.querySelectorAll("#miTabla tbody tr");
-
-            filas.forEach(function(fila) {
-                fila.addEventListener("click", function() {
-                    var nombre = fila.cells[0].textContent;
-                    var fechaInicio = fila.cells[1].textContent;
-                    var horaInicio = fila.cells[2].textContent;
-                    var url = fila.cells[3].textContent;
-                    document.getElementById("nombrec").textContent = nombre;
-                    document.getElementById("fechac").textContent = fechaInicio;
-                    document.getElementById("horac").textContent = horaInicio;
-                    document.getElementById("urlc").textContent = url;
-                });
-            });
-        </script>
-    </form>  
  <script>
     document.addEventListener('DOMContentLoaded', function() {
         var selectInstitucion = document.getElementById('institucion');
@@ -149,6 +125,144 @@
             .catch(error => {
                 console.error('Error al obtener datos de instituciones: ' + error);
             });
+    });
+</script>
+<script>
+    // Obtén una referencia al select de instituciones
+    var selectInstitucion = document.getElementById('institucion');
+    var actividadSelect = document.getElementById('actividad');  // Agrega esta línea
+
+    // Agrega un controlador de eventos para el evento "change"
+    selectInstitucion.addEventListener('change', function() {
+        // Obtén el valor seleccionado en el select de instituciones
+        var institucionSeleccionada = selectInstitucion.value;
+
+        // Realiza una solicitud fetch al servlet para obtener las actividades relacionadas con la institución
+        fetch('GetActividades?institucion=' + institucionSeleccionada)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener actividades por institución');
+                }
+                return response.text(); // Suponiendo que el servidor devuelve datos en formato de texto plano
+            })
+            .then(data => {
+                // Limpia el select de actividades
+                actividadSelect.innerHTML = '';
+
+                // Divide el resultado en líneas (supongo que cada línea es un nombre de actividad)
+                var actividades = data.split('\n');
+
+                // Agrega las nuevas opciones al select de actividades
+                actividades.forEach(function(nombre) {
+                    var option = document.createElement('option');
+                    option.value = nombre;
+                    option.text = nombre;
+                    actividadSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener actividades por institución: ' + error);
+            });
+    });
+</script>
+<script>
+    var actividadSelect = document.getElementById('actividad');
+    var buscarClasesButton = document.getElementById('buscarClasesButton');
+
+    // Agrega un controlador de eventos al botón
+    buscarClasesButton.addEventListener('click', function() {
+        // Obtén el valor seleccionado en el select
+        var actividadSeleccionada = actividadSelect.value;
+        
+        // Realiza una solicitud fetch al servlet GetClases
+        fetch('GetClases?actividad=' + actividadSeleccionada)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al llamar al servlet GetClases');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Procesa la respuesta del servlet si es necesario
+                document.getElementById('miTabla').innerHTML = data;
+                // Hacer algo con la respuesta, por ejemplo, actualizar la página
+            })
+            .catch(error => {
+                // Maneja errores si es necesario
+                console.error(error);
+            });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var miTabla = document.querySelector('#miTabla');
+    var claseInfoTable = document.querySelector('#ClaseInfo');
+    var tablaRegistrados = document.querySelector('#Registrados');
+
+    miTabla.addEventListener('click', function(event) {
+        if (event.target.tagName === 'TD') {
+            var row = event.target.parentElement;
+            var nombre = row.cells[0].textContent;
+            var fecha = row.cells[1].textContent;
+            var fechaRegistro = row.cells[2].textContent;
+            var hora = row.cells[3].textContent;
+            var url = row.querySelector('a').getAttribute('href');
+
+            // Asignar los valores a las celdas de la tabla "ClaseInfo"
+            document.getElementById('nombrec').textContent = nombre;
+            document.getElementById('fechac').textContent = fecha;
+            document.getElementById('fecharc').textContent = fechaRegistro;
+            document.getElementById('horac').textContent = hora;
+            document.getElementById('urlc').textContent = url;
+            
+            // Enviar una solicitud fetch al servlet GetSocios con el nombre de la clase como parámetro
+            
+        } else {
+            console.log("No se hizo clic en una fila de la tabla.");
+        }
+    });
+});
+</script>
+<script>
+            document.addEventListener('DOMContentLoaded', function() {
+        var miTabla = document.querySelector('#miTabla');
+        var tablaRegistrados = document.querySelector('#Registrados');
+
+        miTabla.addEventListener('click', function(event) {
+            if (event.target.tagName === 'TD') {
+                var row = event.target.parentElement;
+                var nombre = row.cells[0].textContent;
+
+                // Realiza una solicitud fetch al servlet GetSocios con el nombre de la clase como parámetro
+                fetch(`GetSocios?nombreClase=` + nombre)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al obtener datos del servlet GetSocios');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        // Limpiar la tabla "Registrados"
+                        tablaRegistrados.innerHTML = '';
+
+                        // Dividir los datos en líneas o elementos individuales, dependiendo de su estructura
+                        const elementos = data.split('\n');
+
+                        elementos.forEach(elemento => {
+                            const fila = document.createElement('tr');
+                            const celda = document.createElement('td');
+                            celda.textContent = elemento.trim();
+                            fila.appendChild(celda);
+                            tablaRegistrados.appendChild(fila);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener datos del servlet GetSocios: ' + error);
+                    });
+            } else {
+                console.log("No se hizo clic en una fila de la tabla.");
+            }
+        });
     });
 </script>
 <%@include file = "footer.jsp" %>

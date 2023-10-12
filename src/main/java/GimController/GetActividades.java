@@ -22,26 +22,31 @@ import logic.Clase.Clase;
  * @author Admin
  */
 public class GetActividades extends HttpServlet {
-    
-    private static final long serialVersionUID = 1L;
 
-     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-             throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String institucionNombre = request.getParameter("institucion");
         
         if (institucionNombre != null) {
             InstitucionDeportiva instituto = ManejadorInstitucion.getInstitucionesByName(institucionNombre);
             List<ActividadDeportiva> listaactividades = instituto.getActividades();
-            
-            request.setAttribute("nombresActividades", listaactividades);
-            
+
+            // Construye una lista de nombres de actividades en formato de texto plano
+            StringBuilder textoactividades = new StringBuilder();
+            for (ActividadDeportiva actividad : listaactividades) {
+                textoactividades.append(actividad.getNombre()).append("\n");
+            }
+
+            // Configura la respuesta HTTP como texto plano
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+
+            // Envía la lista de nombres de actividades como respuesta al cliente
+            PrintWriter out = response.getWriter();
+            out.print(textoactividades.toString());
         } else {
-            //request.setAttribute("error", "Por favor, ingresa una actividad válida.");
+            // Maneja el caso si no se proporciona una institución válida
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Por favor, ingresa una institución válida.");
         }
-        
-        request.getRequestDispatcher("/consultardicClase.jsp").forward(request, response);
     }
-    
-     
-   
 }

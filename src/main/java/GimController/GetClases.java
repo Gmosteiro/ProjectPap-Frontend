@@ -14,6 +14,8 @@ import logic.Clase.Clase;
 import logic.Clase.controllers.IControllerConsultaClases;
 import logic.Usuario.controllers.IControllerConsultaUsuario;
 import jakarta.servlet.http.*;
+import logic.ActividadDeportiva.ActividadDeportiva;
+import logic.ActividadDeportiva.ManejadorActividad;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -22,21 +24,26 @@ public class GetClases extends HttpServlet {
             throws ServletException, IOException {
         String nickname = request.getParameter("nickname");
         String nombreClase = request.getParameter("nombreClase");
-        // Si necesitan agregar otro parametro lo meten aca
+        String actividadNombre = request.getParameter("actividad");
+// Si necesitan agregar otro parametro lo meten aca
 
         Fabrica factory = new Fabrica();
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
-        if (nickname.length() > 0) {
+        if (nickname != null && nickname.length() > 0) {
 
             IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
             clases = controllerConsultaUsuario.getClasesByUser(nickname);
 
-        } else if (nombreClase.length() > 0) {
+        } else if (nombreClase != null && nombreClase.length() > 0) {
 
             IControllerConsultaClases controllerClases = factory.getControllerConsultaClases();
             clases.add(controllerClases.obtenerClasePorNombre(nombreClase));
 
+        } else if (actividadNombre.length() > 0){
+            
+            ActividadDeportiva actividaddeportiva = ManejadorActividad.obtenerActividadPorNombre(actividadNombre);
+            clases = actividaddeportiva.getClases();
         }
 
         response.setContentType("text/html");
@@ -49,7 +56,7 @@ public class GetClases extends HttpServlet {
         out.println("<th>Fecha</th>");
         out.println("<th>Fecha de Registro</th>");
         out.println("<th>Hora</th>");
-        out.println("<th>Accion</th>");
+        out.println("<th>URL</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
@@ -81,5 +88,7 @@ public class GetClases extends HttpServlet {
         return fecha.atStartOfDay().format(formatter);
 
     }
+    
+    
 
 }
