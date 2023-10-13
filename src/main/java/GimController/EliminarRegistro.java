@@ -39,6 +39,10 @@ public class EliminarRegistro extends HttpServlet {
         IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
         boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
 
+        if (!controllerEliminar.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
+            request.setAttribute("elementosExistentes", false);
+        }
+
         if (eliminado) {
             request.setAttribute("eliminado", true);
             request.setAttribute("alta", false);

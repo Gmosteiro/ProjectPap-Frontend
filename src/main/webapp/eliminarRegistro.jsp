@@ -16,15 +16,15 @@
     <div class="container mt-5">
         <h1>Eliminar Registro</h1>
         
-        <% if (request.getAttribute("eliminado") != null && (boolean) request.getAttribute("eliminado")) { %>
+        <% if (request.getAttribute("elementosExistentes") != null && !(boolean) request.getAttribute("elementosExistentes")) { %>
+            <div class="alert alert-danger mt-3" role="alert">
+                Uno o más elementos proporcionados no existen en la base de datos.
+            </div>
+        <% } else if (request.getAttribute("eliminado") != null && (boolean) request.getAttribute("eliminado")) { %>
             <div class="alert alert-primary mt-3" role="alert">
                 Registro eliminado con éxito. Haz <a href="consultaClase.jsp" class="alert-link">clic aquí</a> para ir a la consulta de clases.
             </div>
         <% } else if (request.getAttribute("alta") != null && (boolean) request.getAttribute("alta")) { %>
-            <div class="alert alert-success mt-3" role="alert">
-                Registro dado de alta con éxito.
-            </div>
-        <% } else { %>
             <div class="alert alert-danger mt-3" role="alert">
                 No se pudo eliminar el registro. Uno o más de los elementos proporcionados no existen.
             </div>
@@ -44,7 +44,6 @@
                 <input type="text" class="form-control" id="nombreClase" name="nombreClase" required>
             </div>
             <input type="hidden" name="nicknameSocio" value="<%=usuarioLogeado.getNickname()%>">
-            
             <button type="submit" class="btn btn-primary">Eliminar Registro</button>
         </form>
     </div>
