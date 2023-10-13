@@ -3,5 +3,6 @@ GimController\GetImage.class
 GimController\ConsultaActividad.class
 GimController\GetClases.class
 com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
+GimController\ActualizarUsuario.class
 GimController\Login.class
 GimController\Logout.class

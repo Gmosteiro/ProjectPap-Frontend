@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const clasesInfo = document.querySelector('.clases-info-custom')
 	const consultarActividades = document.getElementById('consultar-actividades-custom')
 	const actividadesInfo = document.querySelector('.actividades-info-custom')
-	debugger
+
 	const buttonEditar = document.getElementById('editarBtn')
 
 	consultarClases.addEventListener('click', function () {
@@ -56,29 +56,36 @@ document.addEventListener('DOMContentLoaded', function () {
 		const nuevoNombre = document.getElementById('nombreInput').value
 		const nuevoApellido = document.getElementById('apellidoInput').value
 		const nuevaFechaNacimiento = document.getElementById('fechaNacimientoInput').value
-		const nuevoUserType = document.getElementById('userTypeSelect').value
+		const nickname = document.getElementById('nickname').innerText
+
+		const rawProfileImage = document.getElementById('profileImage').currentSrc
+
+		const parts = rawProfileImage.split(',')
+		const base64Image = parts[1]
 
 		// Realizar una solicitud Fetch para enviar los datos actualizados al servidor
-		fetch('/actualizarPerfil', {
+		debugger
+		fetch('actualizarUsuario', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				nickname: nuevoNickname,
-				email: nuevoEmail,
+				nickname: nickname,
 				nombre: nuevoNombre,
 				apellido: nuevoApellido,
-				fechaNacimiento: nuevaFechaNacimiento,
-				userType: nuevoUserType
+				profileImage: base64Image,
+				fechaNacimiento: nuevaFechaNacimiento
 			})
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				debugger
 				// Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
 				alert('Perfil actualizado exitosamente')
 			})
 			.catch((error) => {
+				debugger
 				// Manejar errores en la solicitud Fetch
 				console.error('Error al actualizar el perfil:', error)
 			})

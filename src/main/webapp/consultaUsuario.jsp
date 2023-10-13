@@ -25,6 +25,23 @@
 				color: blue !important;
 				cursor: pointer;
 			}
+
+			.btn,
+			.btn-info,
+			.btn-block,
+			.btn-round {
+				border: 1px #0dcaf0;
+				display: inline;
+				max-width: 180px;
+				background-color: cornsilk !important;
+			}
+
+			.btn:hover,
+			.btn-info:hover,
+			.btn-block:hover,
+			.btn-round:hover {
+				background-color: #17a2b8 !important;
+			}
 		</style>
 		<script src="./js/consultaUsuario.js"></script>
 		<%@include file="/header.jsp" %>
@@ -40,6 +57,7 @@
 				request.getSession().getAttribute("usuarioLogeado"); %>
 				<div class="col-md-4 text-center">
 					<img
+						id="profileImage"
 						class="img-fluid rounded-circle"
 						src="data:image/png;base64, <%= usuario.getProfileImageBase64() %>"
 						style="max-width: 100px; max-height: 100px"
@@ -97,7 +115,9 @@
 				</table>
 			</div>
 
-			<button type="button" id="aceptarBtn" style="display: none">Aceptar</button>
+			<button class="btn btn-info btn-block btn-round" type="button" id="aceptarBtn" style="display: none">
+				Aceptar
+			</button>
 			<div class="user-options-cust mt-4" style="margin-bottom: 15px">
 				<h2>Informacion Asociada</h2>
 				<ul class="list-group">
