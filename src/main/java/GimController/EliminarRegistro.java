@@ -27,43 +27,41 @@ import logic.Usuario.Socio;
 import logic.Usuario.controllers.ControllerEliminarRegClase;
 import logic.Usuario.controllers.IControllerEliminarRegClase;
 
-
 @WebServlet("/EliminarRegistro")
 public class EliminarRegistro extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         String nombreActividad = request.getParameter("nombreActividad");
         String nombreClase = request.getParameter("nombreClase");
         String nicknameSocio = request.getParameter("nicknameSocio");
 
-        try {
-            Fabrica factory = new Fabrica();
-            IControllerEliminarRegClase controllerEliminar = factory.getControllerEliminarRegClase();
+        IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
+        boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
 
-            // Intentamos eliminar el registro o crear uno nuevo si no existe
-            controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
-
-            // Si llegamos aquí, el registro se eliminó o creó con éxito
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<h2>Registro eliminado o creado con éxito</h2>");
-            out.println("</body></html>");
-
-        } catch (Exception e) {
-            // Si hay un error, mostramos un mensaje de error
-            System.out.println("Error al eliminar o crear el registro: " + e.getMessage());
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<h2>Error al eliminar o crear el registro</h2>");
-            out.println("<p>" + e.getMessage() + "</p>");
-            out.println("</body></html>");
+        if (eliminado) {
+            request.setAttribute("eliminado", true);
+            request.setAttribute("alta", false);
+        } else {
+            request.setAttribute("eliminado", false);
+            request.setAttribute("alta", true);
         }
+
+        request.getRequestDispatcher("eliminarRegistro.jsp").forward(request, response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.getWriter().println("<html><body>");
+        response.getWriter().println("<form action='EliminarRegistro' method='post'>");
+
+        // Aquí puedes agregar los campos para recibir la información necesaria (institución, actividad, clase, socio)
+        response.getWriter().println("Nombre Institución: <input type='text' name='nombreInstitucion'><br><br>");
+        response.getWriter().println("Nombre Actividad: <input type='text' name='nombreActividad'><br><br>");
+        response.getWriter().println("Nombre Clase: <input type='text' name='nombreClase'><br><br>");
+        response.getWriter().println("Nickname Socio: <input type='text' name='nicknameSocio'><br><br>");
+
+        response.getWriter().println("<input type='submit' value='Eliminar Registro'>");
+        response.getWriter().println("</form>");
+        response.getWriter().println("</body></html>");
     }
 }
-
-
