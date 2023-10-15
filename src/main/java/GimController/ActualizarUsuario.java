@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import logic.Fabrica;
+import logic.Usuario.Sesion;
+import logic.Usuario.controllers.IControllerInicioSesion;
 import logic.Usuario.controllers.IControllerModificarUsuario;
 
 import java.io.IOException;
@@ -46,8 +49,31 @@ public class ActualizarUsuario extends HttpServlet {
 
 			IControllerModificarUsuario controllerUsuario = factory.getControllerModificarUsuario();
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
-			boolean update = controllerUsuario.modificarUsuario(nickname, nombre, apellido, fechaNacimiento,
+			boolean update = controllerUsuario.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento,
 					profileImage);
+
+			if (update) {
+
+				HttpSession session = request.getSession();
+				session.getAttribute("usuarioLogeado");
+
+				Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
+				System.out.println("Sesion: " + session);
+				System.out.println("Session.UsuarioLogedo: " + currentSession.getNombre());
+
+				String currentNickname = (String) request.getSession().getAttribute("userEmail");
+
+				IControllerInicioSesion controller = factory.getControllerInicioSesion();
+
+				Sesion usuarioLogeado = controller.actualizarSesion(currentNickname);
+				if (usuarioLogeado != null) {
+					request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
+					Sesion modificado = (Sesion) request.getSession().getAttribute("usuarioLogeado");
+					System.out.println("modificado " + modificado.getNombre());
+
+				}
+
+			}
 
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -60,7 +86,9 @@ public class ActualizarUsuario extends HttpServlet {
 
 			response.getWriter().write(jsonResponse.toString());
 
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			// Manejar el error apropiadamente y enviar una respuesta de error al cliente si
 			// es necesario
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

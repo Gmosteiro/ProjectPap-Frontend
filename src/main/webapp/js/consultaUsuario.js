@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const base64Image = parts[1]
 
 		// Realizar una solicitud Fetch para enviar los datos actualizados al servidor
-		debugger
+
 		fetch('actualizarUsuario', {
 			method: 'POST',
 			headers: {
@@ -78,16 +78,29 @@ document.addEventListener('DOMContentLoaded', function () {
 				fechaNacimiento: nuevaFechaNacimiento
 			})
 		})
-			.then((response) => response.json())
+			.then((response) => {
+				return response.json() // Debes agregar un return aquí.
+			})
 			.then((data) => {
 				debugger
-				// Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
-				alert('Perfil actualizado exitosamente')
+
+				if (!data.error) {
+					mostrarMensaje(
+						'Ok',
+						'Usuario modificado con exito!',
+						nuevoNombre,
+						nuevoApellido,
+						nuevaFechaNacimiento
+					)
+				} else {
+					mostrarMensaje('ERROR', data.Message)
+				}
+				// Manejar los datos JSON aquí
 			})
 			.catch((error) => {
 				debugger
 				// Manejar errores en la solicitud Fetch
-				console.error('Error al actualizar el perfil:', error)
+				console.error('Error al actualizar el perfil:' + error)
 			})
 
 		document.getElementById('nombre').style.display = 'inline'
@@ -100,6 +113,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		document.getElementById('aceptarBtn').style.display = 'none'
 	})
+
+	const mostrarMensaje = (status, mensaje, nuevoNombre, nuevoApellido, nuevaFechaNacimiento) => {
+		const successMessage = document.getElementById('success-message')
+		const errorMessage = document.getElementById('error-message')
+		const nombreSpan = document.getElementById('nombre')
+		const apellidoSpan = document.getElementById('apellido')
+		const fechaNacimientoSpan = document.getElementById('fechaNacimiento')
+		const nombreHeader = document.getElementById('nombreYapellido')
+
+		switch (status) {
+			case 'ERROR':
+				// Aquí asumimos que el mensaje de error está almacenado en this.mensaje
+				errorMessage.innerHTML = `Error: ${mensaje}`
+				errorMessage.style.display = 'block' // Mostrar el mensaje de error
+				successMessage.style.display = 'none' // Ocultar el mensaje satisfactorio
+				break
+
+			case 'Ok':
+				// Aquí asumimos que el mensaje satisfactorio está almacenado en this.mensaje
+				successMessage.innerHTML = mensaje
+				successMessage.style.display = 'block' // Mostrar el mensaje satisfactorio
+				errorMessage.style.display = 'none' // Ocultar el mensaje de error
+
+				// Actualizar los elementos <span> con los nuevos valores
+				nombreHeader.textContent = `${nuevoNombre} ${nuevoApellido}`
+				nombreSpan.textContent = nuevoNombre
+				apellidoSpan.textContent = nuevoApellido
+				fechaNacimientoSpan.textContent = nuevaFechaNacimiento
+				break
+
+			default:
+				break
+		}
+	}
 })
 
 window.addEventListener('load', function getClasesAsociadas() {

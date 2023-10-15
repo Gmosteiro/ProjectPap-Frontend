@@ -1,6 +1,11 @@
 package GimController;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.imageio.ImageIO;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +29,8 @@ public class Login extends HttpServlet {
             if (usuarioLogeado != null) {
                 // Almacena el usuario en la sesión
                 request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
+                request.getSession().setAttribute("userEmail", email);
+                request.getSession().setAttribute("userPass", password);
 
                 response.sendRedirect("menuPrincipal.jsp");
             } else {
@@ -36,4 +43,5 @@ public class Login extends HttpServlet {
 
         }
     }
+
 }

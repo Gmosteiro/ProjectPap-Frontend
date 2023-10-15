@@ -118,6 +118,11 @@
 			<button class="btn btn-info btn-block btn-round" type="button" id="aceptarBtn" style="display: none">
 				Aceptar
 			</button>
+
+			<div class="alert alert-danger" id="error-message" style="display: none"></div>
+
+			<div class="alert alert-success" id="success-message" style="display: none"></div>
+
 			<div class="user-options-cust mt-4" style="margin-bottom: 15px">
 				<h2>Informacion Asociada</h2>
 				<ul class="list-group">
