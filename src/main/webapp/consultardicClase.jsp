@@ -176,7 +176,7 @@
         var actividadSeleccionada = actividadSelect.value;
         
         // Realiza una solicitud fetch al servlet GetClases
-        fetch('GetClases?actividad=' + actividadSeleccionada)
+        fetch('GetClases?nombreActividad=' + actividadSeleccionada)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al llamar al servlet GetClases');
