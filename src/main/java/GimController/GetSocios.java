@@ -38,7 +38,7 @@ public class GetSocios extends HttpServlet {
         // Construye una lista de nombres de socios en formato de texto plano
         StringBuilder textoSocios = new StringBuilder();
         for (Usuario socio : socios) {
-            textoSocios.append(socio.getNombre()).append("\n");
+            textoSocios.append(socio.getNickname()).append("\n");
         }
 
         // Configura la respuesta HTTP como texto plano

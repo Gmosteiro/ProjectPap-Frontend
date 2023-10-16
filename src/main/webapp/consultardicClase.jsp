@@ -48,13 +48,14 @@
                                 <h1 class="mt-5">Clase</h1>
                             </div>
                             <div class="col-md-4 text-center">
-                                <img
-                                    id="imagen"
-                                    class="img-fluid rounded-circle"
-                                    
-                                    style="max-width: 100px; max-height: 100px"
-                                    alt="Imagen de Clase"
-                                />
+                                	<div class="col-md-4 text-center">
+						<img 
+                                                    id="imagen"
+                                                    class="img-fluid rounded-circle"
+							
+							style="max-width: 150px; max-height: 150px"
+                                                        alt="Imagen de Clase"
+                                                        />
                             </div>
 
                         </div>
@@ -198,7 +199,7 @@
     var miTabla = document.querySelector('#miTabla');
     var claseInfoTable = document.querySelector('#ClaseInfo');
     var tablaRegistrados = document.querySelector('#Registrados');
-
+    var imagenClase = document.getElementById('imagen');
     miTabla.addEventListener('click', function(event) {
         if (event.target.tagName === 'TD') {
             var row = event.target.parentElement;
@@ -215,7 +216,20 @@
             document.getElementById('horac').textContent = hora;
             document.getElementById('urlc').textContent = url;
             
-            // Enviar una solicitud fetch al servlet GetSocios con el nombre de la clase como parámetro
+            fetch('GetImagenClase?nombreClase=' + nombre)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener la imagen de la clase');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Actualiza la fuente de la imagen de la clase con los datos recibidos
+                    imagenClase.src = 'data:image/png;base64,' + data;
+                })
+                .catch(error => {
+                    console.error('Error al obtener la imagen de la clase: ' + error);
+                });
             
         } else {
             console.log("No se hizo clic en una fila de la tabla.");

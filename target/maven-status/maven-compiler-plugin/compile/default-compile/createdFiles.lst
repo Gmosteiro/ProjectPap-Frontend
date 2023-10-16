@@ -7,4 +7,5 @@ com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
 GimController\Login.class
 GimController\GetSocios.class
 GimController\Logout.class
+GimController\GetImagenClase.class
 GimController\GetInstituciones.class
