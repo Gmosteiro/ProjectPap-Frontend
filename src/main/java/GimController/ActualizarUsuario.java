@@ -53,25 +53,21 @@ public class ActualizarUsuario extends HttpServlet {
 					profileImage);
 
 			if (update) {
-
+				// Aca actualizo la sesion a nivel de servidor para que coincida con los datos
+				// modificados
 				HttpSession session = request.getSession();
-				session.getAttribute("usuarioLogeado");
 
 				Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
-				System.out.println("Sesion: " + session);
-				System.out.println("Session.UsuarioLogedo: " + currentSession.getNombre());
+				System.out.println("UsuarioLogedo.nombre: " + currentSession.getNombre());
 
-				String currentNickname = (String) request.getSession().getAttribute("userEmail");
+				currentSession.setApellido(apellido);
+				currentSession.setNombre(nombre);
+				currentSession.setFechaNacimiento(fechaNacimientoStr);
 
-				IControllerInicioSesion controller = factory.getControllerInicioSesion();
+				session.setAttribute("usuarioLogeado", currentSession);
 
-				Sesion usuarioLogeado = controller.actualizarSesion(currentNickname);
-				if (usuarioLogeado != null) {
-					request.getSession().setAttribute("usuarioLogeado", usuarioLogeado);
-					Sesion modificado = (Sesion) request.getSession().getAttribute("usuarioLogeado");
-					System.out.println("modificado " + modificado.getNombre());
-
-				}
+				Sesion modificado = (Sesion) session.getAttribute("usuarioLogeado");
+				System.out.println("modificado.nombre " + modificado.getNombre());
 
 			}
 
