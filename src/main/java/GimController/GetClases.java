@@ -16,6 +16,8 @@ import logic.Clase.Clase;
 import logic.Clase.controllers.IControllerConsultaClases;
 import logic.Usuario.controllers.IControllerConsultaUsuario;
 import jakarta.servlet.http.*;
+import logic.ActividadDeportiva.ActividadDeportiva;
+import logic.ActividadDeportiva.ManejadorActividad;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -30,7 +32,6 @@ public class GetClases extends HttpServlet {
         Fabrica factory = new Fabrica();
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
-
         if (nickname != null && nickname.length() > 0) {
 
             IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
@@ -61,7 +62,7 @@ public class GetClases extends HttpServlet {
         out.println("<th>Fecha</th>");
         out.println("<th>Fecha de Registro</th>");
         out.println("<th>Hora</th>");
-        out.println("<th>Accion</th>");
+        out.println("<th>URL</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
@@ -93,5 +94,7 @@ public class GetClases extends HttpServlet {
         return fecha.atStartOfDay().format(formatter);
 
     }
+    
+    
 
 }
