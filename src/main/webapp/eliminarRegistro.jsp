@@ -17,18 +17,19 @@
         <h1>Eliminar Registro</h1>
         
         <% if (request.getAttribute("elementosExistentes") != null && !(boolean) request.getAttribute("elementosExistentes")) { %>
-            <div class="alert alert-danger mt-3" role="alert">
-                Uno o más elementos proporcionados no existen en la base de datos.
-            </div>
-        <% } else if (request.getAttribute("eliminado") != null && (boolean) request.getAttribute("eliminado")) { %>
-            <div class="alert alert-primary mt-3" role="alert">
-                Registro eliminado con éxito. Haz <a href="consultaClase.jsp" class="alert-link">clic aquí</a> para ir a la consulta de clases.
-            </div>
-        <% } else if (request.getAttribute("alta") != null && (boolean) request.getAttribute("alta")) { %>
-            <div class="alert alert-danger mt-3" role="alert">
-                No se pudo eliminar el registro. Uno o más de los elementos proporcionados no existen.
-            </div>
-        <% } %>
+    <div class="alert alert-danger mt-3" role="alert">
+        Uno o más elementos proporcionados no existen en la base de datos.
+    </div>
+<% } else if (request.getAttribute("alta") != null && (boolean) request.getAttribute("alta")) { %>
+    <div class="alert alert-primary mt-3" role="alert">
+        Registro dado de alta con éxito. ya que no existia uno
+    </div>
+<% } else if (request.getAttribute("eliminado") != null && (boolean) request.getAttribute("eliminado")) { %>
+    <div class="alert alert-primary mt-3" role="alert">
+        Registro eliminado con éxito. Haz <a href="consultaClase.jsp" class="alert-link">clic aquí</a> para ir a la consulta de clases.
+    </div>
+<% } %>
+
 
         <form action="EliminarRegistro" method="post">
             <div class="form-group">
