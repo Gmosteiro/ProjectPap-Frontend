@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import logic.Clase.Clase;
 import logic.Clase.ManejadorClases;
@@ -36,20 +35,21 @@ public class EliminarRegistro extends HttpServlet {
         Socio socio = ManejadorUsuarios.getSocio(nicknameSocio);
         Clase clase = ManejadorClases.getClaseByNombre(nombreClase);
 
-        
         IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
         boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
-         boolean  alta = controllerEliminar.crearRegistro(socio, clase);
+
         if (!controllerEliminar.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
             request.setAttribute("elementosExistentes", false);
         }
 
         if (eliminado) {
             request.setAttribute("eliminado", true);
-        } else if (alta) {
+        } else {
+            boolean alta = controllerEliminar.crearRegistro(socio, clase);
+            if (alta) {
                 request.setAttribute("alta", true);
             }
-        
+        }
 
         request.getRequestDispatcher("eliminarRegistro.jsp").forward(request, response);
     }
@@ -69,4 +69,3 @@ public class EliminarRegistro extends HttpServlet {
         response.getWriter().println("</body></html>");
     }
 }
-
