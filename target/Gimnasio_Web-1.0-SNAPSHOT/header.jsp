@@ -45,6 +45,9 @@
                                     <li><a class="dropdown-item" href="#">Ranking de clases en Actividades</a></li>
                                 <% } %>
                                 <li><a class="dropdown-item" href="consultaActividad.jsp">Consultar actividad deportiva</a></li>
+                                 <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
+                                <li><a class="dropdown-item" href="rankingActividades.jsp">Ranking actividad deportiva</a></li>
+                                 <% } %>
                             </ul>
                         </li>
                     </ul>
