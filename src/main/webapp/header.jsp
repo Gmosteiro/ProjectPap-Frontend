@@ -31,7 +31,7 @@
                                 <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
                                     <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar dictado de clase</a></li>
                                     <li><a class="dropdown-item" href="consultardicClase.jsp">Consultar dictado de clase</a></li>
-                                    <li><a class="dropdown-item" href="#">Ranking de socios en clases</a></li>
+                                    <li><a class="dropdown-item" href="rankingClases.jsp">Ranking de socios en clases</a></li>
                                 <% } else { %>  
                                     <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar a clase</a></li>
                                     <li><a class="dropdown-item" href="#">Eliminar registro a clase</a></li>

@@ -4,6 +4,7 @@ GimController\GetActividades.class
 GimController\Login.class
 GimController\RankingActividades.class
 GimController\Logout.class
+GimController\RankingClases.class
 GimController\GetImagenClase.class
 com\mycompany\gimnasio_web\JakartaRestConfiguration.class
 GimController\GetImage.class
