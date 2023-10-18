@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-  
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>hola</servlet-name>
         <servlet-class>GimController.hola</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSocios</servlet-name>
+        <servlet-class>GimController.GetSocios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetImagenClase</servlet-name>
+        <servlet-class>GimController.GetImagenClase</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hola</servlet-name>
         <url-pattern>/hola</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>GimController.Login</servlet-class>
@@ -20,7 +24,6 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>GetImage</servlet-name>
         <servlet-class>GimController.GetImage</servlet-class>
@@ -29,8 +32,7 @@
         <servlet-name>GetImage</servlet-name>
         <url-pattern>/GetImage</url-pattern>
     </servlet-mapping>
-
-   <servlet>
+    <servlet>
         <servlet-name>AltaActividad</servlet-name>
         <servlet-class>GimController.AltaActividad</servlet-class>
     </servlet>
@@ -38,7 +40,46 @@
         <servlet-name>AltaActividad</servlet-name>
         <url-pattern>/AltaActividad</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>GetClases</servlet-name>
+        <servlet-class>GimController.GetClases</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetClases</servlet-name>
+        <url-pattern>/GetClases</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetActividades</servlet-name>
+        <servlet-class>GimController.GetActividades</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetActividades</servlet-name>
+        <url-pattern>/GetActividades</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetInstituciones</servlet-name>
+        <servlet-class>GimController.GetInstituciones</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetInstituciones</servlet-name>
+        <url-pattern>/GetInstituciones</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetSocios</servlet-name>
+        <servlet-class>GimController.GetSocios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetSocios</servlet-name>
+        <url-pattern>/GetSocios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetImagenClase</servlet-name>
+        <servlet-class>GimController.GetImagenClase</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetImagenClase</servlet-name>
+        <url-pattern>/GetImagenClase</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

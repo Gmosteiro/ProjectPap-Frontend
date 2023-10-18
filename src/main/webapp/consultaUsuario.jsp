@@ -13,7 +13,35 @@
 			body {
 				padding-bottom: 60px;
 			}
+
+			.tag-editar {
+				align-self: center;
+				margin-left: 56%;
+			}
+
+			.tag-editar:hover {
+				color: blue !important;
+				cursor: pointer;
+			}
+
+			.btn,
+			.btn-info,
+			.btn-block,
+			.btn-round {
+				border: 1px #0dcaf0;
+				display: inline;
+				max-width: 180px;
+				background-color: cornsilk !important;
+			}
+
+			.btn:hover,
+			.btn-info:hover,
+			.btn-block:hover,
+			.btn-round:hover {
+				background-color: #17a2b8 !important;
+			}
 		</style>
+		<script src="./js/consultaUsuario.js"></script>
 		<%@include file="/header.jsp" %>
 	</head>
 
@@ -26,58 +54,81 @@
 				<% logic.Usuario.Sesion usuario=(logic.Usuario.Sesion)
 					request.getSession().getAttribute("usuarioLogeado"); %>
 					<div class="col-md-4 text-center">
-						<img class="img-fluid rounded-circle"
+						<img id="profileImage" class="img-fluid rounded-circle"
 							src="data:image/png;base64, <%= usuario.getProfileImageBase64() %>"
 							style="max-width: 100px; max-height: 100px" alt="Imagen de Perfil" />
 					</div>
 			</div>
 			<div class="user-info mt-4">
-				<h2>Datos Básicos del Usuario</h2>
+				<div style="display: inline-flex; width: 100%">
+					<h2>Datos Básicos del Usuario</h2>
+					<a class="tag-editar" id="editarBtn">Editar Perfil</a>
+					<a class="tag-editar" id="cancelarBtn" style="display: none">Cancelar</a>
+				</div>
 
 				<table class="table table-bordered">
 					<tr>
 						<td>Nickname:</td>
-						<td id="userNickname">
-							<%= usuario.getNickname() %>
+						<td style="width: 45%" id="userNickname">
+							<span id="nickname">
+								<%= usuario.getNickname() %>
+							</span>
 						</td>
 					</tr>
 					<tr>
 						<td>Email:</td>
 						<td>
-							<%= usuario.getEmail() %>
+							<span id="email">
+								<%= usuario.getEmail() %>
+							</span>
 						</td>
 					</tr>
 					<tr>
 						<td>Nombre:</td>
 						<td>
-							<%= usuario.getNombre() %>
+							<span id="nombre">
+								<%= usuario.getNombre() %>
+							</span><input type="text" id="nombreInput" style="display: none" />
 						</td>
 					</tr>
 					<tr>
 						<td>Apellido:</td>
 						<td>
-							<%= usuario.getApellido() %>
+							<span id="apellido">
+								<%= usuario.getApellido() %>
+							</span><input type="text" id="apellidoInput" style="display: none" />
 						</td>
 					</tr>
 					<tr>
 						<td>Fecha de Nacimiento:</td>
 						<td>
-							<%= usuario.getFechaNacimiento()%>
+							<span id="fechaNacimiento">
+								<%= usuario.getFechaNacimiento()%>
+							</span><input type="date" id="fechaNacimientoInput" style="display: none" />
 						</td>
 					</tr>
 					<tr>
 						<td>Tipo de Usuario:</td>
 						<td id="userType">
-							<%= usuario.getUserType()%>
+							<span id="userTypeValue">
+								<%= usuario.getUserType()%>
+							</span>
 						</td>
 					</tr>
 				</table>
 			</div>
+
+			<button class="btn btn-info btn-block btn-round" type="button" id="aceptarBtn" style="display: none">
+				Aceptar
+			</button>
+
+			<div class="alert alert-danger" id="error-message" style="display: none"></div>
+
+			<div class="alert alert-success" id="success-message" style="display: none"></div>
+
 			<div class="user-options-cust mt-4" style="margin-bottom: 15px">
 				<h2>Informacion Asociada</h2>
 				<ul class="list-group">
-
-
 					<li class="list-group-item" id="consultar-clases-custom">
 						Ver Clases
 						<div class="clases-info-custom mt-2" style="display: none">
@@ -86,12 +137,12 @@
 									else { out.println("Clases Registradas"); } %>
 							</h3>
 							<div id="tablaClases"></div>
-
 						</div>
 					</li>
 
 					<% if(usuario.getUserType().equals("Profesor")){ %>
-						<li class="list-group-item" id="consultar-actividades-custom">Ver Actividades Deportivas
+						<li class="list-group-item" id="consultar-actividades-custom">
+							Ver Actividades Deportivas
 							<div class="actividades-info-custom mt-2" style="display: none">
 								<h3>Actividades Deportivas Asociadas</h3>
 								<div id="tablaActividades"></div>
@@ -99,84 +150,9 @@
 						</li>
 						<%}%>
 				</ul>
-
-
 			</div>
 		</div>
 		<%@include file="/footer.jsp" %>
 	</body>
 
 	</html>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			var consultarClases = document.getElementById('consultar-clases-custom')
-			var clasesInfo = document.querySelector('.clases-info-custom')
-			var consultarActividades = document.getElementById('consultar-actividades-custom')
-			var actividadesInfo = document.querySelector('.actividades-info-custom')
-
-			consultarClases.addEventListener('click', function () {
-				if (clasesInfo.style.display === 'none') {
-					clasesInfo.style.display = 'block'
-				} else {
-					clasesInfo.style.display = 'none'
-				}
-			})
-
-			consultarActividades.addEventListener('click', function () {
-				if (actividadesInfo.style.display === 'none') {
-					actividadesInfo.style.display = 'block'
-				} else {
-					actividadesInfo.style.display = 'none'
-				}
-			})
-		})
-
-		window.addEventListener('load', function getClasesAsociadas() {
-			const userNickname = document.getElementById('userNickname').innerText
-			debugger
-
-			fetch('getClases?nickname=' + userNickname)
-				.then(response => {
-					if (!response.ok) {
-						throw new Error('La solicitud a getClases falló');
-					}
-					return response.text();
-				})
-				.then(data => {
-					document.getElementById('tablaClases').innerHTML = data;
-				})
-				.catch(error => {
-					console.error('Error en la solicitud:', error);
-				});
-		});
-
-		window.addEventListener('load', function getActividadesAsociadas() {
-			const userType = document.getElementById('userType').innerText
-
-			if (userType !== "Profesor") return
-
-			const userNickname = document.getElementById('userNickname').innerText
-
-			debugger
-
-			fetch('consultaActividades?nicknameUsuario=' + userNickname)
-				.then(response => {
-					if (!response.ok) {
-						throw new Error('La solicitud a ConsultaActividad falló');
-					}
-					return response.text();
-				})
-				.then(data => {
-					document.getElementById('tablaActividades').innerHTML = data;
-				})
-				.catch(error => {
-					debugger
-					console.error('Error en la solicitud:', error);
-				});
-		});
-	</script>
-
-
-
-	</script>
