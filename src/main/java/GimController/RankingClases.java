@@ -37,6 +37,7 @@ public class RankingClases extends HttpServlet {
             out.println("<th scope=\"col\">Nombre</th>");
             out.println("<th scope=\"col\">Fecha</th>");
             out.println("<th scope=\"col\">URL</th>");
+            out.println("<th scope=\"col\">Imagen</th>");
             out.println("</tr>");
             out.println("</thead>");
             out.println("<tbody>");
@@ -46,6 +47,7 @@ public class RankingClases extends HttpServlet {
                 out.println("<td>" + clase.getNombre() + "</td>");
                 out.println("<td>" + clase.getFecha() + "</td>");
                 out.println("<td><a href=\"" + clase.getUrl() + "\">Enlace</a></td>");
+                  out.println("<td><img src='data:image/png;base64, " + clase.getImg() + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                 out.println("</tr>");
             }
 

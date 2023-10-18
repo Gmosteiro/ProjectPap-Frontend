@@ -16,6 +16,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">URL</th>
+                <th scope="col">Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                     <td><%= clase.getNombre() %></td>
                     <td><%= clase.getFecha() %></td>
                     <td><a href="<%= clase.getUrl() %>">Enlace</a></td>
+                    <td><img src='data:image/png;base64, <%= clase.getImg() %>' style='width: 100px; height: 50px;'></td>
                 </tr>
             <%
                 }
