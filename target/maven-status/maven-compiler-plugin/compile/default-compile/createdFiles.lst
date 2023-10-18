@@ -1,11 +1,7 @@
 GimController\ConsultaActividad.class
 GimController\GetClases.class
-<<<<<<< HEAD
 GimController\EliminarRegistro.class
-com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
-=======
 GimController\GetActividades.class
->>>>>>> main
 GimController\Login.class
 GimController\RankingActividades.class
 GimController\Logout.class

@@ -34,7 +34,7 @@
                                     <li><a class="dropdown-item" href="rankingClases.jsp">Ranking de socios en clases</a></li>
                                 <% } else { %>  
                                     <li><a class="dropdown-item" href="gestionInscripcion.jsp">Registrar a clase</a></li>
-                                    <li><a class="dropdown-item" href="#">Eliminar registro a clase</a></li>
+                                    <li><a class="dropdown-item" href="eliminarRegistro.jsp">Eliminar registro a clase</a></li>
                                 <% } %>
                             </ul>
                         </li>
