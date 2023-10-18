@@ -42,12 +42,9 @@
                             <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("algo2") || request.getRequestURI().contains("consultaActividad.jsp")) ? "active" : "" %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Actividades Deportivas</a>
                             <ul class="dropdown-menu">
                                 <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
-                                    <li><a class="dropdown-item" href="#">Ranking de clases en Actividades</a></li>
+                                    <li><a class="dropdown-item" href="rankingActividades.jsp">Ranking de clases en Actividades</a></li>
                                 <% } %>
                                 <li><a class="dropdown-item" href="consultaActividad.jsp">Consultar actividad deportiva</a></li>
-                                 <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
-                                <li><a class="dropdown-item" href="rankingActividades.jsp">Ranking actividad deportiva</a></li>
-                                 <% } %>
                             </ul>
                         </li>
                     </ul>

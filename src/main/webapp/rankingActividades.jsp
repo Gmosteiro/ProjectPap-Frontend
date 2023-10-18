@@ -18,6 +18,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Costo</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                     <td><%= actividad.getNombre() %></td>
                     <td><%= actividad.getCosto() %></td>
                     <td><%= actividad.getDescripcion() %></td>
+                    <td><img src='data:image/png;base64, <%= actividad.getImg() %>' style='width: 100px; height: 50px;'></td>
                 </tr>
             <%
                 }

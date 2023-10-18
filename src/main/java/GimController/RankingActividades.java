@@ -37,6 +37,7 @@ public class RankingActividades extends HttpServlet {
             out.println("<th>Nombre</th>");
             out.println("<th>Costo</th>");
             out.println("<th>Descripción</th>");
+            out.println("<th>Imagen</th>");
             out.println("</tr>");
 
             for (ActividadDeportiva actividad : rankingActividades) {
@@ -44,6 +45,7 @@ public class RankingActividades extends HttpServlet {
                 out.println("<td>" + actividad.getNombre() + "</td>");
                 out.println("<td>" + actividad.getCosto() + "</td>");
                 out.println("<td>" + actividad.getDescripcion() + "</td>");
+                out.println("<td><img src='data:image/png;base64, " + actividad.getImg() + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                 out.println("</tr>");
             }
 
