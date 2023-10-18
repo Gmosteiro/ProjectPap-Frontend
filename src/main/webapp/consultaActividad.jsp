@@ -49,20 +49,23 @@
         });
     </script>
 </head>
-<body>
-    <div class="container">
-        <div class="user-options-cust mt-4">
-            <h2>Consulta de Actividad Deportiva</h2>
-            <form id="consulta-form" action="consultaActividades" method="get">
-                <input type="text" name="nombreActividad" placeholder="Nombre de la Actividad" required>
-                <input type="submit" value="Consultar Actividad">
-            </form>
-            <div id="tabla-container"></div>
-        </div>
 
-        <!-- Tabla de Clases Asociadas -->
-        <div id="clases-container" class="mt-4"></div>
+<body>
+<div class="container">
+    <div class="user-options-cust mt-4 text-center">
+        <h2 class="mb-4">Consulta de Actividad Deportiva</h2>
+        <form id="consulta-form" action="consultaActividades" method="get" class="form-inline justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="nombreActividad" class="form-control" placeholder="Nombre de la Actividad" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Consultar Actividad</button>
+        </form>
+        <div id="tabla-container" class="mt-4"></div> 
     </div>
+
+    <div id="clases-container" class="mt-4"></div>
+</div>
+
     <%@include file = "footer.jsp" %>
 </body>
 </html>

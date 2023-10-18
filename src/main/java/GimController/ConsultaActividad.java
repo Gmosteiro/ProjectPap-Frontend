@@ -33,7 +33,7 @@ public class ConsultaActividad extends HttpServlet {
 
 		if (nombreActividad != null) {
 
-			retornarActividadPorNombre(response, nombreActividad); // Metodo de santi
+			retornarActividadPorNombre(response, nombreActividad); // Metodo de santi 
 
 		}
 		String nicknameUsuario = request.getParameter("nicknameUsuario");
@@ -78,9 +78,7 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td>" + actividad.getDuracion() + "</td>");
 					out.println("<td>" + actividad.getCosto() + "</td>");
 					out.println("<td>" + actividad.getFechaReg() + "</td>");
-					out.println(
-							"<td><a href='/consulta_Actividad.jsp?nombreActividad=" + actividad.getNombre()
-									+ "'>Ver Actividad</a></td>");
+					out.println("<td><a href='/consulta_Actividad.jsp?nombreActividad=" + actividad.getNombre()+ "'>Ver Actividad</a></td>");
 
 					out.println("</tr>");
 				}
