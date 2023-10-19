@@ -58,6 +58,12 @@
             </div>
             
         </form>
+                    <div class="alert alert-success" id="successAlert" style="display: none" role="alert">
+                        Clase dada de alta exitosamente.
+                    </div>
+                    <div class="alert alert-danger" id="errorAlert" style="display: none" role="alert">
+                        
+                    </div>
                     <button type="button" class="btn btn-success" id="aceptarBtn">Aceptar</button>
 <button type="button" class="btn btn-danger" id="cancelarBtn">Cancelar</button>
     <script type="text/javascript">
@@ -70,7 +76,8 @@
 
         // Verifica que se hayan completado todos los campos
         if (actividad === '' || nombreClase === '' || fechaHoraInicio === '' || !imagenInput.files[0]) {
-            alert('Por favor, complete todos los campos antes de dar de alta la clase.');
+            const mensajeError = "Por favor, complete todos los campos antes de dar de alta la clase.";
+            showErrorAlert(mensajeError);
             return;
         }
 
@@ -94,23 +101,50 @@
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Error al dar de alta la clase');
-                }
-                return response.text();
-            })
+                        response.text().then(errorMessage => {
+                            showErrorAlert('Error al dar de alta la clase: ' + errorMessage); // Muestra el mensaje de error del servidor
+                        });
+                        throw new Error('Error al dar de alta la clase');
+                    }
+                    return response.text();
+                })
             .then(data => {
                 // Maneja la respuesta del servidor si es necesario
-                alert('Respuesta del servidor: ' + data);
+                 mostrarAlertaExitosa();;
             })
             .catch(error => {
-                alert('Error al dar de alta la clase: ' + error);
+                showErrorAlert(error);
             });
         };
 
         reader.readAsDataURL(imagenInput.files[0]);
     });
+        function mostrarAlertaExitosa() {
+            const successAlert = document.getElementById('successAlert');
+            successAlert.style.display = 'block'; // Muestra la alerta
 
-    // Resto del código
+            // Oculta la alerta después de 5 segundos (5000 milisegundos)
+            setTimeout(function() {
+                successAlert.style.display = 'none'; // Oculta la alerta
+            document.getElementById('actividad').value = '';
+            document.getElementById('nombreClase').value = '';
+            document.getElementById('fechaHoraInicio').value = '';
+
+        // Restablece el campo de archivo (input tipo file) para limpiar la imagen
+            const imagenInput = document.getElementById('imagen');
+            imagenInput.value = '';
+            }, 3000); // 5000 ms (5 segundos)
+        }
+        function showErrorAlert(errorMessage) {
+            const errorAlert = document.getElementById('errorAlert');
+            errorAlert.innerHTML = errorMessage; // Muestra el mensaje de error del servidor
+            errorAlert.style.display = 'block';
+
+            // Oculta la alerta después de 5 segundos (5000 milisegundos)
+            setTimeout(function() {
+                errorAlert.style.display = 'none'; // Oculta la alerta
+            }, 3000); // 5000 ms (5 segundos)
+        }
 </script>
 
     <script>

@@ -33,6 +33,7 @@ public class AltaClase extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+        try{
         System.out.println("Solicitud a AltaClase recibida");   
         HttpSession session = request.getSession();
         Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
@@ -83,7 +84,10 @@ public class AltaClase extends HttpServlet {
             controllerAltaClase.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64, actividad);
         response.setContentType("text/plain");
         response.getWriter().write("La clase se ha dado de alta correctamente.");
-
+    } catch (Exception e){
+            response.setContentType("text/plain");
+            response.getWriter().write("Error al dar de alta la clase: " + e.getMessage());
+}
         // Finalmente, redirige o realiza cualquier acción adicional según tus necesidades
         
     }
