@@ -54,43 +54,49 @@
             <div class="form-group">
                 <label for="fechaHoraInicio">Fecha y Hora de Inicio</label>
                 <input type="datetime-local" name="fechaHoraInicio" class="form-control col-3" id="fechaHoraInicio">
-
+                
             </div>
-            <button type="button" class="btn btn-success" onclick="procesar('alta')">Dar de Alta Clase</button>
-            <button type="button" class="btn btn-danger" onclick="procesar('cancelar')">Cancelar</button>
+            
         </form>
+                    <button type="button" class="btn btn-success" id="aceptarBtn">Aceptar</button>
+<button type="button" class="btn btn-danger" id="cancelarBtn">Cancelar</button>
     <script type="text/javascript">
-    function procesar(tipo) {
-        if (tipo === 'alta') {
-            // Captura los valores del formulario
-            var actividad = document.getElementById("actividad").value;
-            var nombreClase = document.getElementById("nombreClase").value;
-            var fechaHoraInicio = document.getElementById("fechaHoraInicio").value;
-            
-            // Verifica que se hayan completado todos los campos
-            if (actividad === '' || nombreClase === '' || fechaHoraInicio === '') {
-                alert('Por favor, complete todos los campos antes de dar de alta la clase.');
-                return;
-            }
+    document.getElementById('aceptarBtn').addEventListener('click', function () {
+        // Captura los valores del formulario
+        const actividad = document.getElementById("actividad").value;
+        const nombreClase = document.getElementById("nombreClase").value;
+        const fechaHoraInicio = document.getElementById("fechaHoraInicio").value;
+        const imagenInput = document.getElementById("imagen");
 
-            // Realiza una solicitud POST al servlet "AltaClase" con los datos
-            var form = document.forms.namedItem("altaClaseForm");
-            var formData = new FormData(form);
-            var form = document.forms.namedItem("altaClaseForm");
+        // Verifica que se hayan completado todos los campos
+        if (actividad === '' || nombreClase === '' || fechaHoraInicio === '' || !imagenInput.files[0]) {
+            alert('Por favor, complete todos los campos antes de dar de alta la clase.');
+            return;
+        }
 
-            // Crear un objeto FormData a partir del formulario
-            var formData = new FormData(form);
+        // Convierte la imagen a Base64
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const imagenBase64 = reader.result.split(',')[1];
 
-            
+            // Crea un objeto JSON con los datos
+            const jsonData = {
+                actividad: actividad,
+                nombreClase: nombreClase,
+                fechaHoraInicio: fechaHoraInicio,
+                imagen: imagenBase64
+            };
+
+            // Realiza una solicitud Fetch para enviar los datos al servidor
             fetch('AltaClase', {
                 method: 'POST',
-                body: formData
+                body: JSON.stringify(jsonData)
             })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al dar de alta la clase');
                 }
-                return response.text(); // Supongamos que el servidor devuelve una respuesta
+                return response.text();
             })
             .then(data => {
                 // Maneja la respuesta del servidor si es necesario
@@ -99,12 +105,14 @@
             .catch(error => {
                 alert('Error al dar de alta la clase: ' + error);
             });
-        } else if (tipo === 'cancelar') {
-            // Redirige a la página deseada cuando se hace clic en "Cancelar"
-            window.location.href = 'menuPrincipal.jsp';
-        }
-    }
-    </script>
+        };
+
+        reader.readAsDataURL(imagenInput.files[0]);
+    });
+
+    // Resto del código
+</script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var selectInstitucion = document.getElementById('institucion');

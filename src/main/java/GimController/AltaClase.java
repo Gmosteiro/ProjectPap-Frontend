@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,21 +24,39 @@ import java.util.Base64;
 import logic.Clase.controllers.IControllerAltaClase;
 import logic.Fabrica;
 import logic.Usuario.Sesion;
+import org.json.JSONObject;
 
 
 
 public class AltaClase extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         System.out.println("Solicitud a AltaClase recibida");   
         HttpSession session = request.getSession();
         Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
         String profesor = currentSession.getNombre();
+        
+   			BufferedReader reader = request.getReader();
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			reader.close();
+
+			JSONObject jsonData = new JSONObject(sb.toString());
+
+			String actividad = jsonData.getString("actividad");
+			String nombreClase = jsonData.getString("nombreClase");
+			String fechaHoraInicio = jsonData.getString("fechaHoraInicio");
+                        String imagenBase64 = jsonData.getString("imagen");
         // Obtiene los parámetros del formulario
-            String actividad = request.getParameter("actividad");
-            String nombreClase = request.getParameter("nombreClase");
-            String fechaHoraInicio = request.getParameter("fechaHoraInicio");
+            
+            System.out.println("actividad "+actividad);
+            
+            System.out.println("nombreclase"+nombreClase);
 
             System.out.println("hora "+fechaHoraInicio);
         // Divide la cadena en fecha y hora
@@ -56,24 +75,17 @@ public class AltaClase extends HttpServlet {
         // Obtengo la fecha del distema con solo yyy-mm-dd
             LocalDate fechaActual = LocalDate.now();
         //Consigo la imagen y la formateo a base64
-            Part filePart = request.getPart("imagen");
-            InputStream fileContent = filePart.getInputStream();
-            byte[] imageBytes = new byte[(int) filePart.getSize()];
-            fileContent.read(imageBytes);
-            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            
         //Ya lo tengo formateado
         //empezar con las cosas
             Fabrica factory = new Fabrica();
             IControllerAltaClase controllerAltaClase = factory.getControladorAltaClase();
-            controllerAltaClase.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, base64Image, actividad);
+            controllerAltaClase.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64, actividad);
         response.setContentType("text/plain");
         response.getWriter().write("La clase se ha dado de alta correctamente.");
 
         // Finalmente, redirige o realiza cualquier acción adicional según tus necesidades
         
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+    
 }
