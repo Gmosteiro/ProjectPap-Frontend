@@ -63,6 +63,7 @@ public class GetClases extends HttpServlet {
         out.println("<th>Fecha de Registro</th>");
         out.println("<th>Hora</th>");
         out.println("<th>URL</th>");
+        out.println("<th>Imagen</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
@@ -74,8 +75,11 @@ public class GetClases extends HttpServlet {
                 out.println("<td>" + clase.getFechaFormatted() + "</td>");
                 out.println("<td>" + formatFecha(clase.getFechaReg()) + "</td>");
                 out.println("<td>" + clase.getHora() + "</td>");
+                out.println("<td>" + clase.getUrl() + "</td>");
+
                 out.println(
-                        "<td><a href='/consultaClase.jsp?nombreClase=" + clase.getNombre() + "'>Ver Clase</a></td>");
+                        "<td> <img src=\"data:image/png;base64," + clase.getImg()
+                                + " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
 
                 out.println("</tr>");
             }
@@ -94,7 +98,5 @@ public class GetClases extends HttpServlet {
         return fecha.atStartOfDay().format(formatter);
 
     }
-    
-    
 
 }
