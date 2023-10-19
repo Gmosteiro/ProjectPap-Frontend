@@ -18,7 +18,7 @@
 </head>
     <body>
     <h1>Alta de Clase</h1>
-        <form action="GestionClase" method="post">
+        <form action="AltaClase" method="POST" enctype="multipart/form-data" name="altaClaseForm">
             <div class="row">
                 <div class="col-md-3">
                     <label for="institucion">Institucion:</label>
@@ -39,15 +39,9 @@
                     </select>
                      
                 </div>
-        </div>
+            </div>
             <input type="hidden" name="boton" id="boton" value="">
             <div class="row">
-                <div class="col-md-3">
-                <label for="profeso">Profesor:</label>
-                     <select class="form-select form-select-lg mb-3" id="profeso" name="profeso">
-                         <option></option>
-                     </select>
-                </div>
                 <div class="form-group">
                     <label for="nombreClase">Nombre de la Clase</label>
                     <input type="text" name="nombreClase" class="form-control col-3" id="nombreClase" placeholder="Ingrese el nombre de la clase">
@@ -60,20 +54,56 @@
             <div class="form-group">
                 <label for="fechaHoraInicio">Fecha y Hora de Inicio</label>
                 <input type="datetime-local" name="fechaHoraInicio" class="form-control col-3" id="fechaHoraInicio">
-            </div>
-            <div class="form-group">
-                <label for="urlAsociada">URL Asociada</label>
-                <input type="text" name="urlAsociada" class="form-control col-3" id="urlAsociada" placeholder="URL relacionada a la clase">
+
             </div>
             <button type="button" class="btn btn-success" onclick="procesar('alta')">Dar de Alta Clase</button>
-            <button type="button" class="btn btn-primary" onclick="procesar('modificar')">Modificar Clase</button>
             <button type="button" class="btn btn-danger" onclick="procesar('cancelar')">Cancelar</button>
         </form>
     <script type="text/javascript">
-        function procesar(tipo) {
-            document.getElementById("boton").value = tipo;
-            document.forms[0].submit();
+    function procesar(tipo) {
+        if (tipo === 'alta') {
+            // Captura los valores del formulario
+            var actividad = document.getElementById("actividad").value;
+            var nombreClase = document.getElementById("nombreClase").value;
+            var fechaHoraInicio = document.getElementById("fechaHoraInicio").value;
+            
+            // Verifica que se hayan completado todos los campos
+            if (actividad === '' || nombreClase === '' || fechaHoraInicio === '') {
+                alert('Por favor, complete todos los campos antes de dar de alta la clase.');
+                return;
+            }
+
+            // Realiza una solicitud POST al servlet "AltaClase" con los datos
+            var form = document.forms.namedItem("altaClaseForm");
+            var formData = new FormData(form);
+            var form = document.forms.namedItem("altaClaseForm");
+
+            // Crear un objeto FormData a partir del formulario
+            var formData = new FormData(form);
+
+            
+            fetch('AltaClase', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al dar de alta la clase');
+                }
+                return response.text(); // Supongamos que el servidor devuelve una respuesta
+            })
+            .then(data => {
+                // Maneja la respuesta del servidor si es necesario
+                alert('Respuesta del servidor: ' + data);
+            })
+            .catch(error => {
+                alert('Error al dar de alta la clase: ' + error);
+            });
+        } else if (tipo === 'cancelar') {
+            // Redirige a la página deseada cuando se hace clic en "Cancelar"
+            window.location.href = 'menuPrincipal.jsp';
         }
+    }
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -107,7 +137,7 @@
         var actividadSelect = document.getElementById('actividad');  // Agrega esta línea
 
         // Agrega un controlador de eventos para el evento "change"
-        selectInstitucion.addEventListener('change', function() {
+        selectInstitucion.addEventListener('click', function() {
             // Obtén el valor seleccionado en el select de instituciones
             var institucionSeleccionada = selectInstitucion.value;
 
