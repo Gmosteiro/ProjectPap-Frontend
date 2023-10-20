@@ -60,8 +60,6 @@
 
     <body>
         <div class="container">
-
-
             <div class="col">
                 <div class="cust-container-dropd">
                     <h3 class="titulo-drpd">Instituciones</h3>
@@ -80,9 +78,20 @@
 
                     </select>
                 </div>
+                <div class="cust-container-dropd">
+                    <button id="buscarClasesButton" style="width: 120px;" type="submit" class="btn btn-info btn-block btn-round">Buscar</button>
+                </div>
+
             </div>
+            <div class="clases-info-custom mt-2" style="display: none">
+                <h3>
+                    Clases:
+                </h3>
+                <div id="tablaClases"></div>
+            </div>
+
         </div>
         <%@include file="/footer.jsp" %>
     </body>
 
-</html>
+</html></html>
