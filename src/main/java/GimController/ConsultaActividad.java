@@ -80,7 +80,8 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td>" + actividad.getFechaReg() + "</td>");
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + actividad.getImg()
-									+ " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
+									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px; \" /> </td>");
+                                                                                                       
 
 					out.println("</tr>");
 				}
@@ -128,7 +129,7 @@ public class ConsultaActividad extends HttpServlet {
 				out.println("<td>" + actividad.getCosto() + "</td>");
 				out.println("<td>" + actividad.getFechaReg() + "</td>");
 				out.println("<td><img src='data:image/png;base64, " + actividad.getImg()
-						+ "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
+						+ "' style='width: 100px; height: 50px; '></td>");
 				out.println("</tr>");
 			}
 
@@ -143,7 +144,7 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + clase.getImg()
-									+ " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
+									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");           //nose que tocaron pero esto no anda
 					out.println("</tr>");
 				}
 			}
