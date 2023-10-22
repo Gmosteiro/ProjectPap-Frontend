@@ -105,12 +105,12 @@ public class RegistroDictadoClase extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             JSONObject jsonResponse = new JSONObject();
 
-            boolean validate = controller.validateDataWeb(socio, clase);
-            System.out.println("validate: " + validate);
+            boolean existeRegistro = controller.validateDataWeb(socio, clase);
+            System.out.println("validate: " + existeRegistro);
 
-            if (!validate) {
+            if (existeRegistro) {
 
-                jsonResponse.put("ERROR", !validate);
+                jsonResponse.put("ERROR", existeRegistro);
                 jsonResponse.put("Message", " Ya existe un registro para los datos ingresados ");
                 response.getWriter().write(jsonResponse.toString());
 
