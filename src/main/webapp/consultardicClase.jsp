@@ -136,13 +136,13 @@
 //        document.getElementById('horac').textContent = '';
 //        document.getElementById('urlc').textContent = '';
 //
-//        // Limpia la tabla "Registrados"
-//        var tablaRegistrados = document.querySelector('#Registrados');
-//        tablaRegistrados.innerHTML = '';
+        // Limpia la tabla "Registrados"
+        var tablaRegistrados = document.querySelector('#Registrados');
+        tablaRegistrados.innerHTML = '';
 
         // Limpia la imagen
-        var imagenClase = document.getElementById('imagen');
-        imagenClase.src = '';
+        //var imagenClase = document.getElementById('imagen');
+        //imagenClase.src = '';
         // Obtén el valor seleccionado en el select
         var actividadSeleccionada = actividadSelect.value;
         
