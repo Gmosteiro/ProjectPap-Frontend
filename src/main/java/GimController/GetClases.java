@@ -16,8 +16,6 @@ import logic.Clase.Clase;
 import logic.Clase.controllers.IControllerConsultaClases;
 import logic.Usuario.controllers.IControllerConsultaUsuario;
 import jakarta.servlet.http.*;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.ActividadDeportiva.ManejadorActividad;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -27,11 +25,13 @@ public class GetClases extends HttpServlet {
         String nickname = request.getParameter("nickname");
         String nombreClase = request.getParameter("nombreClase");
         String nombreActividad = request.getParameter("nombreActividad");
+        String tablaConAccion = request.getParameter("tablaconaccion");
         // Si necesitan agregar otro parametro lo meten aca
 
         Fabrica factory = new Fabrica();
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
+
         if (nickname != null && nickname.length() > 0) {
 
             IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
@@ -64,6 +64,12 @@ public class GetClases extends HttpServlet {
         out.println("<th>Hora</th>");
         out.println("<th>URL</th>");
         out.println("<th>Imagen</th>");
+
+        if (tablaConAccion != null && tablaConAccion.length() > 0) {
+
+            out.println("<th>Accion</th>");
+        }
+
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
@@ -80,6 +86,12 @@ public class GetClases extends HttpServlet {
                 out.println(
                         "<td> <img src=\"data:image/png;base64," + clase.getImg()
                                 + " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
+                if (tablaConAccion != null && tablaConAccion.length() > 0) {
+
+                    out.println(
+                            "<td><button class=\"btn btn-info btn-block btn-round\" data-action=\"registrar\" type=\"button\" onclick=\"enviarInfo('"
+                                    + clase.getNombre() + "');\">Registrar</button></td>");
+                }
 
                 out.println("</tr>");
             }

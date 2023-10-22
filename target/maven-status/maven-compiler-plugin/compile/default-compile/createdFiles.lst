@@ -1,5 +1,6 @@
 GimController\ConsultaActividad.class
 GimController\GetClases.class
+GimController\RegistroDictadoClase.class
 GimController\EliminarRegistro.class
 GimController\GetActividades.class
 GimController\Login.class
