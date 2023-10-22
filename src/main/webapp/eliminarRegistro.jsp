@@ -26,7 +26,7 @@
     </div>
 <% } else if (request.getAttribute("eliminado") != null && (boolean) request.getAttribute("eliminado")) { %>
     <div class="alert alert-primary mt-3" role="alert">
-        Registro eliminado con éxito. Haz <a href="consultaClase.jsp" class="alert-link">clic aquí</a> para ir a la consulta de clases.
+        Registro eliminado con éxito. Haz <a href="consultardicClase.jsp" class="alert-link">clic aquí</a> para ir a la consulta de clases.
     </div>
 <% } %>
 
