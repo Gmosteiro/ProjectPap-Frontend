@@ -91,7 +91,7 @@
     var actividadSelect = document.getElementById('actividad');  // Agrega esta línea
 
     // Agrega un controlador de eventos para el evento "change"
-    selectInstitucion.addEventListener('change', function() {
+    selectInstitucion.addEventListener('click', function() {
         // Obtén el valor seleccionado en el select de instituciones
         var institucionSeleccionada = selectInstitucion.value;
 
@@ -129,6 +129,20 @@
 
     // Agrega un controlador de eventos al botón
     buscarClasesButton.addEventListener('click', function() {
+        //limpio todo que esta sucio.
+//        document.getElementById('nombrec').textContent = '';
+//        document.getElementById('fechac').textContent = '';
+//        document.getElementById('fecharc').textContent = '';
+//        document.getElementById('horac').textContent = '';
+//        document.getElementById('urlc').textContent = '';
+//
+//        // Limpia la tabla "Registrados"
+//        var tablaRegistrados = document.querySelector('#Registrados');
+//        tablaRegistrados.innerHTML = '';
+
+        // Limpia la imagen
+        var imagenClase = document.getElementById('imagen');
+        imagenClase.src = '';
         // Obtén el valor seleccionado en el select
         var actividadSeleccionada = actividadSelect.value;
         
