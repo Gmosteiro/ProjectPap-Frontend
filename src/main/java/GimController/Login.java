@@ -13,6 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import logic.Fabrica;
 import logic.Usuario.Sesion;
 import logic.Usuario.controllers.IControllerInicioSesion;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishService;
+import publicadores.ControladorPublishServiceLocator;
 
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +29,7 @@ public class Login extends HttpServlet {
             IControllerInicioSesion controller = factory.getControllerInicioSesion();
 
             Sesion usuarioLogeado = controller.iniciarSesion(email, password);
+//            Sesion usuarioLogeado = iniciarSesion(email, password);
 
             if (usuarioLogeado != null) {
                 // Almacena el usuario en la sesión
@@ -44,5 +48,28 @@ public class Login extends HttpServlet {
 
         }
     }
+    
+    //OPERACION CONSUMIDA
+    
+    public void iniciarSesion(String email, String password) throws Exception {
+    	ControladorPublishService cps = new ControladorPublishServiceLocator();
+    	ControladorPublish port = cps.getControladorPublishPort();
+    	port.iniciarSesion(email, password);
+    }
+} 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,6 +19,10 @@ import java.util.List;
 import logic.ActividadDeportiva.ActividadDeportiva;
 import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
 import logic.Clase.Clase;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishService;
+import publicadores.ControladorPublishServiceLocator;
+
 import static logic.Clase.ManejadorClases.getClasesByActividad;
 import logic.Fabrica;
 
@@ -144,7 +148,7 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + clase.getImg()
-									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");           //nose que tocaron pero esto no anda
+									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");         
 					out.println("</tr>");
 				}
 			}
@@ -156,5 +160,12 @@ public class ConsultaActividad extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+	
+	  public void retornarActividadPorNombre(String nombreActividad) throws Exception {
+	    	ControladorPublishService cps = new ControladorPublishServiceLocator();
+	    	ControladorPublish port = cps.getControladorPublishPort();
+	    	port.obtenerActividadPorNombre(nombreActividad);
+	    }
+	  
+	
 }

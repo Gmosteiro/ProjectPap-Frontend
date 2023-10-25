@@ -10,4 +10,5 @@ package publicadores;
 public interface ControladorPublish extends java.rmi.Remote {
     public void obtenerActividadPorNombre(java.lang.String arg0) throws java.rmi.RemoteException;
     public void iniciarSesion(java.lang.String arg0, java.lang.String arg1) throws java.rmi.RemoteException;
+	
 }
