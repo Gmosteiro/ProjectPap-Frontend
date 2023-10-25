@@ -1,9 +1,11 @@
 GimController\ConsultaActividad.class
 GimController\GetClases.class
 GimController\RegistroDictadoClase.class
+publicadores\ControladorPublishService.class
 GimController\AltaClase.class
 GimController\EliminarRegistro.class
 GimController\GetActividades.class
+publicadores\ControladorPublishProxy.class
 GimController\Login.class
 GimController\RankingActividades.class
 GimController\Logout.class
@@ -11,7 +13,10 @@ GimController\RankingClases.class
 GimController\GetImagenClase.class
 com\mycompany\gimnasio_web\JakartaRestConfiguration.class
 GimController\GetImage.class
+publicadores\ControladorPublishPortBindingStub.class
+publicadores\ControladorPublishServiceLocator.class
 com\mycompany\gimnasio_web\resources\JakartaEE10Resource.class
 GimController\ActualizarUsuario.class
 GimController\GetSocios.class
+publicadores\ControladorPublish.class
 GimController\GetInstituciones.class
