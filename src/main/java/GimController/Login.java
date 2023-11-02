@@ -25,11 +25,8 @@ public class Login extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
-            Fabrica factory = new Fabrica();
-            IControllerInicioSesion controller = factory.getControllerInicioSesion();
 
-            Sesion usuarioLogeado = controller.iniciarSesion(email, password);
-//            Sesion usuarioLogeado = iniciarSesion(email, password);
+            publicadores.Sesion usuarioLogeado = iniciarSesion(email, password);
 
             if (usuarioLogeado != null) {
                 // Almacena el usuario en la sesión
@@ -51,10 +48,10 @@ public class Login extends HttpServlet {
     
     //OPERACION CONSUMIDA
     
-    public void iniciarSesion(String email, String password) throws Exception {
+    public publicadores.Sesion iniciarSesion(String email, String password) throws Exception {
     	ControladorPublishService cps = new ControladorPublishServiceLocator();
     	ControladorPublish port = cps.getControladorPublishPort();
-    	port.iniciarSesion(email, password);
+    	return port.iniciarSesion(email, password);
     }
 } 
 
