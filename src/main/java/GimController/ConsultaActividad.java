@@ -16,15 +16,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
-import logic.Clase.Clase;
+import publicadores.ActividadDeportiva;
+import publicadores.ArrayList;
+import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishService;
 import publicadores.ControladorPublishServiceLocator;
 
-import static logic.Clase.ManejadorClases.getClasesByActividad;
-import logic.Fabrica;
+
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -52,11 +51,9 @@ public class ConsultaActividad extends HttpServlet {
 	private void actividadesPorUsuario(HttpServletResponse response, String nicknameUsuario) {
 
 		try {
-			Fabrica factory = new Fabrica();
-
-			IControllerConsultaActividad controller = factory.getControllerConsultaActividad();
-
-			List<ActividadDeportiva> actividades = controller.getActividadesByProfe(nicknameUsuario);
+			
+			ControladorPublish controller = null;
+			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) controller.getActividadesByProfe(nicknameUsuario);
 
 			response.setContentType("text/html");
 
@@ -102,11 +99,11 @@ public class ConsultaActividad extends HttpServlet {
 
 	private void retornarActividadPorNombre(HttpServletResponse response, String nombreActividad) {
 		try {
-			Fabrica factory = new Fabrica();
+	
 
-			IControllerConsultaActividad controller = factory.getControllerConsultaActividad();
+		
 
-			ActividadDeportiva actividad = controller.obtenerActividadPorNombre(nombreActividad);
+			ActividadDeportiva actividad = retornarActividadPorNombre(nombreActividad);
 
 			response.setContentType("text/html");
 
@@ -138,7 +135,7 @@ public class ConsultaActividad extends HttpServlet {
 			}
 
 			// Agregar una nueva fila para mostrar las clases asociadas
-			List<Clase> clases = getClasesByActividad(nombreActividad);
+			List<Clase> clases = (List<Clase>) getClasesByActividad(nombreActividad);
 			if (clases != null && !clases.isEmpty()) {
 				out.println("<tr>");
 				out.println("<td colspan='6'><strong>Clases Asociadas</strong></td>");
@@ -158,14 +155,22 @@ public class ConsultaActividad extends HttpServlet {
 		} catch (IOException e) {
 			System.out.println("Catch retornarActividadPorNombre " + e);
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
-	  public void retornarActividadPorNombre(String nombreActividad) throws Exception {
+	  public ActividadDeportiva retornarActividadPorNombre(String nombreActividad) throws Exception {
 	    	ControladorPublishService cps = new ControladorPublishServiceLocator();
 	    	ControladorPublish port = cps.getControladorPublishPort();
-	    	port.obtenerActividadPorNombre(nombreActividad);
+	    	return port.obtenerActividadPorNombre(nombreActividad);
 	    }
 	  
+	  public ArrayList getClasesByActividad(String nombreActividad) throws Exception {
+	    	ControladorPublishService cps = new ControladorPublishServiceLocator();
+	    	ControladorPublish port = cps.getControladorPublishPort();
+	    	return port.getClasesByActividad(nombreActividad);
+	    }
 	
 }
