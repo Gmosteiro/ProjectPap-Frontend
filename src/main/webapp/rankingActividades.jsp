@@ -5,8 +5,9 @@
 --%>
 
 <%@ page import="java.util.List" %>
-<%@ page import="logic.ActividadDeportiva.ActividadDeportiva" %>
-<%@ page import="logic.Clase.controllers.ControllerRanking" %>
+<%@iclude file="publicadores.ControladorPublish" %>
+<%@iclude file="publicadores.PublishServiceLocator" %>
+
 <%@include file="/header.jsp" %>
 
 
@@ -22,22 +23,8 @@
             </tr>
         </thead>
         <tbody>
-            <%
-                ControllerRanking controllerRanking = new ControllerRanking();
-                List<ActividadDeportiva> rankingActividades = controllerRanking.obtenerRankingDeActividades();
-                controllerRanking.closeEntityManagerFactory();
-                
-                for (ActividadDeportiva actividad : rankingActividades) {
-            %>
-                <tr>
-                    <td><%= actividad.getNombre() %></td>
-                    <td><%= actividad.getCosto() %></td>
-                    <td><%= actividad.getDescripcion() %></td>
-                    <td><img src='data:image/png;base64, <%= actividad.getImg() %>' style='width: 100px; height: 50px;'></td>
-                </tr>
-            <%
-                }
-            %>
+        
+           
         </tbody>
     </table>
 </div>

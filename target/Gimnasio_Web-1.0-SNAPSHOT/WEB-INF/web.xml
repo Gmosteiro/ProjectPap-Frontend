@@ -68,26 +68,17 @@
         <servlet-name>GetInstituciones</servlet-name>
         <url-pattern>/GetInstituciones</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>GetSocios</servlet-name>
-        <servlet-class>GimController.GetSocios</servlet-class>
-    </servlet>
+
     <servlet-mapping>
         <servlet-name>GetSocios</servlet-name>
         <url-pattern>/GetSocios</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>GetImagenClase</servlet-name>
-        <servlet-class>GimController.GetImagenClase</servlet-class>
-    </servlet>
+
     <servlet-mapping>
         <servlet-name>GetImagenClase</servlet-name>
         <url-pattern>/GetImagenClase</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>AltaClase</servlet-name>
-        <servlet-class>GimController.AltaClase</servlet-class>
-    </servlet>
+  
     <servlet-mapping>
         <servlet-name>AltaClase</servlet-name>
         <url-pattern>/AltaClase</url-pattern>

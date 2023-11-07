@@ -4,8 +4,7 @@
     Author     : santi
 --%>
 <%@ page import="java.util.List" %>
-<%@ page import="logic.Clase.controllers.ControllerRanking" %>
-<%@ page import="logic.Clase.Clase" %>
+
 <%@include file="/header.jsp" %>
 
 <div class="container mt-4">
@@ -20,22 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <%
-                ControllerRanking controllerRanking = new ControllerRanking();
-                List<Clase> rankingClases = controllerRanking.obtenerRankingDeClases();
-                controllerRanking.closeEntityManagerFactory();
-                
-                for (Clase clase : rankingClases) {
-            %>
-                <tr>
-                    <td><%= clase.getNombre() %></td>
-                    <td><%= clase.getFecha() %></td>
-                    <td><a href="<%= clase.getUrl() %>">Enlace</a></td>
-                    <td><img src='data:image/png;base64, <%= clase.getImg() %>' style='width: 100px; height: 50px;'></td>
-                </tr>
-            <%
-                }
-            %>
+         
         </tbody>
     </table>
 </div>
