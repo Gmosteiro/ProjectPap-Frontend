@@ -21,13 +21,11 @@ import java.util.logging.Logger;
 import javax.xml.rpc.ServiceException;
 
 import publicadores.ActividadDeportiva;
-import publicadores.ArrayList;
+import java.util.ArrayList;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishService;
 import publicadores.ControladorPublishServiceLocator;
-
-
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -35,7 +33,7 @@ public class ConsultaActividad extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-        try {
+		try {
 			ControladorPublish port = cps.getControladorPublishPort();
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
@@ -62,14 +60,15 @@ public class ConsultaActividad extends HttpServlet {
 
 		try {
 			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-                        ControladorPublish port = null;
-                    try {
-                        port = cps.getControladorPublishPort();
-                    } catch (ServiceException ex) {
-                        Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-			
-			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) port.getActividadesByProfe(nicknameUsuario);
+			ControladorPublish port = null;
+			try {
+				port = cps.getControladorPublishPort();
+			} catch (ServiceException ex) {
+				Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
+			}
+
+			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) port
+					.getActividadesByProfe(nicknameUsuario);
 
 			response.setContentType("text/html");
 
@@ -98,7 +97,6 @@ public class ConsultaActividad extends HttpServlet {
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + actividad.getImg()
 									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px; \" /> </td>");
-                                                                                                       
 
 					out.println("</tr>");
 				}
@@ -115,10 +113,9 @@ public class ConsultaActividad extends HttpServlet {
 
 	private void retornarActividadPorNombre(HttpServletResponse response, String nombreActividad) {
 		try {
-	
 
 			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-	        ControladorPublish port = cps.getControladorPublishPort();
+			ControladorPublish port = cps.getControladorPublishPort();
 
 			ActividadDeportiva actividad = port.obtenerActividadPorNombre(nombreActividad);
 
@@ -162,7 +159,7 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + clase.getImg()
-									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");         
+									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");
 					out.println("</tr>");
 				}
 			}
@@ -177,7 +174,5 @@ public class ConsultaActividad extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
 
-	
 }
