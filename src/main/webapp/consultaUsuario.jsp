@@ -51,7 +51,7 @@
 				<div class="col-md-8">
 					<h1 class="mt-5">Mi Perfil</h1>
 				</div>
-				<% logic.Usuario.Sesion usuario=(logic.Usuario.Sesion)
+				<% publicadores.Sesion usuario=(publicadores.Sesion)
 					request.getSession().getAttribute("usuarioLogeado"); %>
 					<div class="col-md-4 text-center">
 						<img id="profileImage" class="img-fluid rounded-circle"
