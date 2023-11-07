@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.rpc.ServiceException;
 
@@ -59,9 +61,15 @@ public class ConsultaActividad extends HttpServlet {
 	private void actividadesPorUsuario(HttpServletResponse response, String nicknameUsuario) {
 
 		try {
+			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+                        ControladorPublish port = null;
+                    try {
+                        port = cps.getControladorPublishPort();
+                    } catch (ServiceException ex) {
+                        Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 			
-			ControladorPublish controller = null;
-			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) controller.getActividadesByProfe(nicknameUsuario);
+			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) port.getActividadesByProfe(nicknameUsuario);
 
 			response.setContentType("text/html");
 
