@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="logic.Clase.Clase" %>
-<%@ page import="logic.ActividadDeportiva.ActividadDeportiva" %> 
+<%@ page import="publicadores.Clase" %>
+<%@ page import="publicadores.ActividadDeportiva" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
