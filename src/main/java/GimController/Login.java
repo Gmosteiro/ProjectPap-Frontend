@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         try {
         	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-            ControladorPublish port = cps.getControladorPublishPort();
+            final ControladorPublish port = cps.getControladorPublishPort();
             
             String email = request.getParameter("email");
             String password = request.getParameter("password");

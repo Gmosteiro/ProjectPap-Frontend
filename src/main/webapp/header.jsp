@@ -1,3 +1,5 @@
+<%@page import="publicadores.ControladorPublish"%>
+<%@page import="publicadores.ControladorPublishServiceLocator"%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
 	
@@ -6,11 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <%@ page import="java.util.Base64" %>
+<%@ page import="publicadores.Sesion" %>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <% logic.Usuario.Sesion usuarioLogeado = (logic.Usuario.Sesion)
+    
+    
+    <% publicadores.Sesion usuarioLogeado = (publicadores.Sesion)
 			request.getSession().getAttribute("usuarioLogeado"); if (usuarioLogeado != null) { String imagenBase64 =
-			usuarioLogeado.getProfileImageBase64(); %>
+			usuarioLogeado.getProfileImageBase64(); 
+       ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
+    %>
+                        
+                        
 	<div class="container-fluid">
 		<a class="navbar-brand" style="margin-right: 25%; margin-left: 10%" href="menuPrincipal.jsp">GymPap</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
