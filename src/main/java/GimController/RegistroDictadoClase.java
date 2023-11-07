@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import javax.xml.rpc.ServiceException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,11 +16,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.Fabrica;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.Institucion.InstitucionDeportiva;
-import logic.Institucion.ManejadorInstitucion;
-import logic.Usuario.controllers.IControllerRegistroDictado;
+import publicadores.ActividadDeportiva;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.InstitucionDeportiva;
+
 
 @WebServlet("/RegistroDictadoClase")
 
@@ -26,11 +28,18 @@ public class RegistroDictadoClase extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+		try {
+			port = cps.getControladorPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
-            InstitucionDeportiva instituto = ManejadorInstitucion.getInstitucionesByName(nombreInstitucion);
-            List<ActividadDeportiva> listaactividades = instituto.getActividades();
+            InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
+            ActividadDeportiva[] listaactividades = instituto.getActividades();
 
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
@@ -52,7 +61,7 @@ public class RegistroDictadoClase extends HttpServlet {
             response.getWriter().write(jsonResponse.toString());
 
         } else {
-            List<InstitucionDeportiva> instituciones = ManejadorInstitucion.getInstituciones();
+            List<InstitucionDeportiva> instituciones = (List<InstitucionDeportiva>) port.getInstituciones();
 
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
@@ -79,7 +88,8 @@ public class RegistroDictadoClase extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+        	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
             System.out.println("En Registro Dictado Clase");
             BufferedReader reader = request.getReader();
             StringBuilder sb = new StringBuilder();
@@ -96,16 +106,14 @@ public class RegistroDictadoClase extends HttpServlet {
 
             LocalDate fecha = LocalDate.now();
 
-            Fabrica factory = new Fabrica();
-
-            IControllerRegistroDictado controller = factory.getControllerRegistroDictado();
+     
 
             // response
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             JSONObject jsonResponse = new JSONObject();
 
-            boolean existeRegistro = controller.validateDataWeb(socio, clase);
+            boolean existeRegistro = port.validateDataWeb(socio, clase);
             System.out.println("validate: " + existeRegistro);
 
             if (existeRegistro) {
@@ -117,7 +125,7 @@ public class RegistroDictadoClase extends HttpServlet {
             } else {
 
                 // String nicknameSocio, String nombreClase, LocalDate fechaReg
-                boolean registro = controller.addRegistroDictadoWeb(socio, clase, fecha);
+                boolean registro = port.addRegistroDictadoWeb(socio, clase, fecha);
                 System.out.println("registro: " + registro);
 
                 jsonResponse.put("ERROR", !registro);

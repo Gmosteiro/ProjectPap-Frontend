@@ -10,23 +10,23 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.Fabrica;
-import logic.Usuario.Sesion;
-import logic.Usuario.controllers.IControllerInicioSesion;
+
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishService;
 import publicadores.ControladorPublishServiceLocator;
+import publicadores.Sesion;
 
 public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+        	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
             String email = request.getParameter("email");
             String password = request.getParameter("password");
 
 
-            publicadores.Sesion usuarioLogeado = iniciarSesion(email, password);
+            Sesion usuarioLogeado = port.iniciarSesion(email, password);
 
             if (usuarioLogeado != null) {
                 // Almacena el usuario en la sesión
@@ -48,11 +48,7 @@ public class Login extends HttpServlet {
     
     //OPERACION CONSUMIDA
     
-    public publicadores.Sesion iniciarSesion(String email, String password) throws Exception {
-    	ControladorPublishService cps = new ControladorPublishServiceLocator();
-    	ControladorPublish port = cps.getControladorPublishPort();
-    	return port.iniciarSesion(email, password);
-    }
+ 
 } 
 
 

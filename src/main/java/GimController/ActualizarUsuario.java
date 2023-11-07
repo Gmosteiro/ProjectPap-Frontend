@@ -43,7 +43,7 @@ public class ActualizarUsuario extends HttpServlet {
 			System.out.println("Profile Image: " + profileImage);
 			String fechaNacimientoStr = jsonData.getString("fechaNacimiento");
 
-			publicadores.LocalDate fechaNacimiento = publicadores.LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 			
 

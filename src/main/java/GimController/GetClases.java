@@ -7,15 +7,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List; // Importa la clase List si no está importada
 
+import javax.xml.rpc.ServiceException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import logic.Fabrica;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
-import logic.Clase.Clase;
-import logic.Clase.controllers.IControllerConsultaClases;
-import logic.Usuario.controllers.IControllerConsultaUsuario;
+
 import jakarta.servlet.http.*;
+import publicadores.ActividadDeportiva;
+import publicadores.Clase;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -28,27 +29,34 @@ public class GetClases extends HttpServlet {
         String tablaConAccion = request.getParameter("tablaconaccion");
         // Si necesitan agregar otro parametro lo meten aca
 
-        Fabrica factory = new Fabrica();
+        ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+		try {
+			port = cps.getControladorPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
 
         if (nickname != null && nickname.length() > 0) {
 
-            IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
-            clases = controllerConsultaUsuario.getClasesByUser(nickname);
+            clases = (List<Clase>) port.getClasesByUser(nickname);
 
         } else if (nombreClase != null && nombreClase.length() > 0) {
 
-            IControllerConsultaClases controllerClases = factory.getControllerConsultaClases();
-            clases.add(controllerClases.obtenerClasePorNombre(nombreClase));
+       
+            clases.add(port.obtenerClasePorNombre(nombreClase));
 
         } else if (nombreActividad != null && nombreActividad.length() > 0) {
 
-            IControllerConsultaActividad controllerCA = factory.getControllerConsultaActividad();
 
-            ActividadDeportiva actividadBuscada = controllerCA.obtenerActividadPorNombre(nombreActividad);
 
-            clases = factory.getControllerConsultaClases().obtenerClasesPorActividad(actividadBuscada);
+            ActividadDeportiva actividadBuscada = port.obtenerActividadPorNombre(nombreActividad);
+
+            clases = (List<Clase>) port.obtenerClasesPorActividad(actividadBuscada);
 
         }
 

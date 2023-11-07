@@ -6,20 +6,21 @@ package GimController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.RemoteException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import publicadores.Clase;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.Usuario;
+
 import static java.lang.System.console;
 import java.util.List;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.Clase.Clase;
-import logic.Clase.ManejadorClases;
-import logic.Institucion.InstitucionDeportiva;
-import logic.Institucion.ManejadorInstitucion;
-import logic.Usuario.ManejadorUsuarios;
-import logic.Usuario.Usuario;
 
+import javax.xml.rpc.ServiceException;
 /**
  *
  * @author Admin
@@ -28,8 +29,16 @@ public class GetSocios extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+    	  ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+    	    try {
+				ControladorPublish port = cps.getControladorPublishPort();
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	
     String claseNombre = request.getParameter("nombreClase");
-    
+  
     if (claseNombre != null) {
         // Aquí debes obtener los socios de la clase utilizando el nombre de la clase
         // Reemplaza esta parte con tu lógica para obtener los socios
@@ -54,8 +63,28 @@ public class GetSocios extends HttpServlet {
     }
 }
     private  List<Usuario> Socios(String Clase){
-        Clase clase = ManejadorClases.getClaseByNombre(Clase);
-        List<Usuario> socios = ManejadorUsuarios.getSociosByClase(clase);
+    	  ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+    	    ControladorPublish port = null;
+			try {
+				port = cps.getControladorPublishPort();
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        Clase clase = null;
+		try {
+			clase = port.getClaseByNombre(Clase);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        List<Usuario> socios = null;
+		try {
+			socios = (List<Usuario>) port.getSociosByClase(clase);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return socios;
     }
 

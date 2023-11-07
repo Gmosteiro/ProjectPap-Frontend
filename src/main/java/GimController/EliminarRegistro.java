@@ -15,37 +15,47 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import publicadores.Clase;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.Socio;
+
 import java.io.IOException;
 
-import logic.Clase.Clase;
-import logic.Clase.ManejadorClases;
-import logic.Usuario.ManejadorUsuarios;
-import logic.Usuario.Socio;
-import logic.Usuario.controllers.ControllerEliminarRegClase;
-import logic.Usuario.controllers.IControllerEliminarRegClase;
+import javax.xml.rpc.ServiceException;
+
+
 
 @WebServlet("/EliminarRegistro")
 public class EliminarRegistro extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+		try {
+			port = cps.getControladorPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         String nombreActividad = request.getParameter("nombreActividad");
         String nombreClase = request.getParameter("nombreClase");
         String nicknameSocio = request.getParameter("nicknameSocio");
-        Socio socio = ManejadorUsuarios.getSocio(nicknameSocio);
-        Clase clase = ManejadorClases.getClaseByNombre(nombreClase);
+        Socio socio = port.getSocio(nicknameSocio);
+        Clase clase = port.getClaseByNombre(nombreClase);
 
-        IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
-        boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
+     
+        boolean eliminado = port.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
 
-        if (!controllerEliminar.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
+        if (!port.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
             request.setAttribute("elementosExistentes", false);
         }
 
         if (eliminado) {
             request.setAttribute("eliminado", true);
         } else {
-            boolean alta = controllerEliminar.crearRegistro(socio, clase);
+            boolean alta = port.crearRegistro(socio, clase);
             if (alta) {
                 request.setAttribute("alta", true);
             }

@@ -13,6 +13,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.Sesion;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -21,9 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
-import logic.Clase.controllers.IControllerAltaClase;
-import logic.Fabrica;
-import logic.Usuario.Sesion;
+
 import org.json.JSONObject;
 
 
@@ -34,6 +36,8 @@ public class AltaClase extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         try{
+        	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
         System.out.println("Solicitud a AltaClase recibida");   
         HttpSession session = request.getSession();
         Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
@@ -79,9 +83,8 @@ public class AltaClase extends HttpServlet {
             
         //Ya lo tengo formateado
         //empezar con las cosas
-            Fabrica factory = new Fabrica();
-            IControllerAltaClase controllerAltaClase = factory.getControladorAltaClase();
-            controllerAltaClase.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64, actividad);
+
+            port.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64, actividad);
         response.setContentType("text/plain");
         response.getWriter().write("La clase se ha dado de alta correctamente.");
     } catch (Exception e){

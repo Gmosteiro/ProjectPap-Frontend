@@ -9,19 +9,31 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import publicadores.ActividadDeportiva;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+
 import java.io.IOException;
 import java.util.List;
 
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.Clase.controllers.ControllerRanking;
+import javax.xml.rpc.ServiceException;
+
+
 
 @WebServlet("/RankingActividades")
 public class RankingActividades extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ControllerRanking controllerRanking = new ControllerRanking();
+    	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+		try {
+			port = cps.getControladorPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-        List<ActividadDeportiva> rankingActividades = controllerRanking.obtenerRankingDeActividades();
+        List<ActividadDeportiva> rankingActividades = (List<ActividadDeportiva>) port.obtenerRankingDeActividades();
 
         response.setContentType("text/html;charset=UTF-8");
         try (java.io.PrintWriter out = response.getWriter()) {
@@ -54,7 +66,7 @@ public class RankingActividades extends HttpServlet {
             out.println("</html>");
         }
 
-        controllerRanking.closeEntityManagerFactory();
+       
     }
 }
 

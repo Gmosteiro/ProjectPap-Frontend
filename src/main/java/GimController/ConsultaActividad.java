@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.xml.rpc.ServiceException;
+
 import publicadores.ActividadDeportiva;
 import publicadores.ArrayList;
 import publicadores.Clase;
@@ -30,7 +32,13 @@ public class ConsultaActividad extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        try {
+			ControladorPublish port = cps.getControladorPublishPort();
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String nombreActividad = request.getParameter("nombreActividad");
 		System.out.println("nombreActividad - " + nombreActividad);
 
@@ -101,9 +109,10 @@ public class ConsultaActividad extends HttpServlet {
 		try {
 	
 
-		
+			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+	        ControladorPublish port = cps.getControladorPublishPort();
 
-			ActividadDeportiva actividad = retornarActividadPorNombre(nombreActividad);
+			ActividadDeportiva actividad = port.obtenerActividadPorNombre(nombreActividad);
 
 			response.setContentType("text/html");
 
@@ -135,7 +144,7 @@ public class ConsultaActividad extends HttpServlet {
 			}
 
 			// Agregar una nueva fila para mostrar las clases asociadas
-			List<Clase> clases = (List<Clase>) getClasesByActividad(nombreActividad);
+			List<Clase> clases = (List<Clase>) port.getClasesByActividad(nombreActividad);
 			if (clases != null && !clases.isEmpty()) {
 				out.println("<tr>");
 				out.println("<td colspan='6'><strong>Clases Asociadas</strong></td>");
@@ -161,16 +170,6 @@ public class ConsultaActividad extends HttpServlet {
 		}
 	}
 	
-	  public ActividadDeportiva retornarActividadPorNombre(String nombreActividad) throws Exception {
-	    	ControladorPublishService cps = new ControladorPublishServiceLocator();
-	    	ControladorPublish port = cps.getControladorPublishPort();
-	    	return port.obtenerActividadPorNombre(nombreActividad);
-	    }
-	  
-	  public ArrayList getClasesByActividad(String nombreActividad) throws Exception {
-	    	ControladorPublishService cps = new ControladorPublishServiceLocator();
-	    	ControladorPublish port = cps.getControladorPublishPort();
-	    	return port.getClasesByActividad(nombreActividad);
-	    }
+
 	
 }
