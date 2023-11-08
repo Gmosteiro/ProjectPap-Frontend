@@ -4,7 +4,6 @@
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/ControladorPublishPortBindingStub.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/AbstractList.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/com/mycompany/gimnasio_web/JakartaRestConfiguration.java
-/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/ArrayList.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetActividades.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/com/mycompany/gimnasio_web/resources/JakartaEE10Resource.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetSocios.java
@@ -19,9 +18,7 @@
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/Usuario.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetClases.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/Socio.java
-/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/LocalTime.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/AltaClase.java
-/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/LocalDate.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/InstitucionDeportiva.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetImage.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetInstituciones.java

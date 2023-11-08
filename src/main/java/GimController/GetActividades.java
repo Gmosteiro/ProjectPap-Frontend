@@ -14,6 +14,7 @@ import publicadores.ActividadDeportiva;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
+import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 
@@ -35,7 +36,7 @@ public class GetActividades extends HttpServlet {
 
             if (institucionNombre != null) {
                 InstitucionDeportiva instituto = port.getInstitucionesByName(institucionNombre);
-                ActividadDeportiva[] listaactividades = instituto.getActividades();
+                ArrayList<ActividadDeportiva> listaactividades = instituto.getActividades();
 
                 // Construye una lista de nombres de actividades en formato de texto plano
                 StringBuilder textoactividades = new StringBuilder();

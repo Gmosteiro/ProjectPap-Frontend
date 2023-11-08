@@ -8,29 +8,29 @@
 package publicadores;
 
 public class Profesor extends publicadores.Usuario implements java.io.Serializable {
-    private java.lang.String biografia;
+    private String biografia;
 
-    private java.lang.String descripcion;
+    private String descripcion;
 
     private publicadores.InstitucionDeportiva institucion;
 
-    private java.lang.String sitioWeb;
+    private String sitioWeb;
 
     public Profesor() {
     }
 
     public Profesor(
-            java.lang.String apellido,
-            java.lang.String contrasena,
-            java.lang.String email,
+            String apellido,
+            String contrasena,
+            String email,
             java.time.LocalDate fechaNac,
-            java.lang.String img,
-            java.lang.String nickname,
-            java.lang.String nombre,
-            java.lang.String biografia,
-            java.lang.String descripcion,
+            String img,
+            String nickname,
+            String nombre,
+            String biografia,
+            String descripcion,
             publicadores.InstitucionDeportiva institucion,
-            java.lang.String sitioWeb) {
+            String sitioWeb) {
         super(
                 apellido,
                 contrasena,
@@ -50,7 +50,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @return biografia
      */
-    public java.lang.String getBiografia() {
+    public String getBiografia() {
         return biografia;
     }
 
@@ -59,7 +59,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @param biografia
      */
-    public void setBiografia(java.lang.String biografia) {
+    public void setBiografia(String biografia) {
         this.biografia = biografia;
     }
 
@@ -68,7 +68,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @return descripcion
      */
-    public java.lang.String getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
@@ -77,7 +77,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @param descripcion
      */
-    public void setDescripcion(java.lang.String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -104,7 +104,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @return sitioWeb
      */
-    public java.lang.String getSitioWeb() {
+    public String getSitioWeb() {
         return sitioWeb;
     }
 
@@ -113,7 +113,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * 
      * @param sitioWeb
      */
-    public void setSitioWeb(java.lang.String sitioWeb) {
+    public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
     }
 
@@ -123,8 +123,6 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
         if (!(obj instanceof Profesor))
             return false;
         Profesor other = (Profesor) obj;
-        if (obj == null)
-            return false;
         if (this == obj)
             return true;
         if (__equalsCalc != null) {
@@ -223,7 +221,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
+            String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanSerializer(
@@ -234,7 +232,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
+            String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanDeserializer(

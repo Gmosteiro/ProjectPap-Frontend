@@ -5,27 +5,19 @@
 package GimController;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.Sesion;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-
 import org.json.JSONObject;
 
 public class AltaClase extends HttpServlet {

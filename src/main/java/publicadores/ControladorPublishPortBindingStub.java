@@ -61,7 +61,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("obtenerRankingDeClases");
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -70,7 +70,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("obtenerRankingDeActividades");
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -126,7 +126,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("getInstituciones");
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -140,7 +140,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                 publicadores.ActividadDeportiva.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -178,7 +178,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                 false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -245,7 +245,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                 false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -316,7 +316,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                 false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -365,7 +365,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                 new javax.xml.namespace.QName("http://publicadores/", "clase"), publicadores.Clase.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://publicadores/", "arrayList"));
-        oper.setReturnClass(publicadores.ArrayList.class);
+        oper.setReturnClass(java.util.ArrayList.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
@@ -479,7 +479,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
 
         qName = new javax.xml.namespace.QName("http://publicadores/", "arrayList");
         cachedSerQNames.add(qName);
-        cls = publicadores.ArrayList.class;
+        cls = java.util.ArrayList.class;
         cachedSerClasses.add(cls);
         cachedSerFactories.add(beansf);
         cachedDeserFactories.add(beandf);
@@ -707,7 +707,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<Clase>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -742,7 +742,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<ActividadDeportiva>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<ActividadDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -808,7 +808,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<InstitucionDeportiva>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<InstitucionDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -844,7 +844,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<Clase>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -915,7 +915,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<Clase>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1021,7 +1021,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<ActividadDeportiva>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<ActividadDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1162,7 +1162,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<Clase>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -1267,7 +1267,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
                     return (ArrayList<Socio>) _resp;
                 } catch (java.lang.Exception _exception) {
                     return (ArrayList<Socio>) org.apache.axis.utils.JavaUtils.convert(_resp,
-                            publicadores.ArrayList.class);
+                            java.util.ArrayList.class);
                 }
             }
         } catch (org.apache.axis.AxisFault axisFaultException) {

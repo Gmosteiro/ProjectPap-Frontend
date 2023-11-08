@@ -34,7 +34,7 @@ public class RegistroDictadoClase extends HttpServlet {
             String nombreInstitucion = request.getParameter("nombreInstitucion");
             if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
                 InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
-                ActividadDeportiva[] listaactividades = instituto.getActividades();
+                ArrayList<ActividadDeportiva> listaactividades = instituto.getActividades();
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
@@ -58,6 +58,8 @@ public class RegistroDictadoClase extends HttpServlet {
             } else {
                 // ArrayList publicadores.ControladorPublish.getInstituciones()
                 // throwsRemoteException
+                
+                System.out.println("Instituciones: " + port.getInstituciones());
                 ArrayList<InstitucionDeportiva> instituciones = port.getInstituciones();
 
                 response.setContentType("application/json");
