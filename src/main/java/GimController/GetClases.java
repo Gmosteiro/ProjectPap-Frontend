@@ -31,13 +31,13 @@ public class GetClases extends HttpServlet {
 
         ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
+        try {
+            port = cps.getControladorPublishPort();
+        } catch (ServiceException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         List<Clase> clases = new ArrayList<>();
         // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
 
@@ -47,12 +47,9 @@ public class GetClases extends HttpServlet {
 
         } else if (nombreClase != null && nombreClase.length() > 0) {
 
-       
             clases.add(port.obtenerClasePorNombre(nombreClase));
 
         } else if (nombreActividad != null && nombreActividad.length() > 0) {
-
-
 
             ActividadDeportiva actividadBuscada = port.obtenerActividadPorNombre(nombreActividad);
 
@@ -86,7 +83,7 @@ public class GetClases extends HttpServlet {
             for (Clase clase : clases) {
                 out.println("<tr>");
                 out.println("<td>" + clase.getNombre() + "</td>");
-                out.println("<td>" + clase.getFechaFormatted() + "</td>");
+                out.println("<td>" + clase.getFecha() + "</td>");
                 out.println("<td>" + formatFecha(clase.getFechaReg()) + "</td>");
                 out.println("<td>" + clase.getHora() + "</td>");
                 out.println("<td>" + clase.getUrl() + "</td>");

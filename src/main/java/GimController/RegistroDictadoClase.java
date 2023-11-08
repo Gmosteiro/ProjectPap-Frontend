@@ -30,56 +30,59 @@ public class RegistroDictadoClase extends HttpServlet {
         ControladorPublish port = null;
         try {
             port = cps.getControladorPublishPort();
+
+            String nombreInstitucion = request.getParameter("nombreInstitucion");
+            if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
+                InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
+                ActividadDeportiva[] listaactividades = instituto.getActividades();
+
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+
+                JSONArray actividadesArray = new JSONArray();
+
+                for (ActividadDeportiva actividadDeportiva : listaactividades) {
+
+                    JSONObject actividadJSON = new JSONObject();
+                    actividadJSON.put("nombre", actividadDeportiva.getNombre());
+
+                    actividadesArray.put(actividadJSON);
+                }
+
+                JSONObject jsonResponse = new JSONObject();
+                jsonResponse.put("ERROR", false);
+                jsonResponse.put("Actividades", actividadesArray);
+
+                response.getWriter().write(jsonResponse.toString());
+
+            } else {
+                // ArrayList publicadores.ControladorPublish.getInstituciones()
+                // throwsRemoteException
+                ArrayList<InstitucionDeportiva> instituciones = port.getInstituciones();
+
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+
+                JSONArray institucionesArray = new JSONArray();
+
+                for (InstitucionDeportiva institucion : instituciones) {
+
+                    JSONObject institucionJSON = new JSONObject();
+                    institucionJSON.put("nombre", institucion.getNombre());
+
+                    institucionesArray.put(institucionJSON);
+                }
+
+                JSONObject jsonResponse = new JSONObject();
+                jsonResponse.put("ERROR", false);
+                jsonResponse.put("Instituciones", institucionesArray);
+
+                response.getWriter().write(jsonResponse.toString());
+
+            }
         } catch (ServiceException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
-        }
-        String nombreInstitucion = request.getParameter("nombreInstitucion");
-        if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
-            InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
-            ActividadDeportiva[] listaactividades = instituto.getActividades();
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-
-            JSONArray actividadesArray = new JSONArray();
-
-            for (ActividadDeportiva actividadDeportiva : listaactividades) {
-
-                JSONObject actividadJSON = new JSONObject();
-                actividadJSON.put("nombre", actividadDeportiva.getNombre());
-
-                actividadesArray.put(actividadJSON);
-            }
-
-            JSONObject jsonResponse = new JSONObject();
-            jsonResponse.put("ERROR", false);
-            jsonResponse.put("Actividades", actividadesArray);
-
-            response.getWriter().write(jsonResponse.toString());
-
-        } else {
-            ArrayList<InstitucionDeportiva> instituciones = port.getInstituciones();
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-
-            JSONArray institucionesArray = new JSONArray();
-
-            for (InstitucionDeportiva institucion : instituciones) {
-
-                JSONObject institucionJSON = new JSONObject();
-                institucionJSON.put("nombre", institucion.getNombre());
-
-                institucionesArray.put(institucionJSON);
-            }
-
-            JSONObject jsonResponse = new JSONObject();
-            jsonResponse.put("ERROR", false);
-            jsonResponse.put("Instituciones", institucionesArray);
-
-            response.getWriter().write(jsonResponse.toString());
-
         }
     }
 

@@ -7,12 +7,12 @@
 
 package publicadores;
 
-public class Clase  implements java.io.Serializable {
-    private publicadores.LocalDate fecha;
+public class Clase implements java.io.Serializable {
+    private java.time.LocalDate fecha;
 
-    private publicadores.LocalDate fechaReg;
+    private java.time.LocalDate fechaReg;
 
-    private publicadores.LocalTime hora;
+    private java.time.LocalTime hora;
 
     private java.lang.String img;
 
@@ -28,84 +28,77 @@ public class Clase  implements java.io.Serializable {
     }
 
     public Clase(
-           publicadores.LocalDate fecha,
-           publicadores.LocalDate fechaReg,
-           publicadores.LocalTime hora,
-           java.lang.String img,
-           java.lang.String nombre,
-           publicadores.Profesor profesor,
-           publicadores.Registro[] registros,
-           java.lang.String url) {
-           this.fecha = fecha;
-           this.fechaReg = fechaReg;
-           this.hora = hora;
-           this.img = img;
-           this.nombre = nombre;
-           this.profesor = profesor;
-           this.registros = registros;
-           this.url = url;
+            java.time.LocalDate fecha,
+            java.time.LocalDate fechaReg,
+            java.time.LocalTime hora,
+            java.lang.String img,
+            java.lang.String nombre,
+            publicadores.Profesor profesor,
+            publicadores.Registro[] registros,
+            java.lang.String url) {
+        this.fecha = fecha;
+        this.fechaReg = fechaReg;
+        this.hora = hora;
+        this.img = img;
+        this.nombre = nombre;
+        this.profesor = profesor;
+        this.registros = registros;
+        this.url = url;
     }
-
 
     /**
      * Gets the fecha value for this Clase.
      * 
      * @return fecha
      */
-    public publicadores.LocalDate getFecha() {
+    public java.time.LocalDate getFecha() {
         return fecha;
     }
-
 
     /**
      * Sets the fecha value for this Clase.
      * 
      * @param fecha
      */
-    public void setFecha(publicadores.LocalDate fecha) {
+    public void setFecha(java.time.LocalDate fecha) {
         this.fecha = fecha;
     }
-
 
     /**
      * Gets the fechaReg value for this Clase.
      * 
      * @return fechaReg
      */
-    public publicadores.LocalDate getFechaReg() {
+    public java.time.LocalDate getFechaReg() {
         return fechaReg;
     }
-
 
     /**
      * Sets the fechaReg value for this Clase.
      * 
      * @param fechaReg
      */
-    public void setFechaReg(publicadores.LocalDate fechaReg) {
+    public void setFechaReg(java.time.LocalDate fechaReg) {
         this.fechaReg = fechaReg;
     }
-
 
     /**
      * Gets the hora value for this Clase.
      * 
      * @return hora
      */
-    public publicadores.LocalTime getHora() {
+    public java.time.LocalTime getHora() {
         return hora;
     }
-
 
     /**
      * Sets the hora value for this Clase.
      * 
      * @param hora
      */
-    public void setHora(publicadores.LocalTime hora) {
+    public void setHora(java.time.LocalTime hora) {
         this.hora = hora;
     }
-
 
     /**
      * Gets the img value for this Clase.
@@ -116,7 +109,6 @@ public class Clase  implements java.io.Serializable {
         return img;
     }
 
-
     /**
      * Sets the img value for this Clase.
      * 
@@ -125,7 +117,6 @@ public class Clase  implements java.io.Serializable {
     public void setImg(java.lang.String img) {
         this.img = img;
     }
-
 
     /**
      * Gets the nombre value for this Clase.
@@ -136,7 +127,6 @@ public class Clase  implements java.io.Serializable {
         return nombre;
     }
 
-
     /**
      * Sets the nombre value for this Clase.
      * 
@@ -145,7 +135,6 @@ public class Clase  implements java.io.Serializable {
     public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
-
 
     /**
      * Gets the profesor value for this Clase.
@@ -156,7 +145,6 @@ public class Clase  implements java.io.Serializable {
         return profesor;
     }
 
-
     /**
      * Sets the profesor value for this Clase.
      * 
@@ -166,7 +154,6 @@ public class Clase  implements java.io.Serializable {
         this.profesor = profesor;
     }
 
-
     /**
      * Gets the registros value for this Clase.
      * 
@@ -175,7 +162,6 @@ public class Clase  implements java.io.Serializable {
     public publicadores.Registro[] getRegistros() {
         return registros;
     }
-
 
     /**
      * Sets the registros value for this Clase.
@@ -194,7 +180,6 @@ public class Clase  implements java.io.Serializable {
         this.registros[i] = _value;
     }
 
-
     /**
      * Gets the url value for this Clase.
      * 
@@ -203,7 +188,6 @@ public class Clase  implements java.io.Serializable {
     public java.lang.String getUrl() {
         return url;
     }
-
 
     /**
      * Sets the url value for this Clase.
@@ -215,46 +199,58 @@ public class Clase  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Clase)) return false;
+        if (!(obj instanceof Clase))
+            return false;
         Clase other = (Clase) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null)
+            return false;
+        if (this == obj)
+            return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.fecha==null && other.getFecha()==null) || 
-             (this.fecha!=null &&
-              this.fecha.equals(other.getFecha()))) &&
-            ((this.fechaReg==null && other.getFechaReg()==null) || 
-             (this.fechaReg!=null &&
-              this.fechaReg.equals(other.getFechaReg()))) &&
-            ((this.hora==null && other.getHora()==null) || 
-             (this.hora!=null &&
-              this.hora.equals(other.getHora()))) &&
-            ((this.img==null && other.getImg()==null) || 
-             (this.img!=null &&
-              this.img.equals(other.getImg()))) &&
-            ((this.nombre==null && other.getNombre()==null) || 
-             (this.nombre!=null &&
-              this.nombre.equals(other.getNombre()))) &&
-            ((this.profesor==null && other.getProfesor()==null) || 
-             (this.profesor!=null &&
-              this.profesor.equals(other.getProfesor()))) &&
-            ((this.registros==null && other.getRegistros()==null) || 
-             (this.registros!=null &&
-              java.util.Arrays.equals(this.registros, other.getRegistros()))) &&
-            ((this.url==null && other.getUrl()==null) || 
-             (this.url!=null &&
-              this.url.equals(other.getUrl())));
+        _equals = true &&
+                ((this.fecha == null && other.getFecha() == null) ||
+                        (this.fecha != null &&
+                                this.fecha.equals(other.getFecha())))
+                &&
+                ((this.fechaReg == null && other.getFechaReg() == null) ||
+                        (this.fechaReg != null &&
+                                this.fechaReg.equals(other.getFechaReg())))
+                &&
+                ((this.hora == null && other.getHora() == null) ||
+                        (this.hora != null &&
+                                this.hora.equals(other.getHora())))
+                &&
+                ((this.img == null && other.getImg() == null) ||
+                        (this.img != null &&
+                                this.img.equals(other.getImg())))
+                &&
+                ((this.nombre == null && other.getNombre() == null) ||
+                        (this.nombre != null &&
+                                this.nombre.equals(other.getNombre())))
+                &&
+                ((this.profesor == null && other.getProfesor() == null) ||
+                        (this.profesor != null &&
+                                this.profesor.equals(other.getProfesor())))
+                &&
+                ((this.registros == null && other.getRegistros() == null) ||
+                        (this.registros != null &&
+                                java.util.Arrays.equals(this.registros, other.getRegistros())))
+                &&
+                ((this.url == null && other.getUrl() == null) ||
+                        (this.url != null &&
+                                this.url.equals(other.getUrl())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -280,12 +276,10 @@ public class Clase  implements java.io.Serializable {
             _hashCode += getProfesor().hashCode();
         }
         if (getRegistros() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getRegistros());
-                 i++) {
+            for (int i = 0; i < java.lang.reflect.Array.getLength(getRegistros()); i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getRegistros(), i);
                 if (obj != null &&
-                    !obj.getClass().isArray()) {
+                        !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -298,8 +292,8 @@ public class Clase  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(Clase.class, true);
+    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(Clase.class,
+            true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "clase"));
@@ -373,24 +367,22 @@ public class Clase  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return new org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return new org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

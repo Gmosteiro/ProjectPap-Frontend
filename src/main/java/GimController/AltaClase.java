@@ -28,71 +28,71 @@ import java.util.Base64;
 
 import org.json.JSONObject;
 
-
-
 public class AltaClase extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try{
-        	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        try {
+            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
             ControladorPublish port = cps.getControladorPublishPort();
-        System.out.println("Solicitud a AltaClase recibida");   
-        HttpSession session = request.getSession();
-        Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
-        String profesor = currentSession.getNombre();
-        
-   			BufferedReader reader = request.getReader();
-			StringBuilder sb = new StringBuilder();
-			String line;
-			while ((line = reader.readLine()) != null) {
-				sb.append(line);
-			}
-			reader.close();
+            System.out.println("Solicitud a AltaClase recibida");
+            HttpSession session = request.getSession();
+            Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
+            String profesor = currentSession.getNombre();
 
-			JSONObject jsonData = new JSONObject(sb.toString());
+            BufferedReader reader = request.getReader();
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            reader.close();
 
-			String actividad = jsonData.getString("actividad");
-			String nombreClase = jsonData.getString("nombreClase");
-			String fechaHoraInicio = jsonData.getString("fechaHoraInicio");
-                        String imagenBase64 = jsonData.getString("imagen");
-        // Obtiene los parámetros del formulario
-            
-            System.out.println("actividad "+actividad);
-            
-            System.out.println("nombreclase"+nombreClase);
+            JSONObject jsonData = new JSONObject(sb.toString());
 
-            System.out.println("hora "+fechaHoraInicio);
-        // Divide la cadena en fecha y hora
+            String actividad = jsonData.getString("actividad");
+            String nombreClase = jsonData.getString("nombreClase");
+            String fechaHoraInicio = jsonData.getString("fechaHoraInicio");
+            String imagenBase64 = jsonData.getString("imagen");
+            // Obtiene los parámetros del formulario
+
+            System.out.println("actividad " + actividad);
+
+            System.out.println("nombreclase" + nombreClase);
+
+            System.out.println("hora " + fechaHoraInicio);
+            // Divide la cadena en fecha y hora
             String[] fechaHora = fechaHoraInicio.split("T");
             String fecha = fechaHora[0];
             String hora = fechaHora[1];
-            System.out.println("fehca "+fecha);
-            System.out.println("hora "+hora);
-        // Parsea la cadena de fecha en un objeto LocalDate
+            System.out.println("fehca " + fecha);
+            System.out.println("hora " + hora);
+            // Parsea la cadena de fecha en un objeto LocalDate
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate fechaInicio = LocalDate.parse(fecha, dateFormatter);
 
-        // Parsea la cadena de hora en un objeto LocalTime
+            // Parsea la cadena de hora en un objeto LocalTime
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             LocalTime horaInicio = LocalTime.parse(hora, timeFormatter);
-        // Obtengo la fecha del distema con solo yyy-mm-dd
+            // Obtengo la fecha del distema con solo yyy-mm-dd
             LocalDate fechaActual = LocalDate.now();
-        //Consigo la imagen y la formateo a base64
-            
-        //Ya lo tengo formateado
-        //empezar con las cosas
+            // Consigo la imagen y la formateo a base64
 
-            port.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64, actividad);
-        response.setContentType("text/plain");
-        response.getWriter().write("La clase se ha dado de alta correctamente.");
-    } catch (Exception e){
+            // Ya lo tengo formateado
+            // empezar con las cosas
+
+            port.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64,
+                    actividad);
+            response.setContentType("text/plain");
+            response.getWriter().write("La clase se ha dado de alta correctamente.");
+        } catch (Exception e) {
             response.setContentType("text/plain");
             response.getWriter().write("Error al dar de alta la clase: " + e.getMessage());
-}
-        // Finalmente, redirige o realiza cualquier acción adicional según tus necesidades
-        
+        }
+        // Finalmente, redirige o realiza cualquier acción adicional según tus
+        // necesidades
+
     }
-    
+
 }
