@@ -21,10 +21,10 @@ import java.util.logging.Logger;
 import javax.xml.rpc.ServiceException;
 
 import publicadores.ActividadDeportiva;
-import java.util.ArrayList;
+
 import publicadores.Clase;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishService;
+
 import publicadores.ControladorPublishServiceLocator;
 
 @WebServlet("/consultaActividades")
@@ -32,13 +32,7 @@ public class ConsultaActividad extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-		try {
-			ControladorPublish port = cps.getControladorPublishPort();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		String nombreActividad = request.getParameter("nombreActividad");
 		System.out.println("nombreActividad - " + nombreActividad);
 
@@ -170,7 +164,7 @@ public class ConsultaActividad extends HttpServlet {
 			System.out.println("Catch retornarActividadPorNombre " + e);
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}

@@ -15,10 +15,7 @@ import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
 
-import java.util.List;
-
 import javax.xml.rpc.ServiceException;
-
 
 /**
  *
@@ -28,36 +25,38 @@ public class GetActividades extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-        ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        String institucionNombre = request.getParameter("institucion");
-        
-        if (institucionNombre != null) {
-            InstitucionDeportiva instituto = port.getInstitucionesByName(institucionNombre);
-            ActividadDeportiva[] listaactividades = instituto.getActividades();
+        try {
 
-            // Construye una lista de nombres de actividades en formato de texto plano
-            StringBuilder textoactividades = new StringBuilder();
-            for (ActividadDeportiva actividad : listaactividades) {
-                textoactividades.append(actividad.getNombre()).append("\n");
+            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = null;
+            port = cps.getControladorPublishPort();
+
+            String institucionNombre = request.getParameter("institucion");
+
+            if (institucionNombre != null) {
+                InstitucionDeportiva instituto = port.getInstitucionesByName(institucionNombre);
+                ActividadDeportiva[] listaactividades = instituto.getActividades();
+
+                // Construye una lista de nombres de actividades en formato de texto plano
+                StringBuilder textoactividades = new StringBuilder();
+                for (ActividadDeportiva actividad : listaactividades) {
+                    textoactividades.append(actividad.getNombre()).append("\n");
+                }
+
+                // Configura la respuesta HTTP como texto plano
+                response.setContentType("text/plain");
+                response.setCharacterEncoding("UTF-8");
+
+                // Envía la lista de nombres de actividades como respuesta al cliente
+                PrintWriter out = response.getWriter();
+                out.print(textoactividades.toString());
+            } else {
+                // Maneja el caso si no se proporciona una institución válida
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Por favor, ingresa una institución válida.");
             }
+        } catch (ServiceException e) {
 
-            // Configura la respuesta HTTP como texto plano
-            response.setContentType("text/plain");
-            response.setCharacterEncoding("UTF-8");
-
-            // Envía la lista de nombres de actividades como respuesta al cliente
-            PrintWriter out = response.getWriter();
-            out.print(textoactividades.toString());
-        } else {
-            // Maneja el caso si no se proporciona una institución válida
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Por favor, ingresa una institución válida.");
+            e.printStackTrace();
         }
     }
 }

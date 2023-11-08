@@ -3,8 +3,7 @@ package GimController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 
@@ -21,21 +20,20 @@ import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
 
-
 @WebServlet("/RegistroDictadoClase")
 
 public class RegistroDictadoClase extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            port = cps.getControladorPublishPort();
+        } catch (ServiceException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
             InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
@@ -61,7 +59,7 @@ public class RegistroDictadoClase extends HttpServlet {
             response.getWriter().write(jsonResponse.toString());
 
         } else {
-            List<InstitucionDeportiva> instituciones = (List<InstitucionDeportiva>) port.getInstituciones();
+            ArrayList<InstitucionDeportiva> instituciones = port.getInstituciones();
 
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
@@ -88,7 +86,7 @@ public class RegistroDictadoClase extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-        	ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
             ControladorPublish port = cps.getControladorPublishPort();
             System.out.println("En Registro Dictado Clase");
             BufferedReader reader = request.getReader();
@@ -105,8 +103,6 @@ public class RegistroDictadoClase extends HttpServlet {
             String clase = jsonData.getString("clase");
 
             LocalDate fecha = LocalDate.now();
-
-     
 
             // response
             response.setContentType("application/json");
