@@ -7,14 +7,12 @@
 
 package publicadores;
 
-import java.time.format.DateTimeFormatter;
-
 public class Clase  implements java.io.Serializable {
-    private java.time.LocalDate fecha;
+    private publicadores.LocalDate fecha;
 
-    private java.time.LocalDate fechaReg;
+    private publicadores.LocalDate fechaReg;
 
-    private java.time.LocalTime hora;
+    private publicadores.LocalTime hora;
 
     private java.lang.String img;
 
@@ -30,9 +28,9 @@ public class Clase  implements java.io.Serializable {
     }
 
     public Clase(
-    		java.time.LocalDate fecha,
-    		java.time.LocalDate fechaReg,
-    		java.time.LocalTime hora,
+           publicadores.LocalDate fecha,
+           publicadores.LocalDate fechaReg,
+           publicadores.LocalTime hora,
            java.lang.String img,
            java.lang.String nombre,
            publicadores.Profesor profesor,
@@ -54,24 +52,17 @@ public class Clase  implements java.io.Serializable {
      * 
      * @return fecha
      */
-    public java.time.LocalDate getFecha() {
+    public publicadores.LocalDate getFecha() {
         return fecha;
     }
 
-    public String getFechaFormatted() {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        // Convert LocalDate to LocalDateTime to enable formatting
-        String formattedDate = fecha.atStartOfDay().format(formatter);
-        return formattedDate;
-    }
     /**
      * Sets the fecha value for this Clase.
      * 
      * @param fecha
      */
-    public void setFecha(java.time.LocalDate fecha) {
+    public void setFecha(publicadores.LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -81,7 +72,7 @@ public class Clase  implements java.io.Serializable {
      * 
      * @return fechaReg
      */
-    public java.time.LocalDate getFechaReg() {
+    public publicadores.LocalDate getFechaReg() {
         return fechaReg;
     }
 
@@ -91,7 +82,7 @@ public class Clase  implements java.io.Serializable {
      * 
      * @param fechaReg
      */
-    public void setFechaReg(java.time.LocalDate fechaReg) {
+    public void setFechaReg(publicadores.LocalDate fechaReg) {
         this.fechaReg = fechaReg;
     }
 
@@ -101,7 +92,7 @@ public class Clase  implements java.io.Serializable {
      * 
      * @return hora
      */
-    public java.time.LocalTime getHora() {
+    public publicadores.LocalTime getHora() {
         return hora;
     }
 
@@ -111,7 +102,7 @@ public class Clase  implements java.io.Serializable {
      * 
      * @param hora
      */
-    public void setHora(java.time.LocalTime hora) {
+    public void setHora(publicadores.LocalTime hora) {
         this.hora = hora;
     }
 
