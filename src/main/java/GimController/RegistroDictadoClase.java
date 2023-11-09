@@ -61,7 +61,7 @@ public class RegistroDictadoClase extends HttpServlet {
                 // throwsRemoteException
 
                 System.out.println("Instituciones: " + port.getInstituciones());
-                java.util.ArrayList instituciones = port.getInstituciones();
+                publicadores.ArrayList instituciones = port.getInstituciones();
                 List<InstitucionDeportiva> listaInstituciones = (List<InstitucionDeportiva>) instituciones;
 
                 response.setContentType("application/json");

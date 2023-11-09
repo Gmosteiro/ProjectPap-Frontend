@@ -69,7 +69,7 @@ public class GetSocios extends HttpServlet {
 
             clase = port.getClaseByNombre(Clase);
 
-            java.util.ArrayList socios = port.getSociosByClase(clase);
+            publicadores.ArrayList socios = port.getSociosByClase(clase);
             ArrayList<Usuario> usuarios = new ArrayList<>();
             List<Usuario> socioss = (List<Usuario>) socios;
             for (Usuario socio : socioss) {

@@ -6,6 +6,7 @@
  */
 
 package publicadores;
+import java.time.LocalDate;
 
 public class ActividadDeportiva implements java.io.Serializable {
     private float costo;

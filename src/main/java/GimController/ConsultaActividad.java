@@ -8,6 +8,7 @@
 package GimController;
 
 import jakarta.servlet.ServletException;
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,8 +25,8 @@ import publicadores.ActividadDeportiva;
 
 import publicadores.Clase;
 import publicadores.ControladorPublish;
-
 import publicadores.ControladorPublishServiceLocator;
+
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -61,9 +62,11 @@ public class ConsultaActividad extends HttpServlet {
 				Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
 			}
 
-			List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) port
+			String actividades = port
 					.getActividadesByProfe(nicknameUsuario);
-
+			
+			System.out.println(actividades);
+			
 			response.setContentType("text/html");
 
 			PrintWriter out = response.getWriter();
@@ -80,23 +83,23 @@ public class ConsultaActividad extends HttpServlet {
 			out.println("<th>Imagen</th>");
 
 			// Data
-			if (actividades != null && !actividades.isEmpty()) {
-				for (ActividadDeportiva actividad : actividades) {
-					out.println("<tr>");
-					out.println("<td>" + actividad.getNombre() + "</td>");
-					out.println("<td>" + actividad.getDescripcion() + "</td>");
-					out.println("<td>" + actividad.getDuracion() + "</td>");
-					out.println("<td>" + actividad.getCosto() + "</td>");
-					out.println("<td>" + actividad.getFechaReg() + "</td>");
-					out.println(
-							"<td> <img src=\"data:image/png;base64," + actividad.getImg()
-									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px; \" /> </td>");
-
-					out.println("</tr>");
-				}
-			} else {
-				out.println("<tr><td colspan='5'>No se encontraron Actividades</td></tr>");
-			}
+//			if (actividades != null && !actividades.isEmpty()) {
+//				for (ActividadDeportiva actividad : actividades) {
+//					out.println("<tr>");
+//					out.println("<td>" + actividad.getNombre() + "</td>");
+//					out.println("<td>" + actividad.getDescripcion() + "</td>");
+//					out.println("<td>" + actividad.getDuracion() + "</td>");
+//					out.println("<td>" + actividad.getCosto() + "</td>");
+//					out.println("<td>" + actividad.getFechaReg() + "</td>");
+//					out.println(
+//							"<td> <img src=\"data:image/png;base64," + actividad.getImg()
+//									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px; \" /> </td>");
+//
+//					out.println("</tr>");
+//				}
+//			} else {
+//				out.println("<tr><td colspan='5'>No se encontraron Actividades</td></tr>");
+//			}
 
 		} catch (IOException e) {
 			System.out.println("Catch retornarActividadPorNombre " + e);
