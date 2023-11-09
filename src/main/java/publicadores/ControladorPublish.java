@@ -19,7 +19,8 @@ public interface ControladorPublish extends java.rmi.Remote {
         public java.util.ArrayList obtenerRankingDeActividades() throws java.rmi.RemoteException;
 
         public void addClase(java.lang.String arg0, java.time.LocalDate arg1, java.time.LocalTime arg2,
-                        java.lang.String arg3, java.time.LocalDate arg4, java.lang.String arg5, java.lang.String arg6,
+                        java.lang.String arg3, java.time.LocalDate arg4, java.lang.String arg5,
+                        java.lang.String arg6,
                         java.lang.String arg7) throws java.rmi.RemoteException;
 
         public java.util.ArrayList getInstituciones() throws java.rmi.RemoteException;

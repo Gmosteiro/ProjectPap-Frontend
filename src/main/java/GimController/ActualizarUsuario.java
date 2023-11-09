@@ -18,12 +18,12 @@ import org.json.JSONObject;
 
 @WebServlet("/actualizarUsuario")
 public class ActualizarUsuario extends HttpServlet {
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-            ControladorPublish port = cps.getControladorPublishPort();
+			ControladorPublish port = cps.getControladorPublishPort();
 			System.out.println("En Actualizar Usuario");
 			BufferedReader reader = request.getReader();
 			StringBuilder sb = new StringBuilder();
@@ -45,9 +45,6 @@ public class ActualizarUsuario extends HttpServlet {
 
 			LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-			
-
-	
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
 			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento,
 					profileImage);

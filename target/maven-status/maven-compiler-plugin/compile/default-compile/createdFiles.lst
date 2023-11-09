@@ -26,10 +26,8 @@ publicadores\ControladorPublishProxy.class
 GimController\RankingActividades.class
 GimController\RankingClases.class
 GimController\GetImagenClase.class
-publicadores\LocalTime.class
 com\mycompany\gimnasio_web\JakartaRestConfiguration.class
 publicadores\Socio.class
 publicadores\ControladorPublishServiceLocator.class
 publicadores\ActividadDeportiva.class
 GimController\GetSocios.class
-publicadores\LocalDate.class
