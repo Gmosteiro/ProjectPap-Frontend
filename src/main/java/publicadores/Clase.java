@@ -7,39 +7,35 @@
 
 package publicadores;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-
 public class Clase implements java.io.Serializable {
-    private LocalDate fecha;
+    private java.time.LocalDate fecha;
 
-    private LocalDate fechaReg;
+    private java.time.LocalDate fechaReg;
 
-    private LocalTime hora;
+    private java.time.LocalTime hora;
 
-    private String img;
+    private java.lang.String img;
 
-    private String nombre;
+    private java.lang.String nombre;
 
     private publicadores.Profesor profesor;
 
-    private ArrayList<publicadores.Registro> registros;
+    private publicadores.Registro[] registros;
 
-    private String url;
+    private java.lang.String url;
 
     public Clase() {
     }
 
     public Clase(
-            LocalDate fecha,
-            LocalDate fechaReg,
-            LocalTime hora,
-            String img,
-            String nombre,
+            java.time.LocalDate fecha,
+            java.time.LocalDate fechaReg,
+            java.time.LocalTime hora,
+            java.lang.String img,
+            java.lang.String nombre,
             publicadores.Profesor profesor,
-            ArrayList<publicadores.Registro> registros,
-            String url) {
+            publicadores.Registro[] registros,
+            java.lang.String url) {
         this.fecha = fecha;
         this.fechaReg = fechaReg;
         this.hora = hora;
@@ -55,7 +51,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return fecha
      */
-    public LocalDate getFecha() {
+    public java.time.LocalDate getFecha() {
         return fecha;
     }
 
@@ -64,7 +60,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param fecha
      */
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(java.time.LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -73,7 +69,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return fechaReg
      */
-    public LocalDate getFechaReg() {
+    public java.time.LocalDate getFechaReg() {
         return fechaReg;
     }
 
@@ -82,7 +78,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param fechaReg
      */
-    public void setFechaReg(LocalDate fechaReg) {
+    public void setFechaReg(java.time.LocalDate fechaReg) {
         this.fechaReg = fechaReg;
     }
 
@@ -91,7 +87,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return hora
      */
-    public LocalTime getHora() {
+    public java.time.LocalTime getHora() {
         return hora;
     }
 
@@ -100,7 +96,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param hora
      */
-    public void setHora(LocalTime hora) {
+    public void setHora(java.time.LocalTime hora) {
         this.hora = hora;
     }
 
@@ -109,7 +105,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return img
      */
-    public String getImg() {
+    public java.lang.String getImg() {
         return img;
     }
 
@@ -118,7 +114,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param img
      */
-    public void setImg(String img) {
+    public void setImg(java.lang.String img) {
         this.img = img;
     }
 
@@ -127,7 +123,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return nombre
      */
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
 
@@ -136,7 +132,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
 
@@ -163,7 +159,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return registros
      */
-    public ArrayList<publicadores.Registro> getRegistros() {
+    public publicadores.Registro[] getRegistros() {
         return registros;
     }
 
@@ -172,16 +168,16 @@ public class Clase implements java.io.Serializable {
      * 
      * @param registros
      */
-    public void setRegistros(ArrayList<publicadores.Registro> registros) {
+    public void setRegistros(publicadores.Registro[] registros) {
         this.registros = registros;
     }
 
     public publicadores.Registro getRegistros(int i) {
-        return this.registros.get(i);
+        return this.registros[i];
     }
 
     public void setRegistros(int i, publicadores.Registro _value) {
-        this.registros.set(i, _value);
+        this.registros[i] = _value;
     }
 
     /**
@@ -189,7 +185,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @return url
      */
-    public String getUrl() {
+    public java.lang.String getUrl() {
         return url;
     }
 
@@ -198,7 +194,7 @@ public class Clase implements java.io.Serializable {
      * 
      * @param url
      */
-    public void setUrl(String url) {
+    public void setUrl(java.lang.String url) {
         this.url = url;
     }
 
@@ -244,7 +240,7 @@ public class Clase implements java.io.Serializable {
                 &&
                 ((this.registros == null && other.getRegistros() == null) ||
                         (this.registros != null &&
-                                this.registros == other.getRegistros()))
+                                java.util.Arrays.equals(this.registros, other.getRegistros())))
                 &&
                 ((this.url == null && other.getUrl() == null) ||
                         (this.url != null &&
@@ -371,7 +367,7 @@ public class Clase implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            String mechType,
+            java.lang.String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanSerializer(
@@ -382,7 +378,7 @@ public class Clase implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            String mechType,
+            java.lang.String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanDeserializer(

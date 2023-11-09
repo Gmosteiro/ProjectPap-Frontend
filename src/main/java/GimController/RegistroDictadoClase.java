@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
@@ -34,7 +35,7 @@ public class RegistroDictadoClase extends HttpServlet {
             String nombreInstitucion = request.getParameter("nombreInstitucion");
             if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
                 InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
-                ArrayList<ActividadDeportiva> listaactividades = instituto.getActividades();
+                ActividadDeportiva[] listaactividades = instituto.getActividades();
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
@@ -58,16 +59,17 @@ public class RegistroDictadoClase extends HttpServlet {
             } else {
                 // ArrayList publicadores.ControladorPublish.getInstituciones()
                 // throwsRemoteException
-                
+
                 System.out.println("Instituciones: " + port.getInstituciones());
-                ArrayList<InstitucionDeportiva> instituciones = port.getInstituciones();
+                java.util.ArrayList instituciones = port.getInstituciones();
+                List<InstitucionDeportiva> listaInstituciones = (List<InstitucionDeportiva>) instituciones;
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 
                 JSONArray institucionesArray = new JSONArray();
 
-                for (InstitucionDeportiva institucion : instituciones) {
+                for (InstitucionDeportiva institucion : listaInstituciones) {
 
                     JSONObject institucionJSON = new JSONObject();
                     institucionJSON.put("nombre", institucion.getNombre());

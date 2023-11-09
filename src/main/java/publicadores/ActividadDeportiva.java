@@ -7,31 +7,29 @@
 
 package publicadores;
 
-import java.time.LocalDate;
-
 public class ActividadDeportiva implements java.io.Serializable {
     private float costo;
 
-    private String descripcion;
+    private java.lang.String descripcion;
 
     private int duracion;
 
-    private LocalDate fechaReg;
+    private java.time.LocalDate fechaReg;
 
-    private String img;
+    private java.lang.String img;
 
-    private String nombre;
+    private java.lang.String nombre;
 
     public ActividadDeportiva() {
     }
 
     public ActividadDeportiva(
             float costo,
-            String descripcion,
+            java.lang.String descripcion,
             int duracion,
-            LocalDate fechaReg,
-            String img,
-            String nombre) {
+            java.time.LocalDate fechaReg,
+            java.lang.String img,
+            java.lang.String nombre) {
         this.costo = costo;
         this.descripcion = descripcion;
         this.duracion = duracion;
@@ -63,7 +61,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @return descripcion
      */
-    public String getDescripcion() {
+    public java.lang.String getDescripcion() {
         return descripcion;
     }
 
@@ -72,7 +70,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @param descripcion
      */
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(java.lang.String descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -99,7 +97,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @return fechaReg
      */
-    public LocalDate getFechaReg() {
+    public java.time.LocalDate getFechaReg() {
         return fechaReg;
     }
 
@@ -108,7 +106,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @param fechaReg
      */
-    public void setFechaReg(LocalDate fechaReg) {
+    public void setFechaReg(java.time.LocalDate fechaReg) {
         this.fechaReg = fechaReg;
     }
 
@@ -117,7 +115,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @return img
      */
-    public String getImg() {
+    public java.lang.String getImg() {
         return img;
     }
 
@@ -126,7 +124,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @param img
      */
-    public void setImg(String img) {
+    public void setImg(java.lang.String img) {
         this.img = img;
     }
 
@@ -135,7 +133,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @return nombre
      */
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
 
@@ -144,7 +142,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
 
@@ -270,7 +268,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            String mechType,
+            java.lang.String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanSerializer(
@@ -281,7 +279,7 @@ public class ActividadDeportiva implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            String mechType,
+            java.lang.String mechType,
             java.lang.Class _javaType,
             javax.xml.namespace.QName _xmlType) {
         return new org.apache.axis.encoding.ser.BeanDeserializer(

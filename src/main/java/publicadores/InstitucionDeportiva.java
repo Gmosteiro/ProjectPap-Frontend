@@ -7,148 +7,146 @@
 
 package publicadores;
 
-import java.lang.String;
-import java.util.ArrayList;
+public class InstitucionDeportiva  implements java.io.Serializable {
+    private publicadores.ActividadDeportiva[] actividades;
 
-public class InstitucionDeportiva implements java.io.Serializable {
+    private java.lang.String descripcion;
 
-    private ArrayList<ActividadDeportiva> actividades;
+    private java.lang.String nombre;
 
-    private String descripcion;
-
-    private String nombre;
-
-    private String url;
+    private java.lang.String url;
 
     public InstitucionDeportiva() {
     }
 
     public InstitucionDeportiva(
-            ArrayList<ActividadDeportiva> actividades,
-            String descripcion,
-            String nombre,
-            String url) {
-        this.actividades = actividades;
-        this.descripcion = descripcion;
-        this.nombre = nombre;
-        this.url = url;
+           publicadores.ActividadDeportiva[] actividades,
+           java.lang.String descripcion,
+           java.lang.String nombre,
+           java.lang.String url) {
+           this.actividades = actividades;
+           this.descripcion = descripcion;
+           this.nombre = nombre;
+           this.url = url;
     }
+
 
     /**
      * Gets the actividades value for this InstitucionDeportiva.
      * 
      * @return actividades
      */
-    public ArrayList<ActividadDeportiva> getActividades() {
+    public publicadores.ActividadDeportiva[] getActividades() {
         return actividades;
     }
+
 
     /**
      * Sets the actividades value for this InstitucionDeportiva.
      * 
      * @param actividades
      */
-    public void setActividades(ArrayList<ActividadDeportiva> actividades) {
+    public void setActividades(publicadores.ActividadDeportiva[] actividades) {
         this.actividades = actividades;
     }
 
     public publicadores.ActividadDeportiva getActividades(int i) {
-        return this.actividades.get(i);
+        return this.actividades[i];
     }
 
     public void setActividades(int i, publicadores.ActividadDeportiva _value) {
-        this.actividades.set(i, _value);
+        this.actividades[i] = _value;
     }
+
 
     /**
      * Gets the descripcion value for this InstitucionDeportiva.
      * 
      * @return descripcion
      */
-    public String getDescripcion() {
+    public java.lang.String getDescripcion() {
         return descripcion;
     }
+
 
     /**
      * Sets the descripcion value for this InstitucionDeportiva.
      * 
      * @param descripcion
      */
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(java.lang.String descripcion) {
         this.descripcion = descripcion;
     }
+
 
     /**
      * Gets the nombre value for this InstitucionDeportiva.
      * 
      * @return nombre
      */
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
+
 
     /**
      * Sets the nombre value for this InstitucionDeportiva.
      * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
+
 
     /**
      * Gets the url value for this InstitucionDeportiva.
      * 
      * @return url
      */
-    public String getUrl() {
+    public java.lang.String getUrl() {
         return url;
     }
+
 
     /**
      * Sets the url value for this InstitucionDeportiva.
      * 
      * @param url
      */
-    public void setUrl(String url) {
+    public void setUrl(java.lang.String url) {
         this.url = url;
     }
 
     private java.lang.Object __equalsCalc = null;
-
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof InstitucionDeportiva))
-            return false;
+        if (!(obj instanceof InstitucionDeportiva)) return false;
         InstitucionDeportiva other = (InstitucionDeportiva) obj;
-        if (this == obj)
-            return true;
+        if (obj == null) return false;
+        if (this == obj) return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-                ((this.actividades == null && other.getActividades() == null) ||
-                        (this.actividades != null &&
-                                this.actividades == other.getActividades()))
-                &&
-                ((this.descripcion == null && other.getDescripcion() == null) ||
-                        (this.descripcion != null &&
-                                this.descripcion.equals(other.getDescripcion())))
-                &&
-                ((this.nombre == null && other.getNombre() == null) ||
-                        (this.nombre != null &&
-                                this.nombre.equals(other.getNombre())))
-                &&
-                ((this.url == null && other.getUrl() == null) ||
-                        (this.url != null &&
-                                this.url.equals(other.getUrl())));
+        _equals = true && 
+            ((this.actividades==null && other.getActividades()==null) || 
+             (this.actividades!=null &&
+              java.util.Arrays.equals(this.actividades, other.getActividades()))) &&
+            ((this.descripcion==null && other.getDescripcion()==null) || 
+             (this.descripcion!=null &&
+              this.descripcion.equals(other.getDescripcion()))) &&
+            ((this.nombre==null && other.getNombre()==null) || 
+             (this.nombre!=null &&
+              this.nombre.equals(other.getNombre()))) &&
+            ((this.url==null && other.getUrl()==null) || 
+             (this.url!=null &&
+              this.url.equals(other.getUrl())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
-
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -156,10 +154,12 @@ public class InstitucionDeportiva implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         if (getActividades() != null) {
-            for (int i = 0; i < java.lang.reflect.Array.getLength(getActividades()); i++) {
+            for (int i=0;
+                 i<java.lang.reflect.Array.getLength(getActividades());
+                 i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getActividades(), i);
                 if (obj != null &&
-                        !obj.getClass().isArray()) {
+                    !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -178,8 +178,8 @@ public class InstitucionDeportiva implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
-            InstitucionDeportiva.class, true);
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(InstitucionDeportiva.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "institucionDeportiva"));
@@ -225,22 +225,24 @@ public class InstitucionDeportiva implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
     }
 
 }

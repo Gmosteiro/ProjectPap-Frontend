@@ -36,7 +36,7 @@ public class GetActividades extends HttpServlet {
 
             if (institucionNombre != null) {
                 InstitucionDeportiva instituto = port.getInstitucionesByName(institucionNombre);
-                ArrayList<ActividadDeportiva> listaactividades = instituto.getActividades();
+                ActividadDeportiva[] listaactividades = instituto.getActividades();
 
                 // Construye una lista de nombres de actividades en formato de texto plano
                 StringBuilder textoactividades = new StringBuilder();

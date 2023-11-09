@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
+import publicadores.InstitucionDeportiva;
 import publicadores.Socio;
 import publicadores.Usuario;
 
@@ -68,10 +69,10 @@ public class GetSocios extends HttpServlet {
 
             clase = port.getClaseByNombre(Clase);
 
-            ArrayList<Socio> socios = port.getSociosByClase(clase);
+            java.util.ArrayList socios = port.getSociosByClase(clase);
             ArrayList<Usuario> usuarios = new ArrayList<>();
-
-            for (Socio socio : socios) {
+            List<Usuario> socioss = (List<Usuario>) socios;
+            for (Usuario socio : socioss) {
                 Usuario usuario = (Usuario) socio; // Realiza el casting de Socio a Usuario
                 usuarios.add(usuario); // Agrega el usuario a la lista de usuarios
             }

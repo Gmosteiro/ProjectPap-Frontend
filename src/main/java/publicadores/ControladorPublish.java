@@ -1,56 +1,62 @@
+/**
+ * ControladorPublish.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
 package publicadores;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.LocalTime;
+public interface ControladorPublish extends java.rmi.Remote {
+        public publicadores.InstitucionDeportiva getInstitucionesByName(java.lang.String arg0)
+                        throws java.rmi.RemoteException;
 
-public interface ControladorPublish extends Remote {
-        InstitucionDeportiva getInstitucionesByName(String nombre) throws RemoteException;
+        public publicadores.ActividadDeportiva obtenerActividadPorNombre(java.lang.String arg0)
+                        throws java.rmi.RemoteException;
 
-        ActividadDeportiva obtenerActividadPorNombre(String nombreActividad) throws RemoteException;
+        public java.util.ArrayList obtenerRankingDeClases() throws java.rmi.RemoteException;
 
-        ArrayList<Clase> obtenerRankingDeClases() throws RemoteException;
+        public java.util.ArrayList obtenerRankingDeActividades() throws java.rmi.RemoteException;
 
-        ArrayList<ActividadDeportiva> obtenerRankingDeActividades() throws RemoteException;
+        public void addClase(java.lang.String arg0, java.time.LocalDate arg1, java.time.LocalTime arg2,
+                        java.lang.String arg3, java.time.LocalDate arg4, java.lang.String arg5, java.lang.String arg6,
+                        java.lang.String arg7) throws java.rmi.RemoteException;
 
-        void addClase(String nombre, LocalDate fecha, LocalTime hora, String url, LocalDate fechaReg,
-                        String nombreProfesor, String img, String actividad) throws RemoteException;
+        public java.util.ArrayList getInstituciones() throws java.rmi.RemoteException;
 
-        ArrayList<InstitucionDeportiva> getInstituciones() throws RemoteException;
+        public java.util.ArrayList obtenerClasesPorActividad(publicadores.ActividadDeportiva arg0)
+                        throws java.rmi.RemoteException;
 
-        ArrayList<Clase> obtenerClasesPorActividad(ActividadDeportiva actividad) throws RemoteException;
+        public boolean addRegistroDictadoWeb(java.lang.String arg0, java.lang.String arg1, java.time.LocalDate arg2)
+                        throws java.rmi.RemoteException;
 
-        boolean addRegistroDictadoWeb(String nicknameSocio, String nombreClase, LocalDate fechaReg)
-                        throws RemoteException;
+        public java.util.ArrayList getClasesByActividad(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        ArrayList<Clase> getClasesByActividad(String nombreActividad) throws RemoteException;
+        public publicadores.Clase obtenerClasePorNombre(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        Clase obtenerClasePorNombre(String nombreClase) throws RemoteException;
+        public boolean modificarUsuarioWeb(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2,
+                        java.time.LocalDate arg3, java.lang.String arg4) throws java.rmi.RemoteException;
 
-        boolean modificarUsuarioWeb(String nickname, String nuevoNombre, String nuevoApellido, LocalDate nuevaFecha,
-                        String img) throws RemoteException;
+        public java.util.ArrayList getActividadesByProfe(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        ArrayList<ActividadDeportiva> getActividadesByProfe(String nicknameProfesor) throws RemoteException;
+        public boolean eliminarRegistroDeClase(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2,
+                        java.lang.String arg3) throws java.rmi.RemoteException;
 
-        boolean eliminarRegistroDeClase(String nombreInstitucion, String nombreActividad, String nombreClase,
-                        String nicknameSocio) throws RemoteException;
+        public publicadores.Clase getClaseByNombre(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        Clase getClaseByNombre(String clase) throws RemoteException;
+        public publicadores.Socio getSocio(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        Socio getSocio(String nicknameSocio) throws RemoteException;
+        public java.util.ArrayList getClasesByUser(java.lang.String arg0) throws java.rmi.RemoteException;
 
-        ArrayList<Clase> getClasesByUser(String nickname) throws RemoteException;
+        public boolean validateDataWeb(java.lang.String arg0, java.lang.String arg1) throws java.rmi.RemoteException;
 
-        boolean validateDataWeb(String nicknameSocio, String nombreClase) throws RemoteException;
+        public boolean crearRegistro(publicadores.Socio arg0, publicadores.Clase arg1) throws java.rmi.RemoteException;
 
-        boolean crearRegistro(Socio socio, Clase clase) throws RemoteException;
+        public java.util.ArrayList getSociosByClase(publicadores.Clase arg0) throws java.rmi.RemoteException;
 
-        ArrayList<Socio> getSociosByClase(Clase clase) throws RemoteException;
+        public publicadores.Sesion iniciarSesion(java.lang.String arg0, java.lang.String arg1)
+                        throws java.rmi.RemoteException;
 
-        Sesion iniciarSesion(String nickname, String contrasena) throws RemoteException;
-
-        boolean existenElementos(String nombreInstitucion, String nombreActividad, String nombreClase,
-                        String nicknameSocio) throws RemoteException;
+        public boolean existenElementos(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2,
+                        java.lang.String arg3) throws java.rmi.RemoteException;
 }

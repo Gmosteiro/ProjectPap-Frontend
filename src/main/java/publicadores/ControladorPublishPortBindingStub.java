@@ -7,10 +7,6 @@
 
 package publicadores;
 
-import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class ControladorPublishPortBindingStub extends org.apache.axis.client.Stub
         implements publicadores.ControladorPublish {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
@@ -680,7 +676,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<Clase> obtenerRankingDeClases() throws java.rmi.RemoteException {
+    public java.util.ArrayList obtenerRankingDeClases() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -704,9 +700,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<Clase>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -715,7 +711,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<ActividadDeportiva> obtenerRankingDeActividades() throws java.rmi.RemoteException {
+    public java.util.ArrayList obtenerRankingDeActividades() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -739,9 +735,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<ActividadDeportiva>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<ActividadDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -781,7 +777,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<InstitucionDeportiva> getInstituciones() throws java.rmi.RemoteException {
+    public java.util.ArrayList getInstituciones() throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -805,9 +801,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<InstitucionDeportiva>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<InstitucionDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -816,7 +812,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<Clase> obtenerClasesPorActividad(publicadores.ActividadDeportiva arg0)
+    public java.util.ArrayList obtenerClasesPorActividad(publicadores.ActividadDeportiva arg0)
             throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -841,9 +837,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<Clase>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -888,7 +884,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<Clase> getClasesByActividad(java.lang.String arg0) throws java.rmi.RemoteException {
+    public java.util.ArrayList getClasesByActividad(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -912,9 +908,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<Clase>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -994,7 +990,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<ActividadDeportiva> getActividadesByProfe(java.lang.String arg0) throws java.rmi.RemoteException {
+    public java.util.ArrayList getActividadesByProfe(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1018,9 +1014,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<ActividadDeportiva>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<ActividadDeportiva>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -1135,7 +1131,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<Clase> getClasesByUser(java.lang.String arg0) throws java.rmi.RemoteException {
+    public java.util.ArrayList getClasesByUser(java.lang.String arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1159,9 +1155,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<Clase>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<Clase>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }
@@ -1240,7 +1236,7 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
         }
     }
 
-    public ArrayList<Socio> getSociosByClase(publicadores.Clase arg0) throws java.rmi.RemoteException {
+    public java.util.ArrayList getSociosByClase(publicadores.Clase arg0) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -1264,9 +1260,9 @@ public class ControladorPublishPortBindingStub extends org.apache.axis.client.St
             } else {
                 extractAttachments(_call);
                 try {
-                    return (ArrayList<Socio>) _resp;
+                    return (java.util.ArrayList) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (ArrayList<Socio>) org.apache.axis.utils.JavaUtils.convert(_resp,
+                    return (java.util.ArrayList) org.apache.axis.utils.JavaUtils.convert(_resp,
                             java.util.ArrayList.class);
                 }
             }

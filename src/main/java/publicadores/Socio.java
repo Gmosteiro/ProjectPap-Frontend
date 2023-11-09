@@ -7,10 +7,8 @@
 
 package publicadores;
 
-import java.util.ArrayList;
-
 public class Socio extends publicadores.Usuario implements java.io.Serializable {
-    private ArrayList<publicadores.Registro> clasesRegistradas;
+    private publicadores.Registro[] clasesRegistradas;
 
     public Socio() {
     }
@@ -23,7 +21,7 @@ public class Socio extends publicadores.Usuario implements java.io.Serializable 
             java.lang.String img,
             java.lang.String nickname,
             java.lang.String nombre,
-            ArrayList<publicadores.Registro> clasesRegistradas) {
+            publicadores.Registro[] clasesRegistradas) {
         super(
                 apellido,
                 contrasena,
@@ -40,7 +38,7 @@ public class Socio extends publicadores.Usuario implements java.io.Serializable 
      * 
      * @return clasesRegistradas
      */
-    public ArrayList<publicadores.Registro> getClasesRegistradas() {
+    public publicadores.Registro[] getClasesRegistradas() {
         return clasesRegistradas;
     }
 
@@ -49,16 +47,16 @@ public class Socio extends publicadores.Usuario implements java.io.Serializable 
      * 
      * @param clasesRegistradas
      */
-    public void setClasesRegistradas(ArrayList<publicadores.Registro> clasesRegistradas) {
+    public void setClasesRegistradas(publicadores.Registro[] clasesRegistradas) {
         this.clasesRegistradas = clasesRegistradas;
     }
 
     public publicadores.Registro getClasesRegistradas(int i) {
-        return this.clasesRegistradas.get(i);
+        return this.clasesRegistradas[i];
     }
 
     public void setClasesRegistradas(int i, publicadores.Registro _value) {
-        this.clasesRegistradas.set(i, _value);
+        this.clasesRegistradas[i] = _value;
     }
 
     private java.lang.Object __equalsCalc = null;
@@ -67,6 +65,8 @@ public class Socio extends publicadores.Usuario implements java.io.Serializable 
         if (!(obj instanceof Socio))
             return false;
         Socio other = (Socio) obj;
+        if (obj == null)
+            return false;
         if (this == obj)
             return true;
         if (__equalsCalc != null) {
@@ -77,7 +77,7 @@ public class Socio extends publicadores.Usuario implements java.io.Serializable 
         _equals = super.equals(obj) &&
                 ((this.clasesRegistradas == null && other.getClasesRegistradas() == null) ||
                         (this.clasesRegistradas != null &&
-                                this.clasesRegistradas == other.getClasesRegistradas()));
+                                java.util.Arrays.equals(this.clasesRegistradas, other.getClasesRegistradas())));
         __equalsCalc = null;
         return _equals;
     }

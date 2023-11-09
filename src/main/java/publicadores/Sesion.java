@@ -7,214 +7,219 @@
 
 package publicadores;
 
-public class Sesion implements java.io.Serializable {
-    private String apellido;
+public class Sesion  implements java.io.Serializable {
+    private java.lang.String apellido;
 
-    private String email;
+    private java.lang.String email;
 
-    private String fechaNacimiento;
+    private java.lang.String fechaNacimiento;
 
-    private String nickname;
+    private java.lang.String nickname;
 
-    private String nombre;
+    private java.lang.String nombre;
 
-    private String profileImageBase64;
+    private java.lang.String profileImageBase64;
 
-    private String userType;
+    private java.lang.String userType;
 
     public Sesion() {
     }
 
     public Sesion(
-            String apellido,
-            String email,
-            String fechaNacimiento,
-            String nickname,
-            String nombre,
-            String profileImageBase64,
-            String userType) {
-        this.apellido = apellido;
-        this.email = email;
-        this.fechaNacimiento = fechaNacimiento;
-        this.nickname = nickname;
-        this.nombre = nombre;
-        this.profileImageBase64 = profileImageBase64;
-        this.userType = userType;
+           java.lang.String apellido,
+           java.lang.String email,
+           java.lang.String fechaNacimiento,
+           java.lang.String nickname,
+           java.lang.String nombre,
+           java.lang.String profileImageBase64,
+           java.lang.String userType) {
+           this.apellido = apellido;
+           this.email = email;
+           this.fechaNacimiento = fechaNacimiento;
+           this.nickname = nickname;
+           this.nombre = nombre;
+           this.profileImageBase64 = profileImageBase64;
+           this.userType = userType;
     }
+
 
     /**
      * Gets the apellido value for this Sesion.
      * 
      * @return apellido
      */
-    public String getApellido() {
+    public java.lang.String getApellido() {
         return apellido;
     }
+
 
     /**
      * Sets the apellido value for this Sesion.
      * 
      * @param apellido
      */
-    public void setApellido(String apellido) {
+    public void setApellido(java.lang.String apellido) {
         this.apellido = apellido;
     }
+
 
     /**
      * Gets the email value for this Sesion.
      * 
      * @return email
      */
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
+
 
     /**
      * Sets the email value for this Sesion.
      * 
      * @param email
      */
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
+
 
     /**
      * Gets the fechaNacimiento value for this Sesion.
      * 
      * @return fechaNacimiento
      */
-    public String getFechaNacimiento() {
+    public java.lang.String getFechaNacimiento() {
         return fechaNacimiento;
     }
+
 
     /**
      * Sets the fechaNacimiento value for this Sesion.
      * 
      * @param fechaNacimiento
      */
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(java.lang.String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
 
     /**
      * Gets the nickname value for this Sesion.
      * 
      * @return nickname
      */
-    public String getNickname() {
+    public java.lang.String getNickname() {
         return nickname;
     }
+
 
     /**
      * Sets the nickname value for this Sesion.
      * 
      * @param nickname
      */
-    public void setNickname(String nickname) {
+    public void setNickname(java.lang.String nickname) {
         this.nickname = nickname;
     }
+
 
     /**
      * Gets the nombre value for this Sesion.
      * 
      * @return nombre
      */
-    public String getNombre() {
+    public java.lang.String getNombre() {
         return nombre;
     }
+
 
     /**
      * Sets the nombre value for this Sesion.
      * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(java.lang.String nombre) {
         this.nombre = nombre;
     }
+
 
     /**
      * Gets the profileImageBase64 value for this Sesion.
      * 
      * @return profileImageBase64
      */
-    public String getProfileImageBase64() {
+    public java.lang.String getProfileImageBase64() {
         return profileImageBase64;
     }
+
 
     /**
      * Sets the profileImageBase64 value for this Sesion.
      * 
      * @param profileImageBase64
      */
-    public void setProfileImageBase64(String profileImageBase64) {
+    public void setProfileImageBase64(java.lang.String profileImageBase64) {
         this.profileImageBase64 = profileImageBase64;
     }
+
 
     /**
      * Gets the userType value for this Sesion.
      * 
      * @return userType
      */
-    public String getUserType() {
+    public java.lang.String getUserType() {
         return userType;
     }
+
 
     /**
      * Sets the userType value for this Sesion.
      * 
      * @param userType
      */
-    public void setUserType(String userType) {
+    public void setUserType(java.lang.String userType) {
         this.userType = userType;
     }
 
     private java.lang.Object __equalsCalc = null;
-
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Sesion))
-            return false;
+        if (!(obj instanceof Sesion)) return false;
         Sesion other = (Sesion) obj;
-        if (this == obj)
-            return true;
+        if (obj == null) return false;
+        if (this == obj) return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-                ((this.apellido == null && other.getApellido() == null) ||
-                        (this.apellido != null &&
-                                this.apellido.equals(other.getApellido())))
-                &&
-                ((this.email == null && other.getEmail() == null) ||
-                        (this.email != null &&
-                                this.email.equals(other.getEmail())))
-                &&
-                ((this.fechaNacimiento == null && other.getFechaNacimiento() == null) ||
-                        (this.fechaNacimiento != null &&
-                                this.fechaNacimiento.equals(other.getFechaNacimiento())))
-                &&
-                ((this.nickname == null && other.getNickname() == null) ||
-                        (this.nickname != null &&
-                                this.nickname.equals(other.getNickname())))
-                &&
-                ((this.nombre == null && other.getNombre() == null) ||
-                        (this.nombre != null &&
-                                this.nombre.equals(other.getNombre())))
-                &&
-                ((this.profileImageBase64 == null && other.getProfileImageBase64() == null) ||
-                        (this.profileImageBase64 != null &&
-                                this.profileImageBase64.equals(other.getProfileImageBase64())))
-                &&
-                ((this.userType == null && other.getUserType() == null) ||
-                        (this.userType != null &&
-                                this.userType.equals(other.getUserType())));
+        _equals = true && 
+            ((this.apellido==null && other.getApellido()==null) || 
+             (this.apellido!=null &&
+              this.apellido.equals(other.getApellido()))) &&
+            ((this.email==null && other.getEmail()==null) || 
+             (this.email!=null &&
+              this.email.equals(other.getEmail()))) &&
+            ((this.fechaNacimiento==null && other.getFechaNacimiento()==null) || 
+             (this.fechaNacimiento!=null &&
+              this.fechaNacimiento.equals(other.getFechaNacimiento()))) &&
+            ((this.nickname==null && other.getNickname()==null) || 
+             (this.nickname!=null &&
+              this.nickname.equals(other.getNickname()))) &&
+            ((this.nombre==null && other.getNombre()==null) || 
+             (this.nombre!=null &&
+              this.nombre.equals(other.getNombre()))) &&
+            ((this.profileImageBase64==null && other.getProfileImageBase64()==null) || 
+             (this.profileImageBase64!=null &&
+              this.profileImageBase64.equals(other.getProfileImageBase64()))) &&
+            ((this.userType==null && other.getUserType()==null) || 
+             (this.userType!=null &&
+              this.userType.equals(other.getUserType())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
-
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -247,8 +252,8 @@ public class Sesion implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
-            Sesion.class, true);
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(Sesion.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "sesion"));
@@ -314,22 +319,24 @@ public class Sesion implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
     }
 
 }
