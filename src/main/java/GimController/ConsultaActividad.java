@@ -19,7 +19,7 @@ import java.util.List;
 import logic.ActividadDeportiva.ActividadDeportiva;
 import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
 import logic.Clase.Clase;
-import static logic.Clase.ManejadorClases.getClasesByActividad;
+import logic.Clase.ManejadorClases;
 import logic.Fabrica;
 
 @WebServlet("/consultaActividades")
@@ -81,7 +81,6 @@ public class ConsultaActividad extends HttpServlet {
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + actividad.getImg()
 									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px; \" /> </td>");
-                                                                                                       
 
 					out.println("</tr>");
 				}
@@ -134,7 +133,8 @@ public class ConsultaActividad extends HttpServlet {
 			}
 
 			// Agregar una nueva fila para mostrar las clases asociadas
-			List<Clase> clases = getClasesByActividad(nombreActividad);
+			ManejadorClases manejadorClases = new ManejadorClases();
+			List<Clase> clases = manejadorClases.getClasesByActividad(nombreActividad);
 			if (clases != null && !clases.isEmpty()) {
 				out.println("<tr>");
 				out.println("<td colspan='6'><strong>Clases Asociadas</strong></td>");
@@ -144,7 +144,10 @@ public class ConsultaActividad extends HttpServlet {
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
 					out.println(
 							"<td> <img src=\"data:image/png;base64," + clase.getImg()
-									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");           //nose que tocaron pero esto no anda
+									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>"); // nose que
+																											// tocaron
+																											// pero esto
+																											// no anda
 					out.println("</tr>");
 				}
 			}

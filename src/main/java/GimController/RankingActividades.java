@@ -4,7 +4,6 @@
  */
 package GimController;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +44,8 @@ public class RankingActividades extends HttpServlet {
                 out.println("<td>" + actividad.getNombre() + "</td>");
                 out.println("<td>" + actividad.getCosto() + "</td>");
                 out.println("<td>" + actividad.getDescripcion() + "</td>");
-                out.println("<td><img src='data:image/png;base64, " + actividad.getImg() + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
+                out.println("<td><img src='data:image/png;base64, " + actividad.getImg()
+                        + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                 out.println("</tr>");
             }
 
@@ -54,7 +54,5 @@ public class RankingActividades extends HttpServlet {
             out.println("</html>");
         }
 
-        controllerRanking.closeEntityManagerFactory();
     }
 }
-

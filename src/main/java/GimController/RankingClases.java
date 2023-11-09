@@ -47,7 +47,8 @@ public class RankingClases extends HttpServlet {
                 out.println("<td>" + clase.getNombre() + "</td>");
                 out.println("<td>" + clase.getFecha() + "</td>");
                 out.println("<td><a href=\"" + clase.getUrl() + "\">Enlace</a></td>");
-                  out.println("<td><img src='data:image/png;base64, " + clase.getImg() + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
+                out.println("<td><img src='data:image/png;base64, " + clase.getImg()
+                        + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                 out.println("</tr>");
             }
 
@@ -57,6 +58,5 @@ public class RankingClases extends HttpServlet {
             out.println("</html>");
         }
 
-        controllerRanking.closeEntityManagerFactory();
     }
 }

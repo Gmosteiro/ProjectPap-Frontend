@@ -1,6 +1,5 @@
 package GimController;
 
-
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,6 +12,7 @@ import logic.Institucion.ManejadorInstitucion;
 
 @WebServlet("/ObtenerInstitucionesServlet")
 public class GetInstituciones extends HttpServlet {
+    ManejadorInstitucion manejadorInstitucion = new ManejadorInstitucion();
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,9 +32,10 @@ public class GetInstituciones extends HttpServlet {
         response.getWriter().write(textoInstituciones.toString());
     }
 
-    // Método para simular la obtención de datos de instituciones (puedes reemplazarlo con tu lógica real)
+    // Método para simular la obtención de datos de instituciones (puedes
+    // reemplazarlo con tu lógica real)
     private List<InstitucionDeportiva> getInstitucionesalBackend() {
-        List<InstitucionDeportiva> instituciones = ManejadorInstitucion.getInstituciones();
+        List<InstitucionDeportiva> instituciones = manejadorInstitucion.getInstituciones();
 
         return instituciones;
     }

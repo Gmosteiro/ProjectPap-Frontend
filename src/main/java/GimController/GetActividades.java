@@ -12,23 +12,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.ActividadDeportiva.ManejadorActividad;
 import logic.Institucion.InstitucionDeportiva;
 import logic.Institucion.ManejadorInstitucion;
-import logic.Clase.Clase;
 
 /**
  *
  * @author Admin
  */
 public class GetActividades extends HttpServlet {
+    ManejadorInstitucion manejadorInstitucion = new ManejadorInstitucion();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String institucionNombre = request.getParameter("institucion");
-        
+
         if (institucionNombre != null) {
-            InstitucionDeportiva instituto = ManejadorInstitucion.getInstitucionesByName(institucionNombre);
+            InstitucionDeportiva instituto = manejadorInstitucion.getInstitucionesByName(institucionNombre);
             List<ActividadDeportiva> listaactividades = instituto.getActividades();
 
             // Construye una lista de nombres de actividades en formato de texto plano

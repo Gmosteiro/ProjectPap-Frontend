@@ -26,17 +26,21 @@ import logic.Usuario.controllers.IControllerEliminarRegClase;
 
 @WebServlet("/EliminarRegistro")
 public class EliminarRegistro extends HttpServlet {
+    ManejadorUsuarios manejadorUsuarios = new ManejadorUsuarios();
+    ManejadorClases manejadorClases = new ManejadorClases();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         String nombreActividad = request.getParameter("nombreActividad");
         String nombreClase = request.getParameter("nombreClase");
         String nicknameSocio = request.getParameter("nicknameSocio");
-        Socio socio = ManejadorUsuarios.getSocio(nicknameSocio);
-        Clase clase = ManejadorClases.getClaseByNombre(nombreClase);
+        Socio socio = manejadorUsuarios.getSocio(nicknameSocio);
+        Clase clase = manejadorClases.getClaseByNombre(nombreClase);
 
         IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
-        boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
+        boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase,
+                nicknameSocio);
 
         if (!controllerEliminar.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
             request.setAttribute("elementosExistentes", false);
@@ -58,7 +62,8 @@ public class EliminarRegistro extends HttpServlet {
         response.getWriter().println("<html><body>");
         response.getWriter().println("<form action='EliminarRegistro' method='post'>");
 
-        // Aquí puedes agregar los campos para recibir la información necesaria (institución, actividad, clase, socio)
+        // Aquí puedes agregar los campos para recibir la información necesaria
+        // (institución, actividad, clase, socio)
         response.getWriter().println("Nombre Institución: <input type='text' name='nombreInstitucion'><br><br>");
         response.getWriter().println("Nombre Actividad: <input type='text' name='nombreActividad'><br><br>");
         response.getWriter().println("Nombre Clase: <input type='text' name='nombreClase'><br><br>");

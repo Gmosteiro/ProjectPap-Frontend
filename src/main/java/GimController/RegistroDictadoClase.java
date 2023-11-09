@@ -3,7 +3,6 @@ package GimController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -23,13 +22,15 @@ import logic.Usuario.controllers.IControllerRegistroDictado;
 @WebServlet("/RegistroDictadoClase")
 
 public class RegistroDictadoClase extends HttpServlet {
+    ManejadorInstitucion manejadorInstitucion = new ManejadorInstitucion();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String nombreInstitucion = request.getParameter("nombreInstitucion");
         if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
-            InstitucionDeportiva instituto = ManejadorInstitucion.getInstitucionesByName(nombreInstitucion);
+
+            InstitucionDeportiva instituto = manejadorInstitucion.getInstitucionesByName(nombreInstitucion);
             List<ActividadDeportiva> listaactividades = instituto.getActividades();
 
             response.setContentType("application/json");
@@ -52,7 +53,7 @@ public class RegistroDictadoClase extends HttpServlet {
             response.getWriter().write(jsonResponse.toString());
 
         } else {
-            List<InstitucionDeportiva> instituciones = ManejadorInstitucion.getInstituciones();
+            List<InstitucionDeportiva> instituciones = manejadorInstitucion.getInstituciones();
 
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
