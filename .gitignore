@@ -5,7 +5,10 @@ apache-tomcat-10.1.13/
 
 # Carpeta target y sus contenidos
 target/
+target/*
 target/classes
+target/maven-status
+
 
 
 # Archivos de configuración de IDE
