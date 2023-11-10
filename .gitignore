@@ -1,5 +1,22 @@
 GimnasioWeb/nbproject/private/
 *.log
 apache-tomcat-10.1.13/
-target/*
-/target/
+
+
+# Carpeta target y sus contenidos
+target/
+target/classes
+
+
+# Archivos de configuración de IDE
+.classpath
+.project
+.settings/
+.vscode/
+
+# Archivos generados por el sistema operativo
+.DS_Store
+
+# Todos los archivos en Utils que no sean .zip
+Utils/*
+!Utils/*.zip
