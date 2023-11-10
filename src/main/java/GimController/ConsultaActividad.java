@@ -7,26 +7,24 @@
 
 package GimController;
 
-import jakarta.servlet.ServletException;
-
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.rpc.ServiceException;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ActividadDeportiva;
-
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
-
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -62,11 +60,10 @@ public class ConsultaActividad extends HttpServlet {
 				Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
 			}
 
-			String actividades = port
-					.getActividadesByProfe(nicknameUsuario);
-			
+			ArrayList<ActividadDeportiva> actividades = port.getActividadesByProfe(nicknameUsuario);
+
 			System.out.println(actividades);
-			
+
 			response.setContentType("text/html");
 
 			PrintWriter out = response.getWriter();
@@ -146,7 +143,7 @@ public class ConsultaActividad extends HttpServlet {
 			}
 
 			// Agregar una nueva fila para mostrar las clases asociadas
-			List<Clase> clases = (List<Clase>) port.getClasesByActividad(nombreActividad);
+			List<Clase> clases = port.getClasesByActividad(nombreActividad);
 			if (clases != null && !clases.isEmpty()) {
 				out.println("<tr>");
 				out.println("<td colspan='6'><strong>Clases Asociadas</strong></td>");
@@ -154,9 +151,8 @@ public class ConsultaActividad extends HttpServlet {
 				for (Clase clase : clases) {
 					out.println("<tr>");
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
-					out.println(
-							"<td> <img src=\"data:image/png;base64," + clase.getImg()
-									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");
+					out.println("<td> <img src=\"data:image/png;base64," + clase.getImg()
+							+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");
 					out.println("</tr>");
 				}
 			}

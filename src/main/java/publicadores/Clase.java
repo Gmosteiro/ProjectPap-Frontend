@@ -1,388 +1,258 @@
-/**
- * Clase.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package publicadores;
 
-public class Clase implements java.io.Serializable {
-    private java.time.LocalDate fecha;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
-    private java.time.LocalDate fechaReg;
 
-    private java.time.LocalTime hora;
+/**
+ * <p>Java class for clase complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="clase"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="fecha" type="{http://publicadores/}localDate" minOccurs="0"/&gt;
+ *         &lt;element name="fechaReg" type="{http://publicadores/}localDate" minOccurs="0"/&gt;
+ *         &lt;element name="hora" type="{http://publicadores/}localTime" minOccurs="0"/&gt;
+ *         &lt;element name="img" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="profesor" type="{http://publicadores/}profesor" minOccurs="0"/&gt;
+ *         &lt;element name="registros" type="{http://publicadores/}registro" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "clase", propOrder = {
+    "fecha",
+    "fechaReg",
+    "hora",
+    "img",
+    "nombre",
+    "profesor",
+    "registros",
+    "url"
+})
+public class Clase {
 
-    private java.lang.String img;
-
-    private java.lang.String nombre;
-
-    private publicadores.Profesor profesor;
-
-    private publicadores.Registro[] registros;
-
-    private java.lang.String url;
-
-    public Clase() {
-    }
-
-    public Clase(
-            java.time.LocalDate fecha,
-            java.time.LocalDate fechaReg,
-            java.time.LocalTime hora,
-            java.lang.String img,
-            java.lang.String nombre,
-            publicadores.Profesor profesor,
-            publicadores.Registro[] registros,
-            java.lang.String url) {
-        this.fecha = fecha;
-        this.fechaReg = fechaReg;
-        this.hora = hora;
-        this.img = img;
-        this.nombre = nombre;
-        this.profesor = profesor;
-        this.registros = registros;
-        this.url = url;
-    }
+    protected LocalDate fecha;
+    protected LocalDate fechaReg;
+    protected LocalTime hora;
+    protected String img;
+    protected String nombre;
+    protected Profesor profesor;
+    @XmlElement(nillable = true)
+    protected List<Registro> registros;
+    protected String url;
 
     /**
-     * Gets the fecha value for this Clase.
+     * Gets the value of the fecha property.
      * 
-     * @return fecha
+     * @return
+     *     possible object is
+     *     {@link LocalDate }
+     *     
      */
-    public java.time.LocalDate getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
     /**
-     * Sets the fecha value for this Clase.
+     * Sets the value of the fecha property.
      * 
-     * @param fecha
+     * @param value
+     *     allowed object is
+     *     {@link LocalDate }
+     *     
      */
-    public void setFecha(java.time.LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFecha(LocalDate value) {
+        this.fecha = value;
     }
 
     /**
-     * Gets the fechaReg value for this Clase.
+     * Gets the value of the fechaReg property.
      * 
-     * @return fechaReg
+     * @return
+     *     possible object is
+     *     {@link LocalDate }
+     *     
      */
-    public java.time.LocalDate getFechaReg() {
+    public LocalDate getFechaReg() {
         return fechaReg;
     }
 
     /**
-     * Sets the fechaReg value for this Clase.
+     * Sets the value of the fechaReg property.
      * 
-     * @param fechaReg
+     * @param value
+     *     allowed object is
+     *     {@link LocalDate }
+     *     
      */
-    public void setFechaReg(java.time.LocalDate fechaReg) {
-        this.fechaReg = fechaReg;
+    public void setFechaReg(LocalDate value) {
+        this.fechaReg = value;
     }
 
     /**
-     * Gets the hora value for this Clase.
+     * Gets the value of the hora property.
      * 
-     * @return hora
+     * @return
+     *     possible object is
+     *     {@link LocalTime }
+     *     
      */
-    public java.time.LocalTime getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
     /**
-     * Sets the hora value for this Clase.
+     * Sets the value of the hora property.
      * 
-     * @param hora
+     * @param value
+     *     allowed object is
+     *     {@link LocalTime }
+     *     
      */
-    public void setHora(java.time.LocalTime hora) {
-        this.hora = hora;
+    public void setHora(LocalTime value) {
+        this.hora = value;
     }
 
     /**
-     * Gets the img value for this Clase.
+     * Gets the value of the img property.
      * 
-     * @return img
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getImg() {
+    public String getImg() {
         return img;
     }
 
     /**
-     * Sets the img value for this Clase.
+     * Sets the value of the img property.
      * 
-     * @param img
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setImg(java.lang.String img) {
-        this.img = img;
+    public void setImg(String value) {
+        this.img = value;
     }
 
     /**
-     * Gets the nombre value for this Clase.
+     * Gets the value of the nombre property.
      * 
-     * @return nombre
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
-     * Sets the nombre value for this Clase.
+     * Sets the value of the nombre property.
      * 
-     * @param nombre
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNombre(java.lang.String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**
-     * Gets the profesor value for this Clase.
+     * Gets the value of the profesor property.
      * 
-     * @return profesor
+     * @return
+     *     possible object is
+     *     {@link Profesor }
+     *     
      */
-    public publicadores.Profesor getProfesor() {
+    public Profesor getProfesor() {
         return profesor;
     }
 
     /**
-     * Sets the profesor value for this Clase.
+     * Sets the value of the profesor property.
      * 
-     * @param profesor
+     * @param value
+     *     allowed object is
+     *     {@link Profesor }
+     *     
      */
-    public void setProfesor(publicadores.Profesor profesor) {
-        this.profesor = profesor;
+    public void setProfesor(Profesor value) {
+        this.profesor = value;
     }
 
     /**
-     * Gets the registros value for this Clase.
+     * Gets the value of the registros property.
      * 
-     * @return registros
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the registros property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRegistros().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Registro }
+     * 
+     * 
      */
-    public publicadores.Registro[] getRegistros() {
-        return registros;
+    public List<Registro> getRegistros() {
+        if (registros == null) {
+            registros = new ArrayList<Registro>();
+        }
+        return this.registros;
     }
 
     /**
-     * Sets the registros value for this Clase.
+     * Gets the value of the url property.
      * 
-     * @param registros
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public void setRegistros(publicadores.Registro[] registros) {
-        this.registros = registros;
-    }
-
-    public publicadores.Registro getRegistros(int i) {
-        return this.registros[i];
-    }
-
-    public void setRegistros(int i, publicadores.Registro _value) {
-        this.registros[i] = _value;
-    }
-
-    /**
-     * Gets the url value for this Clase.
-     * 
-     * @return url
-     */
-    public java.lang.String getUrl() {
+    public String getUrl() {
         return url;
     }
 
     /**
-     * Sets the url value for this Clase.
+     * Sets the value of the url property.
      * 
-     * @param url
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setUrl(java.lang.String url) {
-        this.url = url;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Clase))
-            return false;
-        Clase other = (Clase) obj;
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true &&
-                ((this.fecha == null && other.getFecha() == null) ||
-                        (this.fecha != null &&
-                                this.fecha.equals(other.getFecha())))
-                &&
-                ((this.fechaReg == null && other.getFechaReg() == null) ||
-                        (this.fechaReg != null &&
-                                this.fechaReg.equals(other.getFechaReg())))
-                &&
-                ((this.hora == null && other.getHora() == null) ||
-                        (this.hora != null &&
-                                this.hora.equals(other.getHora())))
-                &&
-                ((this.img == null && other.getImg() == null) ||
-                        (this.img != null &&
-                                this.img.equals(other.getImg())))
-                &&
-                ((this.nombre == null && other.getNombre() == null) ||
-                        (this.nombre != null &&
-                                this.nombre.equals(other.getNombre())))
-                &&
-                ((this.profesor == null && other.getProfesor() == null) ||
-                        (this.profesor != null &&
-                                this.profesor.equals(other.getProfesor())))
-                &&
-                ((this.registros == null && other.getRegistros() == null) ||
-                        (this.registros != null &&
-                                java.util.Arrays.equals(this.registros, other.getRegistros())))
-                &&
-                ((this.url == null && other.getUrl() == null) ||
-                        (this.url != null &&
-                                this.url.equals(other.getUrl())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getFecha() != null) {
-            _hashCode += getFecha().hashCode();
-        }
-        if (getFechaReg() != null) {
-            _hashCode += getFechaReg().hashCode();
-        }
-        if (getHora() != null) {
-            _hashCode += getHora().hashCode();
-        }
-        if (getImg() != null) {
-            _hashCode += getImg().hashCode();
-        }
-        if (getNombre() != null) {
-            _hashCode += getNombre().hashCode();
-        }
-        if (getProfesor() != null) {
-            _hashCode += getProfesor().hashCode();
-        }
-        if (getRegistros() != null) {
-            for (int i = 0; i < java.lang.reflect.Array.getLength(getRegistros()); i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getRegistros(), i);
-                if (obj != null &&
-                        !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        if (getUrl() != null) {
-            _hashCode += getUrl().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(Clase.class,
-            true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "clase"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("fecha");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "fecha"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDate"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("fechaReg");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "fechaReg"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDate"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("hora");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "hora"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localTime"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("img");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "img"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombre");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "nombre"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("profesor");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "profesor"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "profesor"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("registros");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "registros"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "registro"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setMaxOccursUnbounded(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("url");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "url"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+    public void setUrl(String value) {
+        this.url = value;
     }
 
 }

@@ -1,193 +1,114 @@
-/**
- * Registro.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package publicadores;
 
-public class Registro implements java.io.Serializable {
-    private publicadores.Clase clase;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
 
-    private java.time.LocalDate fechaReg;
 
-    private publicadores.Socio socio;
+/**
+ * <p>Java class for registro complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="registro"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="clase" type="{http://publicadores/}clase" minOccurs="0"/&gt;
+ *         &lt;element name="fechaReg" type="{http://publicadores/}localDate" minOccurs="0"/&gt;
+ *         &lt;element name="socio" type="{http://publicadores/}socio" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "registro", propOrder = {
+    "clase",
+    "fechaReg",
+    "socio"
+})
+public class Registro {
 
-    public Registro() {
-    }
-
-    public Registro(
-            publicadores.Clase clase,
-            java.time.LocalDate fechaReg,
-            publicadores.Socio socio) {
-        this.clase = clase;
-        this.fechaReg = fechaReg;
-        this.socio = socio;
-    }
+    protected Clase clase;
+    protected LocalDate fechaReg;
+    protected Socio socio;
 
     /**
-     * Gets the clase value for this Registro.
+     * Gets the value of the clase property.
      * 
-     * @return clase
+     * @return
+     *     possible object is
+     *     {@link Clase }
+     *     
      */
-    public publicadores.Clase getClase() {
+    public Clase getClase() {
         return clase;
     }
 
     /**
-     * Sets the clase value for this Registro.
+     * Sets the value of the clase property.
      * 
-     * @param clase
+     * @param value
+     *     allowed object is
+     *     {@link Clase }
+     *     
      */
-    public void setClase(publicadores.Clase clase) {
-        this.clase = clase;
+    public void setClase(Clase value) {
+        this.clase = value;
     }
 
     /**
-     * Gets the fechaReg value for this Registro.
+     * Gets the value of the fechaReg property.
      * 
-     * @return fechaReg
+     * @return
+     *     possible object is
+     *     {@link LocalDate }
+     *     
      */
-    public java.time.LocalDate getFechaReg() {
+    public LocalDate getFechaReg() {
         return fechaReg;
     }
 
     /**
-     * Sets the fechaReg value for this Registro.
+     * Sets the value of the fechaReg property.
      * 
-     * @param fechaReg
+     * @param value
+     *     allowed object is
+     *     {@link LocalDate }
+     *     
      */
-    public void setFechaReg(java.time.LocalDate fechaReg) {
-        this.fechaReg = fechaReg;
+    public void setFechaReg(LocalDate value) {
+        this.fechaReg = value;
     }
 
     /**
-     * Gets the socio value for this Registro.
+     * Gets the value of the socio property.
      * 
-     * @return socio
+     * @return
+     *     possible object is
+     *     {@link Socio }
+     *     
      */
-    public publicadores.Socio getSocio() {
+    public Socio getSocio() {
         return socio;
     }
 
     /**
-     * Sets the socio value for this Registro.
+     * Sets the value of the socio property.
      * 
-     * @param socio
+     * @param value
+     *     allowed object is
+     *     {@link Socio }
+     *     
      */
-    public void setSocio(publicadores.Socio socio) {
-        this.socio = socio;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Registro))
-            return false;
-        Registro other = (Registro) obj;
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true &&
-                ((this.clase == null && other.getClase() == null) ||
-                        (this.clase != null &&
-                                this.clase.equals(other.getClase())))
-                &&
-                ((this.fechaReg == null && other.getFechaReg() == null) ||
-                        (this.fechaReg != null &&
-                                this.fechaReg.equals(other.getFechaReg())))
-                &&
-                ((this.socio == null && other.getSocio() == null) ||
-                        (this.socio != null &&
-                                this.socio.equals(other.getSocio())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getClase() != null) {
-            _hashCode += getClase().hashCode();
-        }
-        if (getFechaReg() != null) {
-            _hashCode += getFechaReg().hashCode();
-        }
-        if (getSocio() != null) {
-            _hashCode += getSocio().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
-            Registro.class, true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "registro"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("clase");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "clase"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "clase"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("fechaReg");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "fechaReg"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDate"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("socio");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "socio"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "socio"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+    public void setSocio(Socio value) {
+        this.socio = value;
     }
 
 }

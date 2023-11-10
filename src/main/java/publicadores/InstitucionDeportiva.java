@@ -1,248 +1,150 @@
-/**
- * InstitucionDeportiva.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package publicadores;
 
-public class InstitucionDeportiva  implements java.io.Serializable {
-    private publicadores.ActividadDeportiva[] actividades;
-
-    private java.lang.String descripcion;
-
-    private java.lang.String nombre;
-
-    private java.lang.String url;
-
-    public InstitucionDeportiva() {
-    }
-
-    public InstitucionDeportiva(
-           publicadores.ActividadDeportiva[] actividades,
-           java.lang.String descripcion,
-           java.lang.String nombre,
-           java.lang.String url) {
-           this.actividades = actividades;
-           this.descripcion = descripcion;
-           this.nombre = nombre;
-           this.url = url;
-    }
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 
-    /**
-     * Gets the actividades value for this InstitucionDeportiva.
-     * 
-     * @return actividades
-     */
-    public publicadores.ActividadDeportiva[] getActividades() {
-        return actividades;
-    }
+/**
+ * <p>Java class for institucionDeportiva complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="institucionDeportiva"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="actividades" type="{http://publicadores/}actividadDeportiva" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "institucionDeportiva", propOrder = {
+    "actividades",
+    "descripcion",
+    "nombre",
+    "url"
+})
+public class InstitucionDeportiva {
 
-
-    /**
-     * Sets the actividades value for this InstitucionDeportiva.
-     * 
-     * @param actividades
-     */
-    public void setActividades(publicadores.ActividadDeportiva[] actividades) {
-        this.actividades = actividades;
-    }
-
-    public publicadores.ActividadDeportiva getActividades(int i) {
-        return this.actividades[i];
-    }
-
-    public void setActividades(int i, publicadores.ActividadDeportiva _value) {
-        this.actividades[i] = _value;
-    }
-
+    @XmlElement(nillable = true)
+    protected List<ActividadDeportiva> actividades;
+    protected String descripcion;
+    protected String nombre;
+    protected String url;
 
     /**
-     * Gets the descripcion value for this InstitucionDeportiva.
+     * Gets the value of the actividades property.
      * 
-     * @return descripcion
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the actividades property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getActividades().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ActividadDeportiva }
+     * 
+     * 
      */
-    public java.lang.String getDescripcion() {
+    public List<ActividadDeportiva> getActividades() {
+        if (actividades == null) {
+            actividades = new ArrayList<ActividadDeportiva>();
+        }
+        return this.actividades;
+    }
+
+    /**
+     * Gets the value of the descripcion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescripcion() {
         return descripcion;
     }
 
-
     /**
-     * Sets the descripcion value for this InstitucionDeportiva.
+     * Sets the value of the descripcion property.
      * 
-     * @param descripcion
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setDescripcion(java.lang.String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String value) {
+        this.descripcion = value;
     }
 
-
     /**
-     * Gets the nombre value for this InstitucionDeportiva.
+     * Gets the value of the nombre property.
      * 
-     * @return nombre
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-
     /**
-     * Sets the nombre value for this InstitucionDeportiva.
+     * Sets the value of the nombre property.
      * 
-     * @param nombre
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNombre(java.lang.String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
-
     /**
-     * Gets the url value for this InstitucionDeportiva.
+     * Gets the value of the url property.
      * 
-     * @return url
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public java.lang.String getUrl() {
+    public String getUrl() {
         return url;
     }
 
-
     /**
-     * Sets the url value for this InstitucionDeportiva.
+     * Sets the value of the url property.
      * 
-     * @param url
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setUrl(java.lang.String url) {
-        this.url = url;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof InstitucionDeportiva)) return false;
-        InstitucionDeportiva other = (InstitucionDeportiva) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
-        }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = true && 
-            ((this.actividades==null && other.getActividades()==null) || 
-             (this.actividades!=null &&
-              java.util.Arrays.equals(this.actividades, other.getActividades()))) &&
-            ((this.descripcion==null && other.getDescripcion()==null) || 
-             (this.descripcion!=null &&
-              this.descripcion.equals(other.getDescripcion()))) &&
-            ((this.nombre==null && other.getNombre()==null) || 
-             (this.nombre!=null &&
-              this.nombre.equals(other.getNombre()))) &&
-            ((this.url==null && other.getUrl()==null) || 
-             (this.url!=null &&
-              this.url.equals(other.getUrl())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = 1;
-        if (getActividades() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getActividades());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getActividades(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        if (getDescripcion() != null) {
-            _hashCode += getDescripcion().hashCode();
-        }
-        if (getNombre() != null) {
-            _hashCode += getNombre().hashCode();
-        }
-        if (getUrl() != null) {
-            _hashCode += getUrl().hashCode();
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(InstitucionDeportiva.class, true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "institucionDeportiva"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("actividades");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "actividades"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "actividadDeportiva"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setMaxOccursUnbounded(true);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("descripcion");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "descripcion"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nombre");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "nombre"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("url");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "url"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+    public void setUrl(String value) {
+        this.url = value;
     }
 
 }

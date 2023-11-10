@@ -1,20 +1,19 @@
 package GimController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+
+import org.json.JSONObject;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
+import publicadores.ControladorPublishPortImpl;
 import publicadores.Sesion;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.io.BufferedReader;
-import org.json.JSONObject;
 
 @WebServlet("/actualizarUsuario")
 public class ActualizarUsuario extends HttpServlet {
@@ -22,8 +21,7 @@ public class ActualizarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-			ControladorPublish port = cps.getControladorPublishPort();
+			ControladorPublishPortImpl port = new ControladorPublishPortImpl();
 			System.out.println("En Actualizar Usuario");
 			BufferedReader reader = request.getReader();
 			StringBuilder sb = new StringBuilder();
@@ -43,11 +41,11 @@ public class ActualizarUsuario extends HttpServlet {
 			System.out.println("Profile Image: " + profileImage);
 			String fechaNacimientoStr = jsonData.getString("fechaNacimiento");
 
-			LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			publicadores.LocalDate fechaNacimiento = publicadores.LocalDate.parse(fechaNacimientoStr,
+					DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
-			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento,
-					profileImage);
+			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento, profileImage);
 
 			if (update) {
 				// Aca actualizo la sesion a nivel de servidor para que coincida con los datos

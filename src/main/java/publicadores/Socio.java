@@ -1,151 +1,71 @@
-/**
- * Socio.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
- */
 
 package publicadores;
 
-public class Socio extends publicadores.Usuario implements java.io.Serializable {
-    private publicadores.Registro[] clasesRegistradas;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
 
-    public Socio() {
-    }
 
-    public Socio(
-            java.lang.String apellido,
-            java.lang.String contrasena,
-            java.lang.String email,
-            java.time.LocalDate fechaNac,
-            java.lang.String img,
-            java.lang.String nickname,
-            java.lang.String nombre,
-            publicadores.Registro[] clasesRegistradas) {
-        super(
-                apellido,
-                contrasena,
-                email,
-                fechaNac,
-                img,
-                nickname,
-                nombre);
-        this.clasesRegistradas = clasesRegistradas;
-    }
+/**
+ * <p>Java class for socio complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="socio"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://publicadores/}usuario"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="clasesRegistradas" type="{http://publicadores/}registro" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "socio", propOrder = {
+    "clasesRegistradas"
+})
+public class Socio
+    extends Usuario
+{
+
+    @XmlElement(nillable = true)
+    protected List<Registro> clasesRegistradas;
 
     /**
-     * Gets the clasesRegistradas value for this Socio.
+     * Gets the value of the clasesRegistradas property.
      * 
-     * @return clasesRegistradas
-     */
-    public publicadores.Registro[] getClasesRegistradas() {
-        return clasesRegistradas;
-    }
-
-    /**
-     * Sets the clasesRegistradas value for this Socio.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the clasesRegistradas property.
      * 
-     * @param clasesRegistradas
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getClasesRegistradas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Registro }
+     * 
+     * 
      */
-    public void setClasesRegistradas(publicadores.Registro[] clasesRegistradas) {
-        this.clasesRegistradas = clasesRegistradas;
-    }
-
-    public publicadores.Registro getClasesRegistradas(int i) {
-        return this.clasesRegistradas[i];
-    }
-
-    public void setClasesRegistradas(int i, publicadores.Registro _value) {
-        this.clasesRegistradas[i] = _value;
-    }
-
-    private java.lang.Object __equalsCalc = null;
-
-    public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Socio))
-            return false;
-        Socio other = (Socio) obj;
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
-        if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+    public List<Registro> getClasesRegistradas() {
+        if (clasesRegistradas == null) {
+            clasesRegistradas = new ArrayList<Registro>();
         }
-        __equalsCalc = obj;
-        boolean _equals;
-        _equals = super.equals(obj) &&
-                ((this.clasesRegistradas == null && other.getClasesRegistradas() == null) ||
-                        (this.clasesRegistradas != null &&
-                                java.util.Arrays.equals(this.clasesRegistradas, other.getClasesRegistradas())));
-        __equalsCalc = null;
-        return _equals;
-    }
-
-    private boolean __hashCodeCalc = false;
-
-    public synchronized int hashCode() {
-        if (__hashCodeCalc) {
-            return 0;
-        }
-        __hashCodeCalc = true;
-        int _hashCode = super.hashCode();
-        if (getClasesRegistradas() != null) {
-            for (int i = 0; i < java.lang.reflect.Array.getLength(getClasesRegistradas()); i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getClasesRegistradas(), i);
-                if (obj != null &&
-                        !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
-        }
-        __hashCodeCalc = false;
-        return _hashCode;
-    }
-
-    // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(Socio.class,
-            true);
-
-    static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "socio"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("clasesRegistradas");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "clasesRegistradas"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "registro"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setMaxOccursUnbounded(true);
-        typeDesc.addFieldDesc(elemField);
-    }
-
-    /**
-     * Return type metadata object
-     */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
-        return typeDesc;
-    }
-
-    /**
-     * Get Custom Serializer
-     */
-    public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
-    }
-
-    /**
-     * Get Custom Deserializer
-     */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+        return this.clasesRegistradas;
     }
 
 }
