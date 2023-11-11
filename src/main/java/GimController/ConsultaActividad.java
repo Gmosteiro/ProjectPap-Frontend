@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.xml.rpc.ServiceException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ActividadDeportiva;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
+import publicadores.ControladorPublishService;
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -51,22 +47,18 @@ public class ConsultaActividad extends HttpServlet {
 
 	private void actividadesPorUsuario(HttpServletResponse response, String nicknameUsuario) {
 
+		ControladorPublishService service = new ControladorPublishService();
+		ControladorPublish port = service.getControladorPublishPort();
+
+		ArrayList<ActividadDeportiva> actividades = port.getActividadesByProfe(nicknameUsuario);
+
+		System.out.println(actividades);
+
+		response.setContentType("text/html");
+
+		PrintWriter out;
 		try {
-			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-			ControladorPublish port = null;
-			try {
-				port = cps.getControladorPublishPort();
-			} catch (ServiceException ex) {
-				Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
-			}
-
-			ArrayList<ActividadDeportiva> actividades = port.getActividadesByProfe(nicknameUsuario);
-
-			System.out.println(actividades);
-
-			response.setContentType("text/html");
-
-			PrintWriter out = response.getWriter();
+			out = response.getWriter();
 
 			out.println("<table class='table table-bordered'>");
 			// Headers
@@ -97,9 +89,8 @@ public class ConsultaActividad extends HttpServlet {
 //			} else {
 //				out.println("<tr><td colspan='5'>No se encontraron Actividades</td></tr>");
 //			}
-
 		} catch (IOException e) {
-			System.out.println("Catch retornarActividadPorNombre " + e);
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -108,8 +99,8 @@ public class ConsultaActividad extends HttpServlet {
 	private void retornarActividadPorNombre(HttpServletResponse response, String nombreActividad) {
 		try {
 
-			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-			ControladorPublish port = cps.getControladorPublishPort();
+			ControladorPublishService service = new ControladorPublishService();
+			ControladorPublish port = service.getControladorPublishPort();
 
 			ActividadDeportiva actividad = port.obtenerActividadPorNombre(nombreActividad);
 

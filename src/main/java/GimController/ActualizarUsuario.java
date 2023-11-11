@@ -2,6 +2,7 @@ package GimController;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.json.JSONObject;
@@ -41,8 +42,7 @@ public class ActualizarUsuario extends HttpServlet {
 			System.out.println("Profile Image: " + profileImage);
 			String fechaNacimientoStr = jsonData.getString("fechaNacimiento");
 
-			publicadores.LocalDate fechaNacimiento = publicadores.LocalDate.parse(fechaNacimientoStr,
-					DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
 			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento, profileImage);

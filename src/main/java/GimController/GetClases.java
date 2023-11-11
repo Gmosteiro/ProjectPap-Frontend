@@ -7,8 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List; // Importa la clase List si no está importada
 
-import javax.xml.rpc.ServiceException;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ActividadDeportiva;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
+import publicadores.ControladorPublishService;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -30,14 +28,8 @@ public class GetClases extends HttpServlet {
 		String tablaConAccion = request.getParameter("tablaconaccion");
 		// Si necesitan agregar otro parametro lo meten aca
 
-		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-		ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
-		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ControladorPublishService service = new ControladorPublishService();
+		ControladorPublish port = service.getControladorPublishPort();
 
 		List<Clase> clases = new ArrayList<>();
 		// y crean otra condicion aca (lo mejor seria pasarlo a un switch)
@@ -85,7 +77,7 @@ public class GetClases extends HttpServlet {
 				out.println("<tr>");
 				out.println("<td>" + clase.getNombre() + "</td>");
 				out.println("<td>" + clase.getFecha() + "</td>");
-				out.println("<td>" + formatFecha(clase.getFechaReg()) + "</td>");
+				out.println("<td>" + clase.getFechaReg() + "</td>");
 				out.println("<td>" + clase.getHora() + "</td>");
 				out.println("<td>" + clase.getUrl() + "</td>");
 

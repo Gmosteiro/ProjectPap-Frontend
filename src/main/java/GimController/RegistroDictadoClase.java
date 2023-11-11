@@ -3,8 +3,8 @@ package GimController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
-
-import javax.xml.rpc.ServiceException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ActividadDeportiva;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
+import publicadores.ControladorPublishService;
 import publicadores.InstitucionDeportiva;
 
 @WebServlet("/RegistroDictadoClase")
@@ -25,74 +25,70 @@ public class RegistroDictadoClase extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-		ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
+		ControladorPublishService service = new ControladorPublishService();
+		ControladorPublish port = service.getControladorPublishPort();
+		String nombreInstitucion = request.getParameter("nombreInstitucion");
+		if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
+			InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
+			List<ActividadDeportiva> listaactividades = instituto.getActividades();
 
-			String nombreInstitucion = request.getParameter("nombreInstitucion");
-			if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
-				InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
-				ActividadDeportiva[] listaactividades = instituto.getActividades();
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
 
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
+			JSONArray actividadesArray = new JSONArray();
 
-				JSONArray actividadesArray = new JSONArray();
+			for (ActividadDeportiva actividadDeportiva : listaactividades) {
 
-				for (ActividadDeportiva actividadDeportiva : listaactividades) {
+				JSONObject actividadJSON = new JSONObject();
+				actividadJSON.put("nombre", actividadDeportiva.getNombre());
 
-					JSONObject actividadJSON = new JSONObject();
-					actividadJSON.put("nombre", actividadDeportiva.getNombre());
-
-					actividadesArray.put(actividadJSON);
-				}
-
-				JSONObject jsonResponse = new JSONObject();
-				jsonResponse.put("ERROR", false);
-				jsonResponse.put("Actividades", actividadesArray);
-
-				response.getWriter().write(jsonResponse.toString());
-
-			} else {
-				// ArrayList publicadores.ControladorPublish.getInstituciones()
-				// throwsRemoteException
-
-				System.out.println("Instituciones: " + port.getInstituciones());
-
-				InstitucionDeportiva[] listaInstituciones = port.getInstituciones();
-
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UTF-8");
-
-				JSONArray institucionesArray = new JSONArray();
-
-				for (InstitucionDeportiva institucion : listaInstituciones) {
-
-					JSONObject institucionJSON = new JSONObject();
-					institucionJSON.put("nombre", institucion.getNombre());
-
-					institucionesArray.put(institucionJSON);
-				}
-
-				JSONObject jsonResponse = new JSONObject();
-				jsonResponse.put("ERROR", false);
-				jsonResponse.put("Instituciones", institucionesArray);
-
-				response.getWriter().write(jsonResponse.toString());
-
+				actividadesArray.put(actividadJSON);
 			}
-		} catch (ServiceException e) {
 
-			e.printStackTrace();
+			JSONObject jsonResponse = new JSONObject();
+			jsonResponse.put("ERROR", false);
+			jsonResponse.put("Actividades", actividadesArray);
+
+			response.getWriter().write(jsonResponse.toString());
+
+		} else {
+			// ArrayList publicadores.ControladorPublish.getInstituciones()
+			// throwsRemoteException
+
+			System.out.println("Instituciones: " + port.getInstituciones());
+
+			ArrayList<InstitucionDeportiva> listaInstituciones = port.getInstituciones();
+
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+
+			JSONArray institucionesArray = new JSONArray();
+
+			for (InstitucionDeportiva institucion : listaInstituciones) {
+
+				JSONObject institucionJSON = new JSONObject();
+				institucionJSON.put("nombre", institucion.getNombre());
+
+				institucionesArray.put(institucionJSON);
+			}
+
+			JSONObject jsonResponse = new JSONObject();
+			jsonResponse.put("ERROR", false);
+			jsonResponse.put("Instituciones", institucionesArray);
+
+			response.getWriter().write(jsonResponse.toString());
+
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-			ControladorPublish port = cps.getControladorPublishPort();
+
+			ControladorPublishService service = new ControladorPublishService();
+			ControladorPublish port = service.getControladorPublishPort();
+
 			System.out.println("En Registro Dictado Clase");
 			BufferedReader reader = request.getReader();
 			StringBuilder sb = new StringBuilder();

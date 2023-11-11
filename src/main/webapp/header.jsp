@@ -1,5 +1,5 @@
 <%@page import="publicadores.ControladorPublish"%>
-<%@page import="publicadores.ControladorPublishServiceLocator"%>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
 	
@@ -16,8 +16,7 @@
     <% publicadores.Sesion usuarioLogeado = (publicadores.Sesion)
 			request.getSession().getAttribute("usuarioLogeado"); if (usuarioLogeado != null) { String imagenBase64 =
 			usuarioLogeado.getProfileImageBase64(); 
-       ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-            ControladorPublish port = cps.getControladorPublishPort();
+
     %>
                         
                         

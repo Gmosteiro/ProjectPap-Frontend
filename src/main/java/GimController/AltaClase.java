@@ -4,87 +4,91 @@
  */
 package GimController;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.time.LocalDate;
+
+import java.time.format.DateTimeFormatter;
+
+import org.json.JSONObject;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
-import publicadores.Sesion;
-
-import java.io.BufferedReader;
-import java.time.LocalDate;
+import publicadores.ControladorPublishService;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import org.json.JSONObject;
+import publicadores.Sesion;
 
 public class AltaClase extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-            ControladorPublish port = cps.getControladorPublishPort();
-            System.out.println("Solicitud a AltaClase recibida");
-            HttpSession session = request.getSession();
-            Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
-            String profesor = currentSession.getNombre();
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
 
-            BufferedReader reader = request.getReader();
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            reader.close();
+			ControladorPublishService service = new ControladorPublishService();
+			ControladorPublish port = service.getControladorPublishPort();
 
-            JSONObject jsonData = new JSONObject(sb.toString());
+			System.out.println("Solicitud a AltaClase recibida");
+			HttpSession session = request.getSession();
+			Sesion currentSession = (Sesion) session.getAttribute("usuarioLogeado");
+			String profesor = currentSession.getNombre();
 
-            String actividad = jsonData.getString("actividad");
-            String nombreClase = jsonData.getString("nombreClase");
-            String fechaHoraInicio = jsonData.getString("fechaHoraInicio");
-            String imagenBase64 = jsonData.getString("imagen");
-            // Obtiene los parámetros del formulario
+			BufferedReader reader = request.getReader();
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			reader.close();
 
-            System.out.println("actividad " + actividad);
+			JSONObject jsonData = new JSONObject(sb.toString());
 
-            System.out.println("nombreclase" + nombreClase);
+			String actividad = jsonData.getString("actividad");
+			String nombreClase = jsonData.getString("nombreClase");
+			String fechaHoraInicio = jsonData.getString("fechaHoraInicio");
+			String imagenBase64 = jsonData.getString("imagen");
+			// Obtiene los parámetros del formulario
 
-            System.out.println("hora " + fechaHoraInicio);
-            // Divide la cadena en fecha y hora
-            String[] fechaHora = fechaHoraInicio.split("T");
-            String fecha = fechaHora[0];
-            String hora = fechaHora[1];
-            System.out.println("fehca " + fecha);
-            System.out.println("hora " + hora);
-            // Parsea la cadena de fecha en un objeto LocalDate
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate fechaInicio = LocalDate.parse(fecha, dateFormatter);
+			System.out.println("actividad " + actividad);
 
-            // Parsea la cadena de hora en un objeto LocalTime
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime horaInicio = LocalTime.parse(hora, timeFormatter);
-            // Obtengo la fecha del distema con solo yyy-mm-dd
-            LocalDate fechaActual = LocalDate.now();
-            // Consigo la imagen y la formateo a base64
+			System.out.println("nombreclase" + nombreClase);
 
-            // Ya lo tengo formateado
-            // empezar con las cosas
+			System.out.println("hora " + fechaHoraInicio);
+			// Divide la cadena en fecha y hora
+			String[] fechaHora = fechaHoraInicio.split("T");
+			String fecha = fechaHora[0];
+			String hora = fechaHora[1];
+			System.out.println("fehca " + fecha);
+			System.out.println("hora " + hora);
+			// Parsea la cadena de fecha en un objeto LocalDate
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate fechaInicio = LocalDate.parse(fecha, dateFormatter);
 
-            port.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64,
-                    actividad);
-            response.setContentType("text/plain");
-            response.getWriter().write("La clase se ha dado de alta correctamente.");
-        } catch (Exception e) {
-            response.setContentType("text/plain");
-            response.getWriter().write("Error al dar de alta la clase: " + e.getMessage());
-        }
-        // Finalmente, redirige o realiza cualquier acción adicional según tus
-        // necesidades
+			// Parsea la cadena de hora en un objeto LocalTime
+			DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+			LocalTime horaInicio = LocalTime.parse(hora, timeFormatter);
+			// Obtengo la fecha del distema con solo yyy-mm-dd
+			LocalDate fechaActual = LocalDate.now();
+			// Consigo la imagen y la formateo a base64
 
-    }
+			// Ya lo tengo formateado
+			// empezar con las cosas
+
+			port.addClase(nombreClase, fechaInicio, horaInicio, nombreClase, fechaActual, profesor, imagenBase64,
+					actividad);
+			response.setContentType("text/plain");
+			response.getWriter().write("La clase se ha dado de alta correctamente.");
+		} catch (Exception e) {
+			response.setContentType("text/plain");
+			response.getWriter().write("Error al dar de alta la clase: " + e.getMessage());
+		}
+		// Finalmente, redirige o realiza cualquier acción adicional según tus
+		// necesidades
+
+	}
 
 }

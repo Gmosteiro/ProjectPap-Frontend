@@ -1,7 +1,7 @@
 package GimController;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
+import publicadores.ControladorPublishService;
 import publicadores.InstitucionDeportiva;
 
 @WebServlet("/ObtenerInstitucionesServlet")
@@ -47,20 +47,14 @@ public class GetInstituciones extends HttpServlet {
 	// Método para simular la obtención de datos de instituciones (puedes
 	// reemplazarlo con tu lógica real)
 	private List<InstitucionDeportiva> getInstitucionesalBackend() throws ServiceException {
-		ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-		ControladorPublish port = null;
-		try {
-			port = cps.getControladorPublishPort();
+		ControladorPublishService service = new ControladorPublishService();
+		ControladorPublish port = service.getControladorPublishPort();
 
-			InstitucionDeportiva[] institucionesAL = port.getInstituciones();
+		ArrayList<InstitucionDeportiva> institucionesAL = port.getInstituciones();
 
-			List<InstitucionDeportiva> instituciones = null;
+		List<InstitucionDeportiva> instituciones = null;
 
-			return instituciones;
-		} catch (RemoteException e) {
+		return instituciones;
 
-			e.printStackTrace();
-			return null;
-		}
 	}
 }

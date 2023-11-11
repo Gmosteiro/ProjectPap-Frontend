@@ -1,56 +1,52 @@
 package GimController;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
-import javax.xml.rpc.ServiceException;
-
-import jakarta.servlet.http.*;
-import publicadores.Clase;
-import publicadores.ControladorPublish;
-import publicadores.ControladorPublishServiceLocator;
-
 import java.io.OutputStream;
 
+import javax.xml.rpc.ServiceException;
+
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import publicadores.Clase;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishService;
+
 public class GetImagenClase extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        try {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		try {
 
-            String nombreClase = request.getParameter("nombreClase");
+			String nombreClase = request.getParameter("nombreClase");
 
-            String imagenBase64;
-            imagenBase64 = obtenerImagenDeClaseEnBase64(nombreClase);
+			String imagenBase64;
+			imagenBase64 = obtenerImagenDeClaseEnBase64(nombreClase);
 
-            if (imagenBase64 != null) {
+			if (imagenBase64 != null) {
 
-                response.setContentType("text/plain");
-                OutputStream out = response.getOutputStream();
-                out.write(imagenBase64.getBytes());
-                out.flush();
-                out.close();
-            } else {
-                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            }
-        } catch (ServiceException e) {
+				response.setContentType("text/plain");
+				OutputStream out = response.getOutputStream();
+				out.write(imagenBase64.getBytes());
+				out.flush();
+				out.close();
+			} else {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			}
+		} catch (ServiceException e) {
 
-            e.printStackTrace();
-        }
-    }
+			e.printStackTrace();
+		}
+	}
 
-    private String obtenerImagenDeClaseEnBase64(String nombreClase) throws ServiceException {
-        ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-        ControladorPublish port = null;
-        try {
-            port = cps.getControladorPublishPort();
+	private String obtenerImagenDeClaseEnBase64(String nombreClase) throws ServiceException {
 
-            Clase clase = null;
+		ControladorPublishService service = new ControladorPublishService();
+		ControladorPublish port = service.getControladorPublishPort();
 
-            clase = port.obtenerClasePorNombre(nombreClase);
+		Clase clase = null;
 
-            return clase.getImg();
-        } catch (RemoteException e) {
+		clase = port.obtenerClasePorNombre(nombreClase);
 
-            e.printStackTrace();
-            return null;
-        }
-    }
+		return clase.getImg();
+
+	}
 }
