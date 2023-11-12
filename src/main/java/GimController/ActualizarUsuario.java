@@ -1,5 +1,12 @@
 package GimController;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import org.json.JSONObject;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,12 +16,6 @@ import jakarta.servlet.http.HttpSession;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.Sesion;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.io.BufferedReader;
-import org.json.JSONObject;
 
 @WebServlet("/actualizarUsuario")
 public class ActualizarUsuario extends HttpServlet {
@@ -46,7 +47,7 @@ public class ActualizarUsuario extends HttpServlet {
 			LocalDate fechaNacimiento = LocalDate.parse(fechaNacimientoStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
-			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento,
+			boolean update = port.modificarUsuarioWeb(nickname, nombre, apellido, fechaNacimiento.toString(),
 					profileImage);
 
 			if (update) {

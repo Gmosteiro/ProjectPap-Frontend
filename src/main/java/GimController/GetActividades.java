@@ -14,7 +14,6 @@ import publicadores.ActividadDeportiva;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
-import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 

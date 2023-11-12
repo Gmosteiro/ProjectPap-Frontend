@@ -7,7 +7,7 @@
 
 package publicadores;
 
-public class Profesor extends publicadores.Usuario implements java.io.Serializable {
+public class Profesor  extends publicadores.Usuario  implements java.io.Serializable {
     private java.lang.String biografia;
 
     private java.lang.String descripcion;
@@ -20,30 +20,31 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     }
 
     public Profesor(
-            java.lang.String apellido,
-            java.lang.String contrasena,
-            java.lang.String email,
-            java.time.LocalDate fechaNac,
-            java.lang.String img,
-            java.lang.String nickname,
-            java.lang.String nombre,
-            java.lang.String biografia,
-            java.lang.String descripcion,
-            publicadores.InstitucionDeportiva institucion,
-            java.lang.String sitioWeb) {
+           java.lang.String apellido,
+           java.lang.String contrasena,
+           java.lang.String email,
+           publicadores.LocalDate fechaNac,
+           java.lang.String img,
+           java.lang.String nickname,
+           java.lang.String nombre,
+           java.lang.String biografia,
+           java.lang.String descripcion,
+           publicadores.InstitucionDeportiva institucion,
+           java.lang.String sitioWeb) {
         super(
-                apellido,
-                contrasena,
-                email,
-                fechaNac,
-                img,
-                nickname,
-                nombre);
+            apellido,
+            contrasena,
+            email,
+            fechaNac,
+            img,
+            nickname,
+            nombre);
         this.biografia = biografia;
         this.descripcion = descripcion;
         this.institucion = institucion;
         this.sitioWeb = sitioWeb;
     }
+
 
     /**
      * Gets the biografia value for this Profesor.
@@ -54,6 +55,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
         return biografia;
     }
 
+
     /**
      * Sets the biografia value for this Profesor.
      * 
@@ -62,6 +64,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     public void setBiografia(java.lang.String biografia) {
         this.biografia = biografia;
     }
+
 
     /**
      * Gets the descripcion value for this Profesor.
@@ -72,6 +75,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
         return descripcion;
     }
 
+
     /**
      * Sets the descripcion value for this Profesor.
      * 
@@ -80,6 +84,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     public void setDescripcion(java.lang.String descripcion) {
         this.descripcion = descripcion;
     }
+
 
     /**
      * Gets the institucion value for this Profesor.
@@ -90,6 +95,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
         return institucion;
     }
 
+
     /**
      * Sets the institucion value for this Profesor.
      * 
@@ -99,6 +105,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
         this.institucion = institucion;
     }
 
+
     /**
      * Gets the sitioWeb value for this Profesor.
      * 
@@ -107,6 +114,7 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     public java.lang.String getSitioWeb() {
         return sitioWeb;
     }
+
 
     /**
      * Sets the sitioWeb value for this Profesor.
@@ -118,42 +126,34 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     }
 
     private java.lang.Object __equalsCalc = null;
-
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof Profesor))
-            return false;
+        if (!(obj instanceof Profesor)) return false;
         Profesor other = (Profesor) obj;
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
+        if (obj == null) return false;
+        if (this == obj) return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = super.equals(obj) &&
-                ((this.biografia == null && other.getBiografia() == null) ||
-                        (this.biografia != null &&
-                                this.biografia.equals(other.getBiografia())))
-                &&
-                ((this.descripcion == null && other.getDescripcion() == null) ||
-                        (this.descripcion != null &&
-                                this.descripcion.equals(other.getDescripcion())))
-                &&
-                ((this.institucion == null && other.getInstitucion() == null) ||
-                        (this.institucion != null &&
-                                this.institucion.equals(other.getInstitucion())))
-                &&
-                ((this.sitioWeb == null && other.getSitioWeb() == null) ||
-                        (this.sitioWeb != null &&
-                                this.sitioWeb.equals(other.getSitioWeb())));
+        _equals = super.equals(obj) && 
+            ((this.biografia==null && other.getBiografia()==null) || 
+             (this.biografia!=null &&
+              this.biografia.equals(other.getBiografia()))) &&
+            ((this.descripcion==null && other.getDescripcion()==null) || 
+             (this.descripcion!=null &&
+              this.descripcion.equals(other.getDescripcion()))) &&
+            ((this.institucion==null && other.getInstitucion()==null) || 
+             (this.institucion!=null &&
+              this.institucion.equals(other.getInstitucion()))) &&
+            ((this.sitioWeb==null && other.getSitioWeb()==null) || 
+             (this.sitioWeb!=null &&
+              this.sitioWeb.equals(other.getSitioWeb())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
-
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -177,8 +177,8 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
-            Profesor.class, true);
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(Profesor.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "profesor"));
@@ -223,22 +223,24 @@ public class Profesor extends publicadores.Usuario implements java.io.Serializab
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
     }
 
 }

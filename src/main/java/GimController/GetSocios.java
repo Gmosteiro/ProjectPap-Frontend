@@ -69,11 +69,11 @@ public class GetSocios extends HttpServlet {
 
             clase = port.getClaseByNombre(Clase);
 
-            publicadores.ArrayList socios = port.getSociosByClase(clase);
+            Usuario[] socios = port.getSociosByClase(clase);
             ArrayList<Usuario> usuarios = new ArrayList<>();
-            List<Usuario> socioss = (List<Usuario>) socios;
-            for (Usuario socio : socioss) {
-                Usuario usuario = (Usuario) socio; // Realiza el casting de Socio a Usuario
+            
+            for (Usuario socio : socios) {
+                Usuario usuario =  socio; // Realiza el casting de Socio a Usuario
                 usuarios.add(usuario); // Agrega el usuario a la lista de usuarios
             }
 

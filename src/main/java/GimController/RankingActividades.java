@@ -13,7 +13,6 @@ import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
@@ -26,7 +25,7 @@ public class RankingActividades extends HttpServlet {
         try {
             port = cps.getControladorPublishPort();
 
-            List<ActividadDeportiva> rankingActividades = (List<ActividadDeportiva>) port.obtenerRankingDeActividades();
+            ActividadDeportiva[] rankingActividades = port.obtenerRankingDeActividades();
 
             response.setContentType("text/html;charset=UTF-8");
             try (java.io.PrintWriter out = response.getWriter()) {

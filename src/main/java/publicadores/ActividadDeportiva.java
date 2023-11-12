@@ -6,16 +6,15 @@
  */
 
 package publicadores;
-import java.time.LocalDate;
 
-public class ActividadDeportiva implements java.io.Serializable {
+public class ActividadDeportiva  implements java.io.Serializable {
     private float costo;
 
     private java.lang.String descripcion;
 
     private int duracion;
 
-    private java.time.LocalDate fechaReg;
+    private publicadores.LocalDate fechaReg;
 
     private java.lang.String img;
 
@@ -25,19 +24,20 @@ public class ActividadDeportiva implements java.io.Serializable {
     }
 
     public ActividadDeportiva(
-            float costo,
-            java.lang.String descripcion,
-            int duracion,
-            java.time.LocalDate fechaReg,
-            java.lang.String img,
-            java.lang.String nombre) {
-        this.costo = costo;
-        this.descripcion = descripcion;
-        this.duracion = duracion;
-        this.fechaReg = fechaReg;
-        this.img = img;
-        this.nombre = nombre;
+           float costo,
+           java.lang.String descripcion,
+           int duracion,
+           publicadores.LocalDate fechaReg,
+           java.lang.String img,
+           java.lang.String nombre) {
+           this.costo = costo;
+           this.descripcion = descripcion;
+           this.duracion = duracion;
+           this.fechaReg = fechaReg;
+           this.img = img;
+           this.nombre = nombre;
     }
+
 
     /**
      * Gets the costo value for this ActividadDeportiva.
@@ -48,6 +48,7 @@ public class ActividadDeportiva implements java.io.Serializable {
         return costo;
     }
 
+
     /**
      * Sets the costo value for this ActividadDeportiva.
      * 
@@ -56,6 +57,7 @@ public class ActividadDeportiva implements java.io.Serializable {
     public void setCosto(float costo) {
         this.costo = costo;
     }
+
 
     /**
      * Gets the descripcion value for this ActividadDeportiva.
@@ -66,6 +68,7 @@ public class ActividadDeportiva implements java.io.Serializable {
         return descripcion;
     }
 
+
     /**
      * Sets the descripcion value for this ActividadDeportiva.
      * 
@@ -74,6 +77,7 @@ public class ActividadDeportiva implements java.io.Serializable {
     public void setDescripcion(java.lang.String descripcion) {
         this.descripcion = descripcion;
     }
+
 
     /**
      * Gets the duracion value for this ActividadDeportiva.
@@ -84,6 +88,7 @@ public class ActividadDeportiva implements java.io.Serializable {
         return duracion;
     }
 
+
     /**
      * Sets the duracion value for this ActividadDeportiva.
      * 
@@ -93,23 +98,26 @@ public class ActividadDeportiva implements java.io.Serializable {
         this.duracion = duracion;
     }
 
+
     /**
      * Gets the fechaReg value for this ActividadDeportiva.
      * 
      * @return fechaReg
      */
-    public java.time.LocalDate getFechaReg() {
+    public publicadores.LocalDate getFechaReg() {
         return fechaReg;
     }
+
 
     /**
      * Sets the fechaReg value for this ActividadDeportiva.
      * 
      * @param fechaReg
      */
-    public void setFechaReg(java.time.LocalDate fechaReg) {
+    public void setFechaReg(publicadores.LocalDate fechaReg) {
         this.fechaReg = fechaReg;
     }
+
 
     /**
      * Gets the img value for this ActividadDeportiva.
@@ -120,6 +128,7 @@ public class ActividadDeportiva implements java.io.Serializable {
         return img;
     }
 
+
     /**
      * Sets the img value for this ActividadDeportiva.
      * 
@@ -129,6 +138,7 @@ public class ActividadDeportiva implements java.io.Serializable {
         this.img = img;
     }
 
+
     /**
      * Gets the nombre value for this ActividadDeportiva.
      * 
@@ -137,6 +147,7 @@ public class ActividadDeportiva implements java.io.Serializable {
     public java.lang.String getNombre() {
         return nombre;
     }
+
 
     /**
      * Sets the nombre value for this ActividadDeportiva.
@@ -148,44 +159,36 @@ public class ActividadDeportiva implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
-
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof ActividadDeportiva))
-            return false;
+        if (!(obj instanceof ActividadDeportiva)) return false;
         ActividadDeportiva other = (ActividadDeportiva) obj;
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
+        if (obj == null) return false;
+        if (this == obj) return true;
         if (__equalsCalc != null) {
             return (__equalsCalc == obj);
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-                this.costo == other.getCosto() &&
-                ((this.descripcion == null && other.getDescripcion() == null) ||
-                        (this.descripcion != null &&
-                                this.descripcion.equals(other.getDescripcion())))
-                &&
-                this.duracion == other.getDuracion() &&
-                ((this.fechaReg == null && other.getFechaReg() == null) ||
-                        (this.fechaReg != null &&
-                                this.fechaReg.equals(other.getFechaReg())))
-                &&
-                ((this.img == null && other.getImg() == null) ||
-                        (this.img != null &&
-                                this.img.equals(other.getImg())))
-                &&
-                ((this.nombre == null && other.getNombre() == null) ||
-                        (this.nombre != null &&
-                                this.nombre.equals(other.getNombre())));
+        _equals = true && 
+            this.costo == other.getCosto() &&
+            ((this.descripcion==null && other.getDescripcion()==null) || 
+             (this.descripcion!=null &&
+              this.descripcion.equals(other.getDescripcion()))) &&
+            this.duracion == other.getDuracion() &&
+            ((this.fechaReg==null && other.getFechaReg()==null) || 
+             (this.fechaReg!=null &&
+              this.fechaReg.equals(other.getFechaReg()))) &&
+            ((this.img==null && other.getImg()==null) || 
+             (this.img!=null &&
+              this.img.equals(other.getImg()))) &&
+            ((this.nombre==null && other.getNombre()==null) || 
+             (this.nombre!=null &&
+              this.nombre.equals(other.getNombre())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
-
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -211,8 +214,8 @@ public class ActividadDeportiva implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
-            ActividadDeportiva.class, true);
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(ActividadDeportiva.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "actividadDeportiva"));
@@ -269,22 +272,24 @@ public class ActividadDeportiva implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanSerializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-            java.lang.String mechType,
-            java.lang.Class _javaType,
-            javax.xml.namespace.QName _xmlType) {
-        return new org.apache.axis.encoding.ser.BeanDeserializer(
-                _javaType, _xmlType, typeDesc);
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
     }
 
 }

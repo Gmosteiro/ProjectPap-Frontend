@@ -3,7 +3,6 @@ package GimController;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -57,19 +56,16 @@ public class RegistroDictadoClase extends HttpServlet {
                 response.getWriter().write(jsonResponse.toString());
 
             } else {
-                // ArrayList publicadores.ControladorPublish.getInstituciones()
-                // throwsRemoteException
 
-                System.out.println("Instituciones: " + port.getInstituciones());
-                publicadores.ArrayList instituciones = port.getInstituciones();
-                List<InstitucionDeportiva> listaInstituciones = (List<InstitucionDeportiva>) instituciones;
+                InstitucionDeportiva[] instituciones = port.getInstituciones();
+                System.out.println("Instituciones: " + instituciones);
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 
                 JSONArray institucionesArray = new JSONArray();
 
-                for (InstitucionDeportiva institucion : listaInstituciones) {
+                for (InstitucionDeportiva institucion : instituciones) {
 
                     JSONObject institucionJSON = new JSONObject();
                     institucionJSON.put("nombre", institucion.getNombre());
@@ -128,7 +124,7 @@ public class RegistroDictadoClase extends HttpServlet {
             } else {
 
                 // String nicknameSocio, String nombreClase, LocalDate fechaReg
-                boolean registro = port.addRegistroDictadoWeb(socio, clase, fecha);
+                boolean registro = port.addRegistroDictadoWeb(socio, clase, fecha.toString());
                 System.out.println("registro: " + registro);
 
                 jsonResponse.put("ERROR", !registro);
