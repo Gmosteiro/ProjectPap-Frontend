@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import javax.xml.rpc.ServiceException;
 
-import javax.servlet.http.*;
+import jakarta.servlet.http.*;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;

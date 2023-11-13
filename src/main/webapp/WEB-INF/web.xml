@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://javax.ee/xml/ns/jakartaee https://javax.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-    <listener>
-        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
-    </listener>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>hola</servlet-name>
         <servlet-class>GimController.hola</servlet-class>
@@ -18,11 +15,6 @@
     <servlet>
         <servlet-name>AltaClase</servlet-name>
         <servlet-class>GimController.AltaClase</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ControladorPublishService</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>hola</servlet-name>
@@ -76,21 +68,20 @@
         <servlet-name>GetInstituciones</servlet-name>
         <url-pattern>/GetInstituciones</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>GetSocios</servlet-name>
         <url-pattern>/GetSocios</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>GetImagenClase</servlet-name>
         <url-pattern>/GetImagenClase</url-pattern>
     </servlet-mapping>
+  
     <servlet-mapping>
         <servlet-name>AltaClase</servlet-name>
         <url-pattern>/AltaClase</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControladorPublishService</servlet-name>
-        <url-pattern>/ControladorPublishService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
