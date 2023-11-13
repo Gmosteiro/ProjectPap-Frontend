@@ -15,6 +15,7 @@ import publicadores.ControladorPublishServiceLocator;
 import java.io.IOException;
 
 import javax.xml.rpc.ServiceException;
+import publicadores.DtActividadDeportiva;
 
 @WebServlet("/RankingActividades")
 public class RankingActividades extends HttpServlet {
@@ -25,7 +26,7 @@ public class RankingActividades extends HttpServlet {
         try {
             port = cps.getControladorPublishPort();
 
-            ActividadDeportiva[] rankingActividades = port.obtenerRankingDeActividades();
+            DtActividadDeportiva[] rankingActividades = port.obtenerRankingDeActividades();
 
             response.setContentType("text/html;charset=UTF-8");
             try (java.io.PrintWriter out = response.getWriter()) {
@@ -44,12 +45,12 @@ public class RankingActividades extends HttpServlet {
                 out.println("<th>Imagen</th>");
                 out.println("</tr>");
 
-                for (ActividadDeportiva actividad : rankingActividades) {
+                for (DtActividadDeportiva actividad : rankingActividades) {
                     out.println("<tr>");
                     out.println("<td>" + actividad.getNombre() + "</td>");
                     out.println("<td>" + actividad.getCosto() + "</td>");
                     out.println("<td>" + actividad.getDescripcion() + "</td>");
-                    out.println("<td><img src='data:image/png;base64, " + actividad.getImg()
+                    out.println("<td><img src='data:image/png;base64, " + actividad.getImagen()
                             + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                     out.println("</tr>");
                 }

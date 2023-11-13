@@ -26,6 +26,8 @@ import publicadores.ActividadDeportiva;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtClase;
 
 @WebServlet("/consultaActividades")
 public class ConsultaActividad extends HttpServlet {
@@ -61,7 +63,7 @@ public class ConsultaActividad extends HttpServlet {
 				Logger.getLogger(ConsultaActividad.class.getName()).log(Level.SEVERE, null, ex);
 			}
 
-			ActividadDeportiva[] actividades = port.getActividadesByProfe(nicknameUsuario);
+			DtActividadDeportiva[] actividades = port.getActividadesByProfe(nicknameUsuario);
 
 			System.out.println(actividades);
 
@@ -101,7 +103,7 @@ public class ConsultaActividad extends HttpServlet {
 
 		} catch (IOException e) {
 			System.out.println("Catch retornarActividadPorNombre " + e);
-			e.printStackTrace();
+			
 		}
 
 	}
@@ -112,7 +114,7 @@ public class ConsultaActividad extends HttpServlet {
 			ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
 			ControladorPublish port = cps.getControladorPublishPort();
 
-			ActividadDeportiva actividad = port.obtenerActividadPorNombre(nombreActividad);
+			DtActividadDeportiva actividad = port.obtenerActividadPorNombre(nombreActividad);
 
 			response.setContentType("text/html");
 
@@ -137,23 +139,23 @@ public class ConsultaActividad extends HttpServlet {
 				out.println("<td>" + actividad.getDescripcion() + "</td>");
 				out.println("<td>" + actividad.getDuracion() + "</td>");
 				out.println("<td>" + actividad.getCosto() + "</td>");
-				out.println("<td>" + actividad.getFechaReg() + "</td>");
-				out.println("<td><img src='data:image/png;base64, " + actividad.getImg()
+				out.println("<td>" + actividad.getFechaRegistro() + "</td>");
+				out.println("<td><img src='data:image/png;base64, " + actividad.getImagen()
 						+ "' style='width: 100px; height: 50px; '></td>");
 				out.println("</tr>");
 			}
 
 			// Agregar una nueva fila para mostrar las clases asociadas
-			Clase[] clases = port.getClasesByActividad(nombreActividad);
+			DtClase[] clases = port.getClasesByActividad(nombreActividad);
 			if (clases != null && clases.length == 0) {
 				out.println("<tr>");
 				out.println("<td colspan='6'><strong>Clases Asociadas</strong></td>");
 				out.println("</tr>");
-				for (Clase clase : clases) {
+				for (DtClase clase : clases) {
 					out.println("<tr>");
 					out.println("<td colspan='5'>" + clase.getNombre() + "</td>");
 					out.println(
-							"<td> <img src=\"data:image/png;base64," + clase.getImg()
+							"<td> <img src=\"data:image/png;base64," + clase.getImagen()
 									+ " alt=\"Imagen\" style=\"width: 100px; height: 50px;\" /> </td>");
 					out.println("</tr>");
 				}

@@ -16,6 +16,8 @@ import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
 
 import javax.xml.rpc.ServiceException;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtInstitucion;
 
 /**
  *
@@ -34,12 +36,12 @@ public class GetActividades extends HttpServlet {
             String institucionNombre = request.getParameter("institucion");
 
             if (institucionNombre != null) {
-                InstitucionDeportiva instituto = port.getInstitucionesByName(institucionNombre);
-                ActividadDeportiva[] listaactividades = instituto.getActividades();
+                
+                DtActividadDeportiva[] listaactividades = port.getActividadesByInstitucion(institucionNombre);
 
                 // Construye una lista de nombres de actividades en formato de texto plano
                 StringBuilder textoactividades = new StringBuilder();
-                for (ActividadDeportiva actividad : listaactividades) {
+                for (DtActividadDeportiva actividad : listaactividades) {
                     textoactividades.append(actividad.getNombre()).append("\n");
                 }
 

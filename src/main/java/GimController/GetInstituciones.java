@@ -13,6 +13,7 @@ import publicadores.ControladorPublishServiceLocator;
 import publicadores.InstitucionDeportiva;
 
 import javax.xml.rpc.ServiceException;
+import publicadores.DtInstitucion;
 
 @WebServlet("/ObtenerInstitucionesServlet")
 public class GetInstituciones extends HttpServlet {
@@ -22,10 +23,10 @@ public class GetInstituciones extends HttpServlet {
             throws ServletException, IOException {
         try {
 
-            InstitucionDeportiva[] instituciones = getInstitucionesalBackend();
+            DtInstitucion[] instituciones = getInstitucionesalBackend();
 
             StringBuilder textoInstituciones = new StringBuilder();
-            for (InstitucionDeportiva institucion : instituciones) {
+            for (DtInstitucion institucion : instituciones) {
                 textoInstituciones.append(institucion.getNombre()).append("\n");
             }
 
@@ -44,13 +45,13 @@ public class GetInstituciones extends HttpServlet {
 
     // Método para simular la obtención de datos de instituciones (puedes
     // reemplazarlo con tu lógica real)
-    private InstitucionDeportiva[] getInstitucionesalBackend() throws ServiceException {
+    private DtInstitucion[] getInstitucionesalBackend() throws ServiceException {
         ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
         try {
             port = cps.getControladorPublishPort();
 
-            InstitucionDeportiva[] instituciones;
+            DtInstitucion[] instituciones;
 
             instituciones = port.getInstituciones();
 

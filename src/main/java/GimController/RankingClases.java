@@ -15,6 +15,7 @@ import publicadores.ControladorPublishServiceLocator;
 import java.io.IOException;
 
 import javax.xml.rpc.ServiceException;
+import publicadores.DtClase;
 
 @WebServlet("/RankingClases")
 public class RankingClases extends HttpServlet {
@@ -25,7 +26,7 @@ public class RankingClases extends HttpServlet {
         try {
             port = cps.getControladorPublishPort();
 
-            Clase[] rankingClases = port.obtenerRankingDeClases();
+            DtClase[] rankingClases = port.obtenerRankingDeClases();
 
             response.setContentType("text/html;charset=UTF-8");
             try (java.io.PrintWriter out = response.getWriter()) {
@@ -47,12 +48,12 @@ public class RankingClases extends HttpServlet {
                 out.println("</thead>");
                 out.println("<tbody>");
 
-                for (Clase clase : rankingClases) {
+                for (DtClase clase : rankingClases) {
                     out.println("<tr>");
                     out.println("<td>" + clase.getNombre() + "</td>");
                     out.println("<td>" + clase.getFecha() + "</td>");
                     out.println("<td><a href=\"" + clase.getUrl() + "\">Enlace</a></td>");
-                    out.println("<td><img src='data:image/png;base64, " + clase.getImg()
+                    out.println("<td><img src='data:image/png;base64, " + clase.getImagen()
                             + "' style='width: 40px; height: 40px; border-radius: 50%'></td>");
                     out.println("</tr>");
                 }

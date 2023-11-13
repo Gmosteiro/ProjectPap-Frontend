@@ -8,6 +8,7 @@
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetSocios.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/ControladorPublish.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/ActividadDeportiva.java
+/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/DtUsuario.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/RankingActividades.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/RankingClases.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/EliminarRegistro.java
@@ -17,11 +18,14 @@
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetClases.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/Socio.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/LocalTime.java
+/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/DtClase.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/AltaClase.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/LocalDate.java
+/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/DtInstitucion.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/InstitucionDeportiva.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetImage.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/GetInstituciones.java
+/Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/DtActividadDeportiva.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/ActualizarUsuario.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/GimController/RegistroDictadoClase.java
 /Users/gaston/Documents/GitHub/ProjectPap-Frontend/src/main/java/publicadores/Profesor.java

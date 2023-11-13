@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
+import publicadores.DtUsuario;
 
 /**
  *
@@ -39,10 +40,10 @@ public class GetSocios extends HttpServlet {
             // Aquí debes obtener los socios de la clase utilizando el nombre de la clase
             // Reemplaza esta parte con tu lógica para obtener los socios
 
-            List<Usuario> socios = Socios(claseNombre);
+            DtUsuario[] socios = Socios(claseNombre);
             // Construye una lista de nombres de socios en formato de texto plano
             StringBuilder textoSocios = new StringBuilder();
-            for (Usuario socio : socios) {
+            for (DtUsuario socio : socios) {
                 textoSocios.append(socio.getNickname()).append("\n");
             }
 
@@ -59,7 +60,7 @@ public class GetSocios extends HttpServlet {
         }
     }
 
-    private ArrayList<Usuario> Socios(String Clase) {
+    private DtUsuario[] Socios(String Clase) {
         ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
         try {
@@ -69,15 +70,9 @@ public class GetSocios extends HttpServlet {
 
             clase = port.getClaseByNombre(Clase);
 
-            Usuario[] socios = port.getSociosByClase(clase);
-            ArrayList<Usuario> usuarios = new ArrayList<>();
-            
-            for (Usuario socio : socios) {
-                Usuario usuario =  socio; // Realiza el casting de Socio a Usuario
-                usuarios.add(usuario); // Agrega el usuario a la lista de usuarios
-            }
-
-            return usuarios;
+            DtUsuario[] socios = port.getSociosByClase(clase);
+          
+            return socios;
         } catch (RemoteException | ServiceException e) {
 
             e.printStackTrace();

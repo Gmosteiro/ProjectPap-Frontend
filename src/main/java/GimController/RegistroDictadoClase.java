@@ -18,6 +18,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import publicadores.ActividadDeportiva;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtInstitucion;
 import publicadores.InstitucionDeportiva;
 
 @WebServlet("/RegistroDictadoClase")
@@ -33,15 +35,15 @@ public class RegistroDictadoClase extends HttpServlet {
 
             String nombreInstitucion = request.getParameter("nombreInstitucion");
             if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
-                InstitucionDeportiva instituto = port.getInstitucionesByName(nombreInstitucion);
-                ActividadDeportiva[] listaactividades = instituto.getActividades();
+                DtInstitucion instituto = port.getInstitucionesByName(nombreInstitucion);
+                DtActividadDeportiva[] listaactividades = port.getActividadesByInstitucion(instituto.getNombre());
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 
                 JSONArray actividadesArray = new JSONArray();
 
-                for (ActividadDeportiva actividadDeportiva : listaactividades) {
+                for (DtActividadDeportiva actividadDeportiva : listaactividades) {
 
                     JSONObject actividadJSON = new JSONObject();
                     actividadJSON.put("nombre", actividadDeportiva.getNombre());
@@ -57,7 +59,7 @@ public class RegistroDictadoClase extends HttpServlet {
 
             } else {
 
-                InstitucionDeportiva[] instituciones = port.getInstituciones();
+                DtInstitucion[] instituciones = port.getInstituciones();
                 System.out.println("Instituciones: " + instituciones);
 
                 response.setContentType("application/json");
@@ -65,7 +67,7 @@ public class RegistroDictadoClase extends HttpServlet {
 
                 JSONArray institucionesArray = new JSONArray();
 
-                for (InstitucionDeportiva institucion : instituciones) {
+                for (DtInstitucion institucion : instituciones) {
 
                     JSONObject institucionJSON = new JSONObject();
                     institucionJSON.put("nombre", institucion.getNombre());

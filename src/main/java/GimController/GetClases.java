@@ -15,6 +15,8 @@ import publicadores.ActividadDeportiva;
 import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtClase;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -36,7 +38,7 @@ public class GetClases extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		Clase[] clases = new Clase[100];
+		DtClase[] clases = null;
 		// y crean otra condicion aca (lo mejor seria pasarlo a un switch)
 
 		if (nickname != null && nickname.length() > 0) {
@@ -45,13 +47,13 @@ public class GetClases extends HttpServlet {
 
 		} else if (nombreClase != null && nombreClase.length() > 0) {
 
-			Clase nuevaClase = port.obtenerClasePorNombre(nombreClase);
+			DtClase nuevaClase = port.obtenerClasePorNombre(nombreClase);
 
 			clases[1] = nuevaClase;
 
 		} else if (nombreActividad != null && nombreActividad.length() > 0) {
 
-			ActividadDeportiva actividadBuscada = port.obtenerActividadPorNombre(nombreActividad);
+			DtActividadDeportiva actividadBuscada = port.obtenerActividadPorNombre(nombreActividad);
 
 			clases = port.obtenerClasesPorActividad(actividadBuscada);
 
@@ -81,15 +83,15 @@ public class GetClases extends HttpServlet {
 
 		if (clases != null && clases.length == 0) {
 
-			for (Clase clase : clases) {
+			for (DtClase clase : clases) {
 				out.println("<tr>");
 				out.println("<td>" + clase.getNombre() + "</td>");
 				out.println("<td>" + clase.getFecha() + "</td>");
-				out.println("<td>" + clase.getFechaReg() + "</td>");
+				out.println("<td>" + clase.getFechaRegistro() + "</td>");
 				out.println("<td>" + clase.getHora() + "</td>");
 				out.println("<td>" + clase.getUrl() + "</td>");
 
-				out.println("<td> <img src=\"data:image/png;base64," + clase.getImg()
+				out.println("<td> <img src=\"data:image/png;base64," + clase.getImagen()
 						+ " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
 				if (tablaConAccion != null && tablaConAccion.length() > 0) {
 

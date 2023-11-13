@@ -10,6 +10,7 @@ import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 
 import java.io.OutputStream;
+import publicadores.DtClase;
 
 public class GetImagenClase extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -42,11 +43,11 @@ public class GetImagenClase extends HttpServlet {
         try {
             port = cps.getControladorPublishPort();
 
-            Clase clase = null;
+            DtClase clase = null;
 
             clase = port.obtenerClasePorNombre(nombreClase);
 
-            return clase.getImg();
+            return clase.getImagen();
         } catch (RemoteException e) {
 
             e.printStackTrace();

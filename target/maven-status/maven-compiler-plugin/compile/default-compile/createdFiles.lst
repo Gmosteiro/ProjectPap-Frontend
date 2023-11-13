@@ -1,5 +1,7 @@
 publicadores/LocalDate.class
 GimController/AltaClase.class
+publicadores/DtClase.class
+publicadores/DtUsuario.class
 publicadores/Socio.class
 publicadores/ControladorPublishProxy.class
 com/mycompany/gimnasio_web/JakartaRestConfiguration.class
@@ -26,7 +28,9 @@ publicadores/Clase.class
 publicadores/Profesor.class
 GimController/Login.class
 publicadores/Sesion.class
+publicadores/DtActividadDeportiva.class
 GimController/GetInstituciones.class
+publicadores/DtInstitucion.class
 publicadores/ControladorPublishService.class
 GimController/GetActividades.class
 GimController/ConsultaActividad.class
