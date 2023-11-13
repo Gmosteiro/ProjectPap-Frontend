@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 import org.json.JSONObject;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import publicadores.ControladorPublishPortImpl;
 import publicadores.Sesion;
 
@@ -41,7 +41,7 @@ public class ActualizarUsuario extends HttpServlet {
 			System.out.println("Profile Image: " + profileImage);
 			String fechaNacimientoStr = jsonData.getString("fechaNacimiento");
 
-			publicadores.LocalDate fechaNacimiento = publicadores.LocalDate.parse(fechaNacimientoStr,
+			java.time.LocalDate fechaNacimiento = java.time.LocalDate.parse(fechaNacimientoStr,
 					DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 			// nickname, nuevoNombre, nuevoApellido, nuevafecha, img
