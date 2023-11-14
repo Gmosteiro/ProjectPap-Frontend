@@ -38,7 +38,7 @@
                                     || request.getRequestURI().contains("consultardicClase.jsp")) ? "active" : "" %>" href="#"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">Clases</a>
                             <ul class="dropdown-menu">
-                                <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
+                                <% if (usuarioLogeado != null && "Profesor".equals(usuarioLogeado.getUserType())) { %>
                                     <li><a class="dropdown-item" href="gestionInscripcion.jsp">Alta dictado de clase</a></li>
                                     <li><a class="dropdown-item" href="consultardicClase.jsp">Consultar dictado de clase</a></li>
                                     <li><a class="dropdown-item" href="rankingClases.jsp">Ranking de socios en clases</a></li>
@@ -52,7 +52,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <%= (request.getRequestURI().contains("algo2") || request.getRequestURI().contains("consultaActividad.jsp")) ? "active" : "" %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Actividades Deportivas</a>
                             <ul class="dropdown-menu">
-                                <% if (usuarioLogeado != null && usuarioLogeado.getUserType() == "Profesor") { %>
+                                <% if (usuarioLogeado != null && "Profesor".equals(usuarioLogeado.getUserType())) { %>
                                     <li><a class="dropdown-item" href="rankingActividades.jsp">Ranking de clases en Actividades</a></li>
                                 <% } %>
                                 <li><a class="dropdown-item" href="consultaActividad.jsp">Consultar actividad deportiva</a></li>
