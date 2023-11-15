@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="publicadores.Clase" %>
-<%@ page import="publicadores.ActividadDeportiva" %> 
+<%@ page import="publicadores.ControladorPublish"%>
+<%@ page import="publicadores.ControladorPublishServiceLocator"%>
+<%@ page import="publicadores.DtActividadDeportiva"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,9 +29,9 @@
                 <div class="col-md-3">
                     <label for="actividad">Actividad:</label>
                     <select class="form-select form-select-lg mb-3" id="actividad" name="actividad">
-                       <% List<ActividadDeportiva> nombresActividades = (List<ActividadDeportiva>) request.getAttribute("nombresActividades");
+                       <% List<DtActividadDeportiva> nombresActividades = (List<DtActividadDeportiva>) request.getAttribute("nombresActividades");
                           if (nombresActividades != null) {
-                              for (ActividadDeportiva actividad : nombresActividades) {
+                              for (DtActividadDeportiva actividad : nombresActividades) {
                        %>
                        <option value="<%= actividad.getNombre() %>"><%= actividad.getNombre() %></option>
                        <%
