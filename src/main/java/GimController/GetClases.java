@@ -4,18 +4,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List; // Importa la clase List si no está importada
-
+import javax.xml.rpc.ServiceException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import logic.Fabrica;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.ActividadDeportiva.controllers.IControllerConsultaActividad;
-import logic.Clase.Clase;
-import logic.Clase.controllers.IControllerConsultaClases;
-import logic.Usuario.controllers.IControllerConsultaUsuario;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtClase;
 
 @WebServlet("/getClases")
 public class GetClases extends HttpServlet {
@@ -26,30 +24,25 @@ public class GetClases extends HttpServlet {
         String nombreClase = request.getParameter("nombreClase");
         String nombreActividad = request.getParameter("nombreActividad");
         String tablaConAccion = request.getParameter("tablaconaccion");
-        // Si necesitan agregar otro parametro lo meten aca
 
-        Fabrica factory = new Fabrica();
-        List<Clase> clases = new ArrayList<>();
-        // y crean otra condicion aca (lo mejor seria pasarlo a un switch)
+        ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+        try {
+            port = cps.getControladorPublishPort();
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+
+        DtClase[] clases = null;
 
         if (nickname != null && nickname.length() > 0) {
-
-            IControllerConsultaUsuario controllerConsultaUsuario = factory.getControladorConsultaUsuario();
-            clases = controllerConsultaUsuario.getClasesByUser(nickname);
-
+            clases = port.getClasesByUser(nickname);
         } else if (nombreClase != null && nombreClase.length() > 0) {
-
-            IControllerConsultaClases controllerClases = factory.getControllerConsultaClases();
-            clases.add(controllerClases.obtenerClasePorNombre(nombreClase));
-
+            DtClase nuevaClase = port.obtenerClasePorNombre(nombreClase);
+            clases = new DtClase[]{nuevaClase};
         } else if (nombreActividad != null && nombreActividad.length() > 0) {
-
-            IControllerConsultaActividad controllerCA = factory.getControllerConsultaActividad();
-
-            ActividadDeportiva actividadBuscada = controllerCA.obtenerActividadPorNombre(nombreActividad);
-
-            clases = factory.getControllerConsultaClases().obtenerClasesPorActividad(actividadBuscada);
-
+            DtActividadDeportiva actividadBuscada = port.obtenerActividadPorNombre(nombreActividad);
+            clases = port.obtenerClasesPorActividad(actividadBuscada);
         }
 
         response.setContentType("text/html");
@@ -66,7 +59,6 @@ public class GetClases extends HttpServlet {
         out.println("<th>Imagen</th>");
 
         if (tablaConAccion != null && tablaConAccion.length() > 0) {
-
             out.println("<th>Accion</th>");
         }
 
@@ -74,41 +66,34 @@ public class GetClases extends HttpServlet {
         out.println("</thead>");
         out.println("<tbody>");
 
-        if (clases != null && !clases.isEmpty()) {
-            for (Clase clase : clases) {
-                out.println("<tr>");
-                out.println("<td>" + clase.getNombre() + "</td>");
-                out.println("<td>" + clase.getFechaFormatted() + "</td>");
-                out.println("<td>" + formatFecha(clase.getFechaReg()) + "</td>");
-                out.println("<td>" + clase.getHora() + "</td>");
-                out.println("<td>" + clase.getUrl() + "</td>");
+        if (clases != null) { // Verifica si la lista de clases no es null
+            if (clases.length > 0) {
+                for (DtClase clase : clases) {
+                    out.println("<tr>");
+                    out.println("<td>" + clase.getNombre() + "</td>");
+                    out.println("<td>" + clase.getFecha() + "</td>");
+                    out.println("<td>" + clase.getFechaRegistro() + "</td>");
+                    out.println("<td>" + clase.getHora() + "</td>");
+                    out.println("<td>" + clase.getUrl() + "</td>");
+                    out.println("<td> <img src=\"data:image/png;base64," + clase.getImagen()
+                            + " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
 
-                out.println(
-                        "<td> <img src=\"data:image/png;base64," + clase.getImg()
-                                + " alt=\"Imagen\" style=\"width: 40px; height: 40px; border-radius: 50%\" /> </td>");
-                if (tablaConAccion != null && tablaConAccion.length() > 0) {
+                    if (tablaConAccion != null && tablaConAccion.length() > 0) {
+                        out.println(
+                                "<td><button class=\"btn btn-info btn-block btn-round\" data-action=\"registrar\" type=\"button\" onclick=\"enviarInfo('"
+                                + clase.getNombre() + "');\">Registrar</button></td>");
+                    }
 
-                    out.println(
-                            "<td><button class=\"btn btn-info btn-block btn-round\" data-action=\"registrar\" type=\"button\" onclick=\"enviarInfo('"
-                                    + clase.getNombre() + "');\">Registrar</button></td>");
+                    out.println("</tr>");
                 }
-
-                out.println("</tr>");
+            } else {
+                out.println("<tr><td colspan='5'>No se encontraron clases</td></tr>");
             }
         } else {
-            out.println("<tr><td colspan='5'>No se encontraron clases</td></tr>");
+            out.println("<tr><td colspan='5'>Error: La lista de clases es nula</td></tr>");
         }
 
         out.println("</tbody>");
         out.println("</table>");
     }
-
-    private String formatFecha(LocalDate fecha) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        return fecha.atStartOfDay().format(formatter);
-
-    }
-
 }

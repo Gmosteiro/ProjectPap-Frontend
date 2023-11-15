@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.xml.rpc.ServiceException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,74 +15,83 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import logic.Fabrica;
-import logic.ActividadDeportiva.ActividadDeportiva;
-import logic.Institucion.InstitucionDeportiva;
-import logic.Institucion.ManejadorInstitucion;
-import logic.Usuario.controllers.IControllerRegistroDictado;
+
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtActividadDeportiva;
+import publicadores.DtInstitucion;
 
 @WebServlet("/RegistroDictadoClase")
 
 public class RegistroDictadoClase extends HttpServlet {
-    ManejadorInstitucion manejadorInstitucion = new ManejadorInstitucion();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
+        try {
+            port = cps.getControladorPublishPort();
 
-        String nombreInstitucion = request.getParameter("nombreInstitucion");
-        if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
+            String nombreInstitucion = request.getParameter("nombreInstitucion");
+            if (nombreInstitucion != null && nombreInstitucion.length() > 0) {
+                DtInstitucion instituto = port.getInstitucionesByName(nombreInstitucion);
+                DtActividadDeportiva[] listaactividades = port.getActividadesByInstitucion(instituto.getNombre());
 
-            InstitucionDeportiva instituto = manejadorInstitucion.getInstitucionesByName(nombreInstitucion);
-            List<ActividadDeportiva> listaactividades = instituto.getActividades();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
 
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
+                JSONArray actividadesArray = new JSONArray();
 
-            JSONArray actividadesArray = new JSONArray();
+                for (DtActividadDeportiva actividadDeportiva : listaactividades) {
 
-            for (ActividadDeportiva actividadDeportiva : listaactividades) {
+                    JSONObject actividadJSON = new JSONObject();
+                    actividadJSON.put("nombre", actividadDeportiva.getNombre());
 
-                JSONObject actividadJSON = new JSONObject();
-                actividadJSON.put("nombre", actividadDeportiva.getNombre());
+                    actividadesArray.put(actividadJSON);
+                }
 
-                actividadesArray.put(actividadJSON);
+                JSONObject jsonResponse = new JSONObject();
+                jsonResponse.put("ERROR", false);
+                jsonResponse.put("Actividades", actividadesArray);
+
+                response.getWriter().write(jsonResponse.toString());
+
+            } else {
+
+                DtInstitucion[] instituciones = port.getInstituciones();
+                System.out.println("Instituciones: " + instituciones);
+
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+
+                JSONArray institucionesArray = new JSONArray();
+
+                for (DtInstitucion institucion : instituciones) {
+
+                    JSONObject institucionJSON = new JSONObject();
+                    institucionJSON.put("nombre", institucion.getNombre());
+
+                    institucionesArray.put(institucionJSON);
+                }
+
+                JSONObject jsonResponse = new JSONObject();
+                jsonResponse.put("ERROR", false);
+                jsonResponse.put("Instituciones", institucionesArray);
+
+                response.getWriter().write(jsonResponse.toString());
+
             }
+        } catch (ServiceException e) {
 
-            JSONObject jsonResponse = new JSONObject();
-            jsonResponse.put("ERROR", false);
-            jsonResponse.put("Actividades", actividadesArray);
-
-            response.getWriter().write(jsonResponse.toString());
-
-        } else {
-            List<InstitucionDeportiva> instituciones = manejadorInstitucion.getInstituciones();
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-
-            JSONArray institucionesArray = new JSONArray();
-
-            for (InstitucionDeportiva institucion : instituciones) {
-
-                JSONObject institucionJSON = new JSONObject();
-                institucionJSON.put("nombre", institucion.getNombre());
-
-                institucionesArray.put(institucionJSON);
-            }
-
-            JSONObject jsonResponse = new JSONObject();
-            jsonResponse.put("ERROR", false);
-            jsonResponse.put("Instituciones", institucionesArray);
-
-            response.getWriter().write(jsonResponse.toString());
-
+            e.printStackTrace();
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
+            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
             System.out.println("En Registro Dictado Clase");
             BufferedReader reader = request.getReader();
             StringBuilder sb = new StringBuilder();
@@ -97,16 +108,12 @@ public class RegistroDictadoClase extends HttpServlet {
 
             LocalDate fecha = LocalDate.now();
 
-            Fabrica factory = new Fabrica();
-
-            IControllerRegistroDictado controller = factory.getControllerRegistroDictado();
-
             // response
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             JSONObject jsonResponse = new JSONObject();
 
-            boolean existeRegistro = controller.validateDataWeb(socio, clase);
+            boolean existeRegistro = port.validateDataWeb(socio, clase);
             System.out.println("validate: " + existeRegistro);
 
             if (existeRegistro) {
@@ -118,7 +125,7 @@ public class RegistroDictadoClase extends HttpServlet {
             } else {
 
                 // String nicknameSocio, String nombreClase, LocalDate fechaReg
-                boolean registro = controller.addRegistroDictadoWeb(socio, clase, fecha);
+                boolean registro = port.addRegistroDictadoWeb(socio, clase, fecha.toString());
                 System.out.println("registro: " + registro);
 
                 jsonResponse.put("ERROR", !registro);

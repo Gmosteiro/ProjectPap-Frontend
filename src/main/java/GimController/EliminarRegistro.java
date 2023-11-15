@@ -1,13 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author santi
- */
-
 package GimController;
 
 import jakarta.servlet.ServletException;
@@ -15,55 +5,62 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtUsuario;
+import publicadores.DtClase;
+
 import java.io.IOException;
 
-import logic.Clase.Clase;
-import logic.Clase.ManejadorClases;
-import logic.Usuario.ManejadorUsuarios;
-import logic.Usuario.Socio;
-import logic.Usuario.controllers.ControllerEliminarRegClase;
-import logic.Usuario.controllers.IControllerEliminarRegClase;
+import javax.xml.rpc.ServiceException;
 
 @WebServlet("/EliminarRegistro")
 public class EliminarRegistro extends HttpServlet {
-    ManejadorUsuarios manejadorUsuarios = new ManejadorUsuarios();
-    ManejadorClases manejadorClases = new ManejadorClases();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        String nombreInstitucion = request.getParameter("nombreInstitucion");
-        String nombreActividad = request.getParameter("nombreActividad");
-        String nombreClase = request.getParameter("nombreClase");
-        String nicknameSocio = request.getParameter("nicknameSocio");
-        Socio socio = manejadorUsuarios.getSocio(nicknameSocio);
-        Clase clase = manejadorClases.getClaseByNombre(nombreClase);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        try {
+            ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
+            ControladorPublish port = cps.getControladorPublishPort();
 
-        IControllerEliminarRegClase controllerEliminar = new ControllerEliminarRegClase();
-        boolean eliminado = controllerEliminar.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase,
-                nicknameSocio);
+            String nombreInstitucion = request.getParameter("nombreInstitucion");
+            String nombreActividad = request.getParameter("nombreActividad");
+            String nombreClase = request.getParameter("nombreClase");
+            String nicknameSocio = request.getParameter("nicknameSocio");
 
-        if (!controllerEliminar.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
-            request.setAttribute("elementosExistentes", false);
-        }
+            DtUsuario socio = port.getSocio(nicknameSocio);
+            DtClase clase = port.getClaseByNombre(nombreClase);
 
-        if (eliminado) {
-            request.setAttribute("eliminado", true);
-        } else {
-            boolean alta = controllerEliminar.crearRegistro(socio, clase);
-            if (alta) {
-                request.setAttribute("alta", true);
+            boolean eliminado = port.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
+
+            if (!port.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
+                request.setAttribute("elementosExistentes", false);
             }
-        }
 
-        request.getRequestDispatcher("eliminarRegistro.jsp").forward(request, response);
+            if (eliminado) {
+                request.setAttribute("eliminado", true);
+            } else {
+                boolean alta = port.crearRegistro(socio, clase);
+                if (alta) {
+                    request.setAttribute("alta", true);
+                }
+            }
+
+            request.getRequestDispatcher("eliminarRegistro.jsp").forward(request, response);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            // Manejar la excepción del servicio web
+            // Podrías redirigir a una página de error o realizar alguna acción específica
+            // Puedes usar response.sendRedirect("ruta/a/paginaDeError.jsp");
+        }
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().println("<html><body>");
         response.getWriter().println("<form action='EliminarRegistro' method='post'>");
 
-        // Aquí puedes agregar los campos para recibir la información necesaria
-        // (institución, actividad, clase, socio)
+        // Campos para recibir la información necesaria (institución, actividad, clase, socio)
         response.getWriter().println("Nombre Institución: <input type='text' name='nombreInstitucion'><br><br>");
         response.getWriter().println("Nombre Actividad: <input type='text' name='nombreActividad'><br><br>");
         response.getWriter().println("Nombre Clase: <input type='text' name='nombreClase'><br><br>");
