@@ -3,3 +3,7 @@ GimnasioWeb/nbproject/private/
 apache-tomcat-10.1.13/
 target/*
 /target/
+GimnasioWeb/src/target/
+
+GimnasioWeb/apache-tomcat-10.1.13/temp/*
+
