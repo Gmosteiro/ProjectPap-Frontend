@@ -10,8 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import publicadores.ActividadDeportiva;
-import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.DtActividadDeportiva;
@@ -83,7 +81,7 @@ public class GetClases extends HttpServlet {
                     if (tablaConAccion != null && tablaConAccion.length() > 0) {
                         out.println(
                                 "<td><button class=\"btn btn-info btn-block btn-round\" data-action=\"registrar\" type=\"button\" onclick=\"enviarInfo('"
-                                        + clase.getNombre() + "');\">Registrar</button></td>");
+                                + clase.getNombre() + "');\">Registrar</button></td>");
                     }
 
                     out.println("</tr>");

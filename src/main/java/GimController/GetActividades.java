@@ -10,10 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import publicadores.ActividadDeportiva;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
-import publicadores.InstitucionDeportiva;
 
 import javax.xml.rpc.ServiceException;
 import publicadores.DtActividadDeportiva;
@@ -36,7 +34,7 @@ public class GetActividades extends HttpServlet {
             String institucionNombre = request.getParameter("institucion");
 
             if (institucionNombre != null) {
-                
+
                 DtActividadDeportiva[] listaactividades = port.getActividadesByInstitucion(institucionNombre);
 
                 // Construye una lista de nombres de actividades en formato de texto plano

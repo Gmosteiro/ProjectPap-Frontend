@@ -22,6 +22,8 @@ public class DtUsuario  implements java.io.Serializable {
 
     private java.lang.Long id_usuario;
 
+    private java.lang.String imagen;
+
     private java.lang.String nickname;
 
     private java.lang.String nombre;
@@ -39,6 +41,7 @@ public class DtUsuario  implements java.io.Serializable {
            java.lang.String email,
            java.lang.String fechaNac,
            java.lang.Long id_usuario,
+           java.lang.String imagen,
            java.lang.String nickname,
            java.lang.String nombre,
            java.lang.String sitioWeb) {
@@ -49,6 +52,7 @@ public class DtUsuario  implements java.io.Serializable {
            this.email = email;
            this.fechaNac = fechaNac;
            this.id_usuario = id_usuario;
+           this.imagen = imagen;
            this.nickname = nickname;
            this.nombre = nombre;
            this.sitioWeb = sitioWeb;
@@ -196,6 +200,26 @@ public class DtUsuario  implements java.io.Serializable {
 
 
     /**
+     * Gets the imagen value for this DtUsuario.
+     * 
+     * @return imagen
+     */
+    public java.lang.String getImagen() {
+        return imagen;
+    }
+
+
+    /**
+     * Sets the imagen value for this DtUsuario.
+     * 
+     * @param imagen
+     */
+    public void setImagen(java.lang.String imagen) {
+        this.imagen = imagen;
+    }
+
+
+    /**
      * Gets the nickname value for this DtUsuario.
      * 
      * @return nickname
@@ -287,6 +311,9 @@ public class DtUsuario  implements java.io.Serializable {
             ((this.id_usuario==null && other.getId_usuario()==null) || 
              (this.id_usuario!=null &&
               this.id_usuario.equals(other.getId_usuario()))) &&
+            ((this.imagen==null && other.getImagen()==null) || 
+             (this.imagen!=null &&
+              this.imagen.equals(other.getImagen()))) &&
             ((this.nickname==null && other.getNickname()==null) || 
              (this.nickname!=null &&
               this.nickname.equals(other.getNickname()))) &&
@@ -327,6 +354,9 @@ public class DtUsuario  implements java.io.Serializable {
         }
         if (getId_usuario() != null) {
             _hashCode += getId_usuario().hashCode();
+        }
+        if (getImagen() != null) {
+            _hashCode += getImagen().hashCode();
         }
         if (getNickname() != null) {
             _hashCode += getNickname().hashCode();
@@ -393,6 +423,13 @@ public class DtUsuario  implements java.io.Serializable {
         elemField.setFieldName("id_usuario");
         elemField.setXmlName(new javax.xml.namespace.QName("", "id_usuario"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("imagen");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "imagen"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

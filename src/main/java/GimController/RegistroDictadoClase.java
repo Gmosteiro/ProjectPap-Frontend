@@ -15,12 +15,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import publicadores.ActividadDeportiva;
+
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
 import publicadores.DtActividadDeportiva;
 import publicadores.DtInstitucion;
-import publicadores.InstitucionDeportiva;
 
 @WebServlet("/RegistroDictadoClase")
 

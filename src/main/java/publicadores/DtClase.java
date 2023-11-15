@@ -18,6 +18,8 @@ public class DtClase  implements java.io.Serializable {
 
     private java.lang.String nombre;
 
+    private java.lang.String profesor;
+
     private java.lang.String url;
 
     public DtClase() {
@@ -29,12 +31,14 @@ public class DtClase  implements java.io.Serializable {
            java.lang.String hora,
            java.lang.String imagen,
            java.lang.String nombre,
+           java.lang.String profesor,
            java.lang.String url) {
            this.fecha = fecha;
            this.fechaRegistro = fechaRegistro;
            this.hora = hora;
            this.imagen = imagen;
            this.nombre = nombre;
+           this.profesor = profesor;
            this.url = url;
     }
 
@@ -140,6 +144,26 @@ public class DtClase  implements java.io.Serializable {
 
 
     /**
+     * Gets the profesor value for this DtClase.
+     * 
+     * @return profesor
+     */
+    public java.lang.String getProfesor() {
+        return profesor;
+    }
+
+
+    /**
+     * Sets the profesor value for this DtClase.
+     * 
+     * @param profesor
+     */
+    public void setProfesor(java.lang.String profesor) {
+        this.profesor = profesor;
+    }
+
+
+    /**
      * Gets the url value for this DtClase.
      * 
      * @return url
@@ -185,6 +209,9 @@ public class DtClase  implements java.io.Serializable {
             ((this.nombre==null && other.getNombre()==null) || 
              (this.nombre!=null &&
               this.nombre.equals(other.getNombre()))) &&
+            ((this.profesor==null && other.getProfesor()==null) || 
+             (this.profesor!=null &&
+              this.profesor.equals(other.getProfesor()))) &&
             ((this.url==null && other.getUrl()==null) || 
              (this.url!=null &&
               this.url.equals(other.getUrl())));
@@ -213,6 +240,9 @@ public class DtClase  implements java.io.Serializable {
         }
         if (getNombre() != null) {
             _hashCode += getNombre().hashCode();
+        }
+        if (getProfesor() != null) {
+            _hashCode += getProfesor().hashCode();
         }
         if (getUrl() != null) {
             _hashCode += getUrl().hashCode();
@@ -258,6 +288,13 @@ public class DtClase  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("nombre");
         elemField.setXmlName(new javax.xml.namespace.QName("", "nombre"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("profesor");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "profesor"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);

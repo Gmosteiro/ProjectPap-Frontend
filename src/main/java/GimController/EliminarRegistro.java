@@ -5,10 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import publicadores.Clase;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishServiceLocator;
-import publicadores.Socio;
+import publicadores.DtUsuario;
+import publicadores.DtClase;
 
 import java.io.IOException;
 
@@ -28,8 +28,8 @@ public class EliminarRegistro extends HttpServlet {
             String nombreClase = request.getParameter("nombreClase");
             String nicknameSocio = request.getParameter("nicknameSocio");
 
-            Socio socio = port.getSocio(nicknameSocio);
-            Clase clase = port.getClaseByNombre(nombreClase);
+            DtUsuario socio = port.getSocio(nicknameSocio);
+            DtClase clase = port.getClaseByNombre(nombreClase);
 
             boolean eliminado = port.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
 
