@@ -32,19 +32,22 @@ public class EliminarRegistro extends HttpServlet {
             DtClase clase = port.getClaseByNombre(nombreClase);
 
             boolean eliminado = port.eliminarRegistroDeClase(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio);
-
+            boolean alta = port.crearRegistro(socio, clase);
             if (!port.existenElementos(nombreInstitucion, nombreActividad, nombreClase, nicknameSocio)) {
                 request.setAttribute("elementosExistentes", false);
             }
 
             if (eliminado) {
                 request.setAttribute("eliminado", true);
-            } else {
-                boolean alta = port.crearRegistro(socio, clase);
-                if (alta) {
+                System.out.println("eliminado"+eliminado);
+                System.out.println("alta"+alta);
+
+            } else  {
                     request.setAttribute("alta", true);
+                      System.out.println("eliminado"+eliminado);
+                      System.out.println("alta"+alta);
                 }
-            }
+            
 
             request.getRequestDispatcher("eliminarRegistro.jsp").forward(request, response);
         } catch (ServiceException e) {

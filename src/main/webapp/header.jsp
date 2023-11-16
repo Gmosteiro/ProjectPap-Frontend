@@ -16,8 +16,7 @@
     <% publicadores.Sesion usuarioLogeado = (publicadores.Sesion)
 			request.getSession().getAttribute("usuarioLogeado"); if (usuarioLogeado != null) { String imagenBase64 =
 			usuarioLogeado.getProfileImageBase64(); 
-       ControladorPublishServiceLocator cps = new ControladorPublishServiceLocator();
-            ControladorPublish port = cps.getControladorPublishPort();
+  
     %>
                         
                         
